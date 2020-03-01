@@ -3,6 +3,7 @@
   margin-bottom: 5%;
 }
 .login-form-1{
+  background-color: #F7F6FB;
   padding: 5%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
@@ -24,11 +25,12 @@
 }
 .btnSubmit
 {
-  width: 50%;
+  width: 100%;
   border-radius: 1rem;
-  padding: 1.5%;
+  padding: 3%;
   border: none;
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .login-form-1 .btnSubmit{
   font-weight: 600;
