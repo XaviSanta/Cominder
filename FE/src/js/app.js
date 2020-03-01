@@ -26,13 +26,37 @@ $('.registerForm-p').submit(function() {
   return false;
 });
 
+$('.sign-up-btn').click(function() {
+  openRegistration();
+
+});
+
+$('.sign-in-btn').click(function() {
+ openLogin();
+});
+
+$('#home-logo').click(function() {
+  goHome();
+});
+
+$('.loginForm').submit(function(e) {
+  sendLogin();
+  return false;
+});
+
+$('.registerForm').submit(function(e) {
+  sendRegistration();
+  return false;
+});
+
+
+
 function goHome() {
   connection === null ? showLanding() : openApp(); 
 }
 
 function showLanding() {
   $('.landing').show();
-
   $('.sign-up').hide();
   $('.main').hide();
   $('.sign-in').hide();
@@ -40,33 +64,37 @@ function showLanding() {
 
 function openRegistration() {
   $('.sign-up').show();
-
   $('.main').hide();
   $('.sign-in').hide();
   $('.landing').hide();
+  $('.back-ground').show();
+  $('.login-page').show();
+
 }
 
 function openLogin() {
-  console.log("asdfasdf")
   $('.sign-in').show();
-
   $('.main').hide();
   $('.sign-up').hide();
   $('.landing').hide();
+  $('.back-ground').show();
+  $('.login-page').show();
 }
 
-function openApp() {
+function openApp() {  
   $('.main').show();
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();
   $('#username-btn').html(username);
-  $('.btns-after-login').show();
-
+  $('#username-btn').show();
   $('.map').load('./map.html');
-
   $('.sign-in').hide();
   $('.sign-up').hide();
   $('.landing').hide();
+  
+  $('.login-page').hide();
+  $('.back-ground').hide();
+  
 }
 
 function sendRegistration() {
@@ -76,6 +104,7 @@ function sendRegistration() {
 function sendLogin() {
   connect();
 }
+
 
 function updateMap() {
   getMapPoints();
