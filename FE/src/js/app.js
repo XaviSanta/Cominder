@@ -60,7 +60,7 @@ function openApp() {
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();
   $('#username-btn').html(username);
-  $('#username-btn').show();
+  $('.btns-after-login').show();
 
   $('.map').load('./map.html');
 

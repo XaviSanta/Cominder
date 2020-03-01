@@ -26,11 +26,23 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
+    <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
+      <a id="list-sales-list" class="btn"  data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</button>
+      <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
+      <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
+      <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
+      <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+    </div>
+
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
     <div class="form-inline my-2 my-lg-0">
-      <button id="sign-up-btn" onclick="openRegistration()" class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
-      <button id="sign-in-btn"onclick="openLogin()" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
-      <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" style="display: none"></button>
+      <div class="btns-after-login" style="display: none">
+        <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
+      </div>
+      
+      <button onclick="openRegistration()" id="sign-up-btn"  class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
+      <button onclick="openLogin()" id="sign-in-btn" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
+
     </div>
   </div>
 </nav>
@@ -125,13 +137,7 @@
   <div class="main" id="main" style="display: none;">
     <div class="row">
       <div class="col-2">
-        <div class="list-group" id="list-tab" role="tablist">
-          <a class="list-group-item list-group-item-action active" id="list-sales-list" data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</a>
-          <a class="list-group-item list-group-item-action" id="list-groups-list" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
-          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
-          <a class="list-group-item list-group-item-action" id="list-map" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
-          <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-        </div>
+        asdf
       </div>
       <div class="col-4">
         <div class="tab-content" id="nav-tabContent">
