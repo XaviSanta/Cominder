@@ -19,40 +19,41 @@
 
 </head>
 <body>
-<!-- HEADER ---------------------------------------------------------- -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
-    <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
-      <a id="list-sales-list" class="btn"  data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</button>
-      <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
-      <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
-      <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
-      <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-    </div>
-
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
-    <div class="form-inline my-2 my-lg-0">
-      <div class="btns-after-login" style="display: none">
-        <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
+  <!-- HEADER ---------------------------------------------------------- -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
+      <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
+        <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurants</button>
+        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="updateGroupsList()">Groups</a>
+        <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
+        <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
+        <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
       </div>
-      
-      <button onclick="openRegistration()" id="sign-up-btn"  class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
-      <button onclick="openLogin()" id="sign-in-btn" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
 
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <div class="form-inline my-2 my-lg-0">
+        <div class="btns-after-login" style="display: none">
+          <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
+        </div>
+        
+        <button onclick="openRegistration()" id="sign-up-btn"  class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
+        <button onclick="openLogin()" id="sign-in-btn" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
+
+      </div>
     </div>
-  </div>
-</nav>
-<!-- LANDING ---------------------------------------------------------- -->
+  </nav>
+
+  <!-- LANDING ---------------------------------------------------------- -->
+  
   <div class="landing">
-    <div>Explain App</div>
     
   </div>
 
-<!-- SIGN UP ---------------------------------------------------------- -->
+  <!-- SIGN UP ---------------------------------------------------------- -->
   <div class="sign-up" style="display: none;">
     <div class="container login-container">
       <div class="row">
@@ -91,7 +92,7 @@
     </div>
   </div>
 
-<!-- SING IN ---------------------------------------------------------- -->
+  <!-- SING IN ---------------------------------------------------------- -->
   <div class="sign-in" style="display: none;">
     <div class="container login-container">
       <div class="row">
@@ -135,66 +136,106 @@
 
 <!-- APP---------------------------------------------------------- -->
   <div class="main" id="main" style="display: none;">
+    <div id="map" class="map"></div>
     <div class="row">
-      <div class="col-2">
-        asdf
-      </div>
-      <div class="col-4">
+      <div class="col-3">
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-sales" role="tabpanel" aria-labelledby="list-sales-list">
+          <div id="list-restaurants" class="tab-pane fade" role="tabpanel" aria-labelledby="list-restaurants-list">
             Restaurants
             <ul id="restaurant-list-group" class="list-group"></ul>
           </div>
-          <div class="tab-pane fade" id="list-groups" role="tabpanel" aria-labelledby="list-groups-list">
-            User groups
-            <ul class="list-group">
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                English group
-                <span class="badge badge-primary badge-pill">2/4</span>
-              </a>
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                Café en Glóries
-                <span class="badge badge-primary badge-pill">1/4</span>
-              </a>
-            </ul>
+
+          <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
+            Groups
+            <ul id="groups-list-group" class="list-group"></ul>
           </div>
-          <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
-            Here put the groups and sales that im into
+
+          <div id="list-my-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-my-groups-list">
+            <div class="chat-group-name">Group name</div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="message">Hola</div>
+            </div>
+            <form class="form-inline">
+              <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="input-message" placeholder="Write message">
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Send</button>
+            </form>
+
           </div>
+
+          
           <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
             <input type="text"> Search place?<br>
             <button>Add group destination?</button>
           </div>
+
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
             Here add Settings
           </div>
+
         </div>
+        <!-- <div class="message-list-container" id="container-messages"></div> -->
+        <div id="chat"></div>
       </div>
-      <div class="col-6">
-        <div class="chat" id="chat">Aqui poner el chat?</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div id="map" class="map"></div>
-    </div>
-  </div>
-
-  <!-- footer---------------------------------------------------------- -->
-  <nav class="navbar fixed-bottom navbar-light bg-light">
-    <a class="navbar-brand" href="#">This is a footer</a>
-  </nav>
-
-  <div id="templates" style="display: none">
-    <div class="article">
-      <a class="list-group-item align-items-center" href="#" onclick="openRestaurant()"></a>
     </div>
   </div>
   
+  <!-- Templates ---------------------------------------------------------- -->
+  <div id="templates" style="display: none">
+
+    <div class="restaurant-li">
+      <a class="list-group-item align-items-center d-flex justify-content-between" href="#">
+        <span class="name-group-template"></span>
+        <span class="badge badge-primary badge-pill"></span>
+      </a>
+    </div>
+
+    <div class="group-li">
+      <a class="list-group-item d-flex justify-content-between align-items-center" href="#">
+        <span class="name-group-template"></span>
+        <span class="badge badge-primary badge-pill"></span>
+      </a>
+    </div>
+
+    <div class="message"></div>
+
+  </div>
+  
+  <!-- MODAL -->
+  <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createGroupModalLabel">New group</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Group Name:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for=max-num-members" class="col-form-label">Max Num members:</label>
+              <input type="number" class="form-control" id="max-num-members"></input>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-create-group">Create Group</button>
+        </div>
+      </div>
+    </div>
+  </div> 
   <!-- SCRIPTS---------------------------------------------------------- -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="./js/app.js"></script>
+  <script src="./js/login.js"></script>
   <script src="./js/ApiServer.js"></script>
   <script src="./js/ClientWebSocket.js"></script>
 </body>
