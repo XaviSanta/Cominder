@@ -1,7 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #map {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+.tab-pane {
+  color: aliceblue;
+  background-color: rgba(6, 42, 141, 0.63);
+  text-align: center;
 }
 
 #restaurant-list-group {

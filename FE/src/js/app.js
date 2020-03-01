@@ -14,8 +14,6 @@ function showLanding() {
   $('.sign-in').hide();
 }
 
-
-
 function openApp() {
   $('.main').show();
   $('#sign-in-btn').hide();
@@ -113,12 +111,13 @@ var groupsList = [
       "members" : 1,
       "max-members" : 3,
     },
-  ];
+];
 
 
 function openGroupsOfRestaurant(name) {
   $('#list-groups').tab('show');
   updateGroupsList(name);
+  // TODO: Put groups in 'restaruant'
 }
 
 function updateGroupsList(nameFilter = null) {
@@ -153,15 +152,15 @@ function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
 }
 
 $('#createGroupModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var recipient = button.data('whatever'); // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New group to ' + recipient)
-  modal.find('.modal-title').attr('RestaurantAttr', recipient)
+  var modal = $(this);
+  modal.find('.modal-title').text('New group to ' + recipient);
+  modal.find('.modal-title').attr('RestaurantAttr', recipient);
   modal.find('#recipient-name').attr('placeholder', 'Type your group name here');
-})
+});
 
 $('#btn-create-group').on('click', function () {
   var restaurantName = $('#createGroupModal').find('.modal-title').attr('RestaurantAttr');
@@ -169,3 +168,28 @@ $('#btn-create-group').on('click', function () {
   var maxMembers = $('#max-num-members').val();
   addGroupToRestaurant(restaurantName, groupName, maxMembers);
 })
+
+$('.form-inline').submit(function() {
+  var msg = $('#input-message').val();
+  sendMessage(msg);
+  return false;
+});
+
+function sendMessage(msg) {
+  appendMessage(msg);
+}
+
+function appendMessage(msg) {
+  var container = document.getElementById('chat-messages');
+  var temp = document.querySelector('#templates .message');
+  var div = temp.cloneNode(true);
+  div.textContent = msg;
+  container.appendChild(div);
+  clearInput();
+}
+
+function clearInput() {
+  document.getElementById('input-message').value = '';
+}
+
+

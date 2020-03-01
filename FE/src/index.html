@@ -46,9 +46,10 @@
       </div>
     </div>
   </nav>
+
   <!-- LANDING ---------------------------------------------------------- -->
+  
   <div class="landing">
-    <div>Explain App</div>
     
   </div>
 
@@ -137,24 +138,33 @@
   <div class="main" id="main" style="display: none;">
     <div id="map" class="map"></div>
     <div class="row">
-      <div class="col-4">
-        
+      <div class="col-3">
         <div class="tab-content" id="nav-tabContent">
-          
           <div id="list-restaurants" class="tab-pane fade" role="tabpanel" aria-labelledby="list-restaurants-list">
             Restaurants
             <ul id="restaurant-list-group" class="list-group"></ul>
           </div>
-          
+
           <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
             Groups
             <ul id="groups-list-group" class="list-group"></ul>
           </div>
 
-          <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
-            Here put the groups and sales that im into
+          <div id="list-my-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-my-groups-list">
+            <div class="chat-group-name">Group name</div>
+            <div class="chat-messages" id="chat-messages">
+              <div class="message">Hola</div>
+            </div>
+            <form class="form-inline">
+              <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="input-message" placeholder="Write message">
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Send</button>
+            </form>
+
           </div>
 
+          
           <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
             <input type="text"> Search place?<br>
             <button>Add group destination?</button>
@@ -165,9 +175,11 @@
           </div>
 
         </div>
+        <!-- <div class="message-list-container" id="container-messages"></div> -->
+        <div id="chat"></div>
       </div>
     </div>
-  </div>  
+  </div>
   
   <!-- Templates ---------------------------------------------------------- -->
   <div id="templates" style="display: none">
@@ -185,6 +197,8 @@
         <span class="badge badge-primary badge-pill"></span>
       </a>
     </div>
+
+    <div class="message"></div>
 
   </div>
   

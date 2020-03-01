@@ -91,7 +91,59 @@ var restaurantSales = {
   ],
 }
 
+var groupsList = [
+  {
+    "restaurant": "El Mussol",
+    "title": "Student group",
+    "members" : 2,
+    "max-members" : 4,
+  },
+  {
+    "restaurant": "El Mussol",
+    "title": "English group",
+    "members" : 1,
+    "max-members" : 4,
+  },
+  {
+    "restaurant": "El Mussol",
+    "title": "Date",
+    "members" : 1,
+    "max-members" : 2,
+  },
+  {
+    "restaurant": "Tagliatella",
+    "title": "Date",
+    "members" : 1,
+    "max-members" : 2,
+  },
+  {
+    "restaurant": "Tagliatella",
+    "title": "Over 25",
+    "members" : 3,
+    "max-members" : 4,
+  },
+  {
+    "restaurant": "Upf",
+    "title": "tuppers",
+    "members" : 3,
+    "max-members" : 6,
+  },
+  {
+    "restaurant": "McDonalds",
+    "title": "russians",
+    "members" : 1,
+    "max-members" : 3,
+  },
+  {
+    "restaurant": "TaElWei",
+    "title": "Coronavirus",
+    "members" : 1,
+    "max-members" : 3,
+  },
+];
+
 module.exports = {
   points,
-  restaurantSales
+  restaurantSales,
+  groupsList
 }
