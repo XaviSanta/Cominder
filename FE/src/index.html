@@ -19,37 +19,41 @@
 
 </head>
 <body>
+
 <!-- HEADER ---------------------------------------------------------- -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
-    <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
-      <a id="list-sales-list" class="btn"  data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</button>
-      <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
-      <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
-      <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
-      <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-    </div>
-
+    <a class="navbar-brand" id="home-logo" href="#" ><img src="imgs/logo.png" width="100px"></a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
-    <div class="form-inline my-2 my-lg-0">
-      <div class="btns-after-login" style="display: none">
-        <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
-      </div>
-      
-      <button onclick="openRegistration()" id="sign-up-btn"  class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
-      <button onclick="openLogin()" id="sign-in-btn" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
-
+    <div class="form-inline mr-5 my-2 my-lg-0">
+      <a href="#" class="ml-3 sign-up-btn my-2 my-sm-0 nav-links">Sign Up</a>
+      <a href="#" class="ml-3 sign-in-btn my-2 my-sm-0 nav-links">Sign In</a>
+      <button onclick="openApp()">asdsa</button>
     </div>
   </div>
 </nav>
+  <div class="back-ground">
+    <div class="watch"></div>
+    <div class="shapes"></div>
+  </div>
+
+<div class="login-page">  
+  
+
+
+  <div class="from-home">
+    <div class="row">
+      <div class="col-md-6 "><button  class=" sign-up-btn btnSubmit">Login</button></div>
+      <div class="col-md-6"><button  class=" sign-in-btn btnSubmit">Register</button></div>
+    </div>
+  </div>
+
 <!-- LANDING ---------------------------------------------------------- -->
   <div class="landing">
-    <div>Explain App</div>
-    
+    Here explain the app
   </div>
 
 <!-- SIGN UP ---------------------------------------------------------- -->
@@ -92,7 +96,7 @@
   </div>
 
 <!-- SING IN ---------------------------------------------------------- -->
-  <div class="sign-in" style="display: none;">
+ <div class="sign-in" style="display: none;">
     <div class="container login-container">
       <div class="row">
         <div class="col-md-6 login-form-1">
@@ -132,72 +136,80 @@
       </div>
     </div>
   </div>
-
+</div>
 <!-- APP---------------------------------------------------------- -->
-  <div class="main" id="main" style="display: none;">
-    <div class="row">
-      <div class="col-2">
-        asdf
-      </div>
-      <div class="col-4">
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-sales" role="tabpanel" aria-labelledby="list-sales-list">
-            Restaurant Sales
-            <ul class="list-group">
-              <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
-                McDonalds 20% 
-                <span class="badge badge-primary badge-pill">2/4</span>
-              </a>
-              <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
-                McDonalds 20% 
-                <span class="badge badge-primary badge-pill">1/4</span>
-              </a>
-              <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
-                Burger 30%
-                <span class="badge badge-primary badge-pill">1/6</span>
-              </a>
-            </ul>
-          </div>
-          <div class="tab-pane fade" id="list-groups" role="tabpanel" aria-labelledby="list-groups-list">
-            User groups
-            <ul class="list-group">
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                English group
-                <span class="badge badge-primary badge-pill">2/4</span>
-              </a>
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                Café en Glóries
-                <span class="badge badge-primary badge-pill">1/4</span>
-              </a>
-            </ul>
-          </div>
-          <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
-            Here put the groups and sales that im into
-          </div>
-          <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
-            <input type="text"> Search place?<br>
-            <button>Add group destination?</button>
-          </div>
-          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-            Here add Settings
+  <div class="main mt-5" id="main" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-sales-list" data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</a>
+            <a class="list-group-item list-group-item-action" id="list-groups-list" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
+            <a class="list-group-item list-group-item-action" id="list-map" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
           </div>
         </div>
+        <div class="col-4">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-sales" role="tabpanel" aria-labelledby="list-sales-list">
+              Restaurant Sales
+              <ul class="list-group">
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
+                  McDonalds 20% 
+                  <span class="badge badge-primary badge-pill">2/4</span>
+                </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
+                  McDonalds 20% 
+                  <span class="badge badge-primary badge-pill">1/4</span>
+                </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center" href="#" onclick="openChat()">
+                  Burger 30%
+                  <span class="badge badge-primary badge-pill">1/6</span>
+                </a>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="list-groups" role="tabpanel" aria-labelledby="list-groups-list">
+              User groups
+              <ul class="list-group">
+                <a class="list-group-item d-flex justify-content-between align-items-center">
+                  English group
+                  <span class="badge badge-primary badge-pill">2/4</span>
+                </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center">
+                  Café en Glóries
+                  <span class="badge badge-primary badge-pill">1/4</span>
+                </a>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
+              Here put the groups and sales that im into
+            </div>
+            <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
+              <input type="text"> Search place?<br>
+              <button>Add group destination?</button>
+            </div>
+            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+              Here add Settings
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="chat" id="chat">Aqui poner el chat?</div>
+        </div>
       </div>
-      <div class="col-6">
-        <div class="chat" id="chat">Aqui poner el chat?</div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div id="map" class="map"></div>
+      <div class="row">
+        <div id="map" class="map"></div>
+      </div>
     </div>
   </div>
 
-  <!-- footer---------------------------------------------------------- -->
+  <!-- footer---------------------------------------------------------- 
   <nav class="navbar fixed-bottom navbar-light bg-light">
     <a class="navbar-brand" href="#">This is a footer</a>
   </nav>
-
+-->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="./js/app.js"></script>
