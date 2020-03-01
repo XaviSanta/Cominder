@@ -80,3 +80,30 @@ function sendLogin() {
 function updateMap() {
   getMapPoints();
 }
+
+function updateRestaurantList() {
+  var container = document.getElementById('restaurant-list-group');
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+
+  // Append restaurants to the container list
+  var restaurants = geojson.features;
+  restaurants.forEach(r => {
+    var name = r.properties.title;
+    var temp = document.querySelector('#templates .article');
+    var article = temp.cloneNode(true);
+    article.querySelector('a').innerText = name;
+    article.querySelector('a').onclick = function() { 
+      map.flyTo({
+        center: [r.geometry.coordinates[0], r.geometry.coordinates[1]],
+        zoom: 18,
+        curve: 1,
+        pitch: 45, // pitch in degrees
+        bearing: 0, // bearing in degrees
+        essential: true 
+      }); 
+    }
+    container.appendChild(article); //to the DOM
+  });
+}

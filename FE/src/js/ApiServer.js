@@ -23,9 +23,14 @@ function postRestaurant(geoPoint) {
 function processRequest() {
   if (xhr.readyState == 4 && xhr.status == 200) {
     geojson = JSON.parse(xhr.responseText);
-    if(map !== undefined) {
-      map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
-    }
+    refreshMap();
+    updateRestaurantList();
+  }
+}
+
+function refreshMap() {
+  if(map !== undefined) {
+    map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
   }
 }
 
