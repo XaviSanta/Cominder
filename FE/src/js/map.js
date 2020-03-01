@@ -1,5 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53OG1jM3o5MXoifQ._rJdKgn_Nx_wsi7blKBlCQ'; // replace this with your access token
 
+// Create MAP
 var map = new mapboxgl.Map({
   container: 'map',
   // style: 'mapbox://styles/mapbox/dark-v10', // replace this with your style URL
