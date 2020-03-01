@@ -61,7 +61,11 @@ map.on('click', function(e) {
 
   popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .setHTML(
+      '<h3>' + feature.properties.title + '</h3> '+
+      '<p>' + feature.properties.description + '</p>' +
+      `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createGroupModal" `+
+      `data-whatever="${feature.properties.title}">Add Group</button>`)
     .addTo(map);
 });
 

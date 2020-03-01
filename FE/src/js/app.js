@@ -45,11 +45,11 @@ function updateRestaurantList() {
   restaurants.forEach(r => {
     var name = r.properties.title;
     var temp = document.querySelector('#templates .restaurant-li');
-    var article = temp.cloneNode(true);
+    var li = temp.cloneNode(true);
     var numGroups = groupsList.filter(g => g.restaurant === name).length;
-    article.getElementsByClassName('badge')[0].innerText = numGroups;
-    article.getElementsByClassName('name-group-template')[0].innerText = name;
-    article.querySelector('a').onclick = function() { 
+    li.getElementsByClassName('badge')[0].innerText = numGroups;
+    li.getElementsByClassName('name-group-template')[0].innerText = name;
+    li.querySelector('a').onclick = function() { 
       map.flyTo({
         center: [r.geometry.coordinates[0], r.geometry.coordinates[1]],
         zoom: 18,
@@ -60,7 +60,7 @@ function updateRestaurantList() {
       }); 
       openGroupsOfRestaurant(name);
     }
-    container.appendChild(article); //to the DOM
+    container.appendChild(li); //to the DOM
   });
 }
 
@@ -132,9 +132,40 @@ function updateGroupsList(nameFilter = null) {
   if(nameFilter !== null) groups = groups.filter(g => g.restaurant === nameFilter);
   groups.forEach(g => {
     var temp = document.querySelector('#templates .group-li');
-    var article = temp.cloneNode(true);
-    article.getElementsByClassName('name-group-template')[0].innerText = g.title;
-    article.getElementsByClassName('badge')[0].innerText = `${g.members}/${g["max-members"]}`;
-    container.appendChild(article); //to the DOMs
+    var li = temp.cloneNode(true);
+    li.getElementsByClassName('name-group-template')[0].innerText = g.title;
+    li.getElementsByClassName('badge')[0].innerText = `${g.members}/${g["max-members"]}`;
+    container.appendChild(li); //to the DOMs
   });
 }
+
+function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
+  var group = {
+    "restaurant": restaurantName,
+    "title": groupName,
+    "members" : 1,
+    "max-members" : maxMembers,
+  };
+
+  groupsList.push(group);
+  updateGroupsList(restaurantName);
+  $('#createGroupModal').modal('hide');
+}
+
+$('#createGroupModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New group to ' + recipient)
+  modal.find('.modal-title').attr('RestaurantAttr', recipient)
+  modal.find('#recipient-name').attr('placeholder', 'Type your group name here');
+})
+
+$('#btn-create-group').on('click', function () {
+  var restaurantName = $('#createGroupModal').find('.modal-title').attr('RestaurantAttr');
+  var groupName = $('#recipient-name').val();
+  var maxMembers = $('#max-num-members').val();
+  addGroupToRestaurant(restaurantName, groupName, maxMembers);
+})
