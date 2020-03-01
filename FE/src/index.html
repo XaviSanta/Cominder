@@ -27,8 +27,8 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
     <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
-      <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurant</button>
-      <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
+      <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurants</button>
+      <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="updateGroupsList()">Groups</a>
       <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
       <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
       <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
@@ -140,68 +140,49 @@
       <div class="col-4">
         
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-restaurants" role="tabpanel" aria-labelledby="list-restaurants-list">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Restaurants
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div id="list-restaurants" class="tab-pane fade show active" role="tabpanel" aria-labelledby="list-restaurants-list">
-                  <ul id="restaurant-list-group" class="list-group"></ul>
-                </div>
-              </div>
-            </div>
+          
+          <div id="list-restaurants" class="tab-pane fade" role="tabpanel" aria-labelledby="list-restaurants-list">
+            Restaurants
+            <ul id="restaurant-list-group" class="list-group"></ul>
           </div>
           
-          <div class="tab-pane fade" id="list-groups" role="tabpanel" aria-labelledby="list-groups-list">
+          <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
             Groups
-            <ul id="groups-list-group" class="list-group">
-              
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                Café en Glóries
-                <span class="badge badge-primary badge-pill">1/4</span>
-              </a>
-            </ul>
+            <ul id="groups-list-group" class="list-group"></ul>
           </div>
+
           <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
             Here put the groups and sales that im into
           </div>
+
           <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
             <input type="text"> Search place?<br>
             <button>Add group destination?</button>
           </div>
+
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
             Here add Settings
           </div>
+
         </div>
       </div>
-      <div class="col-3">
-        
-      </div>
     </div>
-    <div class="col-3">
-      <div class="chat" id="chat">
-
-      </div>
-    </div>
-    <!-- </div> -->
-  </div>
+    
   
-  <!-- footer ---------------------------------------------------------- -->
-  <nav class="navbar fixed-bottom navbar-light bg-light" style="display: none;">
-    <a class="navbar-brand" href="#">This is a footer</a>
-  </nav>
-
   <!-- Templates ---------------------------------------------------------- -->
   <div id="templates" style="display: none">
 
     <div class="restaurant-li">
-      <a class="list-group-item align-items-center" href="#" aria-expanded="false" onclick="openRestaurant()"></a>
+      <a class="list-group-item align-items-center d-flex justify-content-between" href="#">
+        <span class="name-group-template"></span>
+        <span class="badge badge-primary badge-pill"></span>
+      </a>
     </div>
 
     <div class="group-li">
       <a class="list-group-item d-flex justify-content-between align-items-center">
-        <span class="badge badge-primary badge-pill">2/4</span>
+        <span class="name-group-template"></span>
+        <span class="badge badge-primary badge-pill"></span>
       </a>
     </div>
 

@@ -46,7 +46,9 @@ function updateRestaurantList() {
     var name = r.properties.title;
     var temp = document.querySelector('#templates .restaurant-li');
     var article = temp.cloneNode(true);
-    article.querySelector('a').innerText = name;
+    var numGroups = groupsList.filter(g => g.restaurant === name).length;
+    article.getElementsByClassName('badge')[0].innerText = numGroups;
+    article.getElementsByClassName('name-group-template')[0].innerText = name;
     article.querySelector('a').onclick = function() { 
       map.flyTo({
         center: [r.geometry.coordinates[0], r.geometry.coordinates[1]],
@@ -56,8 +58,83 @@ function updateRestaurantList() {
         bearing: 0, // bearing in degrees
         essential: true 
       }); 
+      openGroupsOfRestaurant(name);
     }
     container.appendChild(article); //to the DOM
-    console.log(article)
+  });
+}
+
+var groupsList = [
+    {
+      "restaurant": "El Mussol",
+      "title": "Student group",
+      "members" : 2,
+      "max-members" : 4,
+    },
+    {
+      "restaurant": "El Mussol",
+      "title": "English group",
+      "members" : 1,
+      "max-members" : 4,
+    },
+    {
+      "restaurant": "El Mussol",
+      "title": "Date",
+      "members" : 1,
+      "max-members" : 2,
+    },
+    {
+      "restaurant": "Tagliatella",
+      "title": "Date",
+      "members" : 1,
+      "max-members" : 2,
+    },
+    {
+      "restaurant": "Tagliatella",
+      "title": "Over 25",
+      "members" : 3,
+      "max-members" : 4,
+    },
+    {
+      "restaurant": "Upf",
+      "title": "tuppers",
+      "members" : 3,
+      "max-members" : 6,
+    },
+    {
+      "restaurant": "McDonalds",
+      "title": "russians",
+      "members" : 1,
+      "max-members" : 3,
+    },
+    {
+      "restaurant": "TaElWei",
+      "title": "Coronavirus",
+      "members" : 1,
+      "max-members" : 3,
+    },
+  ];
+
+
+function openGroupsOfRestaurant(name) {
+  $('#list-groups').tab('show');
+  updateGroupsList(name);
+}
+
+function updateGroupsList(nameFilter = null) {
+  var container = document.getElementById('groups-list-group');
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+
+  // Append groups to the container list
+  var groups = groupsList;
+  if(nameFilter !== null) groups = groups.filter(g => g.restaurant === nameFilter);
+  groups.forEach(g => {
+    var temp = document.querySelector('#templates .group-li');
+    var article = temp.cloneNode(true);
+    article.getElementsByClassName('name-group-template')[0].innerText = g.title;
+    article.getElementsByClassName('badge')[0].innerText = `${g.members}/${g["max-members"]}`;
+    container.appendChild(article); //to the DOMs
   });
 }
