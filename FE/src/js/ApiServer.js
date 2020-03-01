@@ -34,13 +34,13 @@ function refreshMap() {
   }
 }
 
-addGroupFromMap = (lng, lst) => {
-  var groupName = $('#addGroupInput').val();
+function addRestaurantFromMap(lng, lst) {
+  var restaurantName = $('#addGroupInput').val();
   var descriptionGroup = $('#descriptionGroup').val();
   var geoPoint = {
     type: "Feature",
     properties: {
-      title: groupName,
+      title: restaurantName,
       description: descriptionGroup
     },
     geometry: {
@@ -51,5 +51,5 @@ addGroupFromMap = (lng, lst) => {
       type: "Point"
     }
   }
-  postRestaurant(geoPoint); // TODO: Change to Postgroup
+  postRestaurant(geoPoint); 
 }

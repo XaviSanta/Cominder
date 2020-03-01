@@ -49,10 +49,10 @@ map.on('click', function(e) {
     popup = new mapboxgl.Popup({ offset: [0, -15] }) // TODO: Close it when submit button
       .setLngLat(e.lngLat)
       .setHTML(
-        '<h3>' + "Add group:" + '</h3>' + 
+        '<h3>' + "Add Restaurant:" + '</h3>' + 
         '<input id="addGroupInput" placeholder="name">'+ 
         '<input id="descriptionGroup" placeholder="description">'+ 
-        `<button onClick="addGroupFromMap(${lng},${lat})">Add</button>`)
+        `<button onClick="addRestaurantFromMap(${lng},${lat})">Add</button>`)
       .addTo(map);
     return;
   }

@@ -27,7 +27,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
     <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
-      <a id="list-sales-list" class="btn"  data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</button>
+      <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurant</button>
       <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
       <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
       <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
@@ -135,23 +135,28 @@
 
 <!-- APP---------------------------------------------------------- -->
   <div class="main" id="main" style="display: none;">
+    <div id="map" class="map"></div>
     <div class="row">
-      <div class="col-2">
-        asdf
-      </div>
       <div class="col-4">
+        
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-sales" role="tabpanel" aria-labelledby="list-sales-list">
-            Restaurants
-            <ul id="restaurant-list-group" class="list-group"></ul>
+          <div class="tab-pane fade show active" id="list-restaurants" role="tabpanel" aria-labelledby="list-restaurants-list">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Restaurants
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div id="list-restaurants" class="tab-pane fade show active" role="tabpanel" aria-labelledby="list-restaurants-list">
+                  <ul id="restaurant-list-group" class="list-group"></ul>
+                </div>
+              </div>
+            </div>
           </div>
+          
           <div class="tab-pane fade" id="list-groups" role="tabpanel" aria-labelledby="list-groups-list">
-            User groups
-            <ul class="list-group">
-              <a class="list-group-item d-flex justify-content-between align-items-center">
-                English group
-                <span class="badge badge-primary badge-pill">2/4</span>
-              </a>
+            Groups
+            <ul id="groups-list-group" class="list-group">
+              
               <a class="list-group-item d-flex justify-content-between align-items-center">
                 Café en Glóries
                 <span class="badge badge-primary badge-pill">1/4</span>
@@ -170,31 +175,43 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="chat" id="chat">Aqui poner el chat?</div>
+      <div class="col-3">
+        
       </div>
     </div>
+    <div class="col-3">
+      <div class="chat" id="chat">
 
-    <div class="row">
-      <div id="map" class="map"></div>
+      </div>
     </div>
+    <!-- </div> -->
   </div>
-
-  <!-- footer---------------------------------------------------------- -->
-  <nav class="navbar fixed-bottom navbar-light bg-light">
+  
+  <!-- footer ---------------------------------------------------------- -->
+  <nav class="navbar fixed-bottom navbar-light bg-light" style="display: none;">
     <a class="navbar-brand" href="#">This is a footer</a>
   </nav>
 
+  <!-- Templates ---------------------------------------------------------- -->
   <div id="templates" style="display: none">
-    <div class="article">
-      <a class="list-group-item align-items-center" href="#" onclick="openRestaurant()"></a>
+
+    <div class="restaurant-li">
+      <a class="list-group-item align-items-center" href="#" aria-expanded="false" onclick="openRestaurant()"></a>
     </div>
+
+    <div class="group-li">
+      <a class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="badge badge-primary badge-pill">2/4</span>
+      </a>
+    </div>
+
   </div>
   
   <!-- SCRIPTS---------------------------------------------------------- -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="./js/app.js"></script>
+  <script src="./js/login.js"></script>
   <script src="./js/ApiServer.js"></script>
   <script src="./js/ClientWebSocket.js"></script>
 </body>
