@@ -92,3 +92,7 @@ function flyTo(coordinates) {
     essential: true 
   }); 
 };
+
+function updateMap() {
+  getMapPoints();
+}
