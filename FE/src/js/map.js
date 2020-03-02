@@ -81,3 +81,14 @@ map.addControl(
 
 // Add navigation controls
 map.addControl(new mapboxgl.NavigationControl());
+
+function flyTo(coordinates) {
+  map.flyTo({
+    center: [coordinates[0], coordinates[1]],
+    zoom: 18,
+    curve: 1,
+    pitch: 45, // pitch in degrees
+    bearing: 0, // bearing in degrees
+    essential: true 
+  }); 
+};

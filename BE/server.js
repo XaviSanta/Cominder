@@ -28,6 +28,9 @@ app.use(bodyParser.json());
 // ------------------ END POINTS -------------------------------
 
 // GET 
+app.get('/info', (req, res) => {
+  res.json({points, groups});
+});
 //    all the restaurants in the map
 app.get('/points', (req, res) => {
   res.json(points);

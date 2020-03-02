@@ -2,6 +2,14 @@ var xhr;
 const apiPort = 9034;
 const apiURL = 'http://127.0.0.1';
 
+// GETTERS
+function getInitInfo() {
+  xhr = new XMLHttpRequest();
+  xhr.open('GET', `${apiURL}:${apiPort}/info`, true);
+  xhr.send();
+  xhr.onreadystatechange = processRequest;
+}
+
 function getMapPoints() {
   xhr = new XMLHttpRequest();
   xhr.open('GET', `${apiURL}:${apiPort}/points`, true);
@@ -9,6 +17,14 @@ function getMapPoints() {
   xhr.onreadystatechange = processRequest;
 }
 
+function getGroups() {
+  xhr = new XMLHttpRequest();
+  xhr.open('GET', `${apiURL}:${apiPort}/groups`, true);
+  xhr.send();
+  xhr.onreadystatechange = processRequest;
+}
+
+// POSTS
 function postRestaurant(geoPoint) {
   xhr = new XMLHttpRequest();
   xhr.open('POST', `${apiURL}:${apiPort}/point`, true);
@@ -20,36 +36,40 @@ function postRestaurant(geoPoint) {
   }
 }
 
+function postNewGroup(group) {
+  xhr = new XMLHttpRequest();
+  xhr.open('POST', `${apiURL}:${apiPort}/group`, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(group));
+  xhr.onreadystatechange = processRequest;
+  if(popup !== undefined) {
+    popup.remove()
+  }
+}
+
+// HANDLE RESPONSE
 function processRequest() {
   if (xhr.readyState == 4 && xhr.status == 200) {
-    geojson = JSON.parse(xhr.responseText);
-    refreshMap();
-    updateRestaurantList();
-  }
-}
-
-function refreshMap() {
-  if(map !== undefined) {
-    map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
-  }
-}
-
-function addRestaurantFromMap(lng, lst) {
-  var restaurantName = $('#addGroupInput').val();
-  var descriptionGroup = $('#descriptionGroup').val();
-  var geoPoint = {
-    type: "Feature",
-    properties: {
-      title: restaurantName,
-      description: descriptionGroup
-    },
-    geometry: {
-      coordinates: [
-        lng,
-        lst
-      ],
-      type: "Point"
+    var endpoint = xhr.responseURL.substr(xhr.responseURL.lastIndexOf('/') + 1);
+    var res = JSON.parse(xhr.responseText);
+    switch (endpoint) {
+      case 'info':
+        geojson = res.points;
+        groupsList = res.groups;
+        refreshMap();
+        updateRestaurantList();
+        break;
+      case 'points':
+      case 'point':
+        geojson = res;
+        refreshMap();
+        updateRestaurantList();
+        break;
+      case 'groups':
+        groupsList = res;
+        break;
+      default:
+        break;
     }
   }
-  postRestaurant(geoPoint); 
 }

@@ -1,4 +1,5 @@
 var geojson = []; // Points in the map
+var groupsList = [];
 var popup;
 var map;
 
@@ -48,76 +49,18 @@ function updateRestaurantList() {
     li.getElementsByClassName('badge')[0].innerText = numGroups;
     li.getElementsByClassName('name-group-template')[0].innerText = name;
     li.querySelector('a').onclick = function() { 
-      map.flyTo({
-        center: [r.geometry.coordinates[0], r.geometry.coordinates[1]],
-        zoom: 18,
-        curve: 1,
-        pitch: 45, // pitch in degrees
-        bearing: 0, // bearing in degrees
-        essential: true 
-      }); 
+      flyTo(r.geometry.coordinates);
       openGroupsOfRestaurant(name);
     }
     container.appendChild(li); //to the DOM
   });
 }
 
-var groupsList = [
-    {
-      "restaurant": "El Mussol",
-      "title": "Student group",
-      "members" : 2,
-      "max-members" : 4,
-    },
-    {
-      "restaurant": "El Mussol",
-      "title": "English group",
-      "members" : 1,
-      "max-members" : 4,
-    },
-    {
-      "restaurant": "El Mussol",
-      "title": "Date",
-      "members" : 1,
-      "max-members" : 2,
-    },
-    {
-      "restaurant": "Tagliatella",
-      "title": "Date",
-      "members" : 1,
-      "max-members" : 2,
-    },
-    {
-      "restaurant": "Tagliatella",
-      "title": "Over 25",
-      "members" : 3,
-      "max-members" : 4,
-    },
-    {
-      "restaurant": "Upf",
-      "title": "tuppers",
-      "members" : 3,
-      "max-members" : 6,
-    },
-    {
-      "restaurant": "McDonalds",
-      "title": "russians",
-      "members" : 1,
-      "max-members" : 3,
-    },
-    {
-      "restaurant": "TaElWei",
-      "title": "Coronavirus",
-      "members" : 1,
-      "max-members" : 3,
-    },
-];
-
 
 function openGroupsOfRestaurant(name) {
   $('#list-groups').tab('show');
   updateGroupsList(name);
-  // TODO: Put groups in 'restaruant'
+  // TODO: Put ' groups in 'restaruant''
 }
 
 function updateGroupsList(nameFilter = null) {
@@ -138,6 +81,32 @@ function updateGroupsList(nameFilter = null) {
   });
 }
 
+function refreshMap() {
+  if(map !== undefined) {
+    map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
+  }
+}
+
+function addRestaurantFromMap(lng, lst) {
+  var restaurantName = $('#addGroupInput').val();
+  var descriptionGroup = $('#descriptionGroup').val();
+  var geoPoint = {
+    type: "Feature",
+    properties: {
+      title: restaurantName,
+      description: descriptionGroup
+    },
+    geometry: {
+      coordinates: [
+        lng,
+        lst
+      ],
+      type: "Point"
+    }
+  }
+  postRestaurant(geoPoint); 
+}
+
 function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
   var group = {
     "restaurant": restaurantName,
@@ -148,6 +117,7 @@ function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
 
   groupsList.push(group);
   updateGroupsList(restaurantName);
+  postNewGroup(group);
   $('#createGroupModal').modal('hide');
 }
 
