@@ -153,15 +153,14 @@
             Here Add the groups im into
           </div>
           
-          <div id="chat-tab" class="tab-pane fade" role="tabpanel" aria-labelledby="chat">
-            <div class="chat-title">
+          <div id="chat-tab" class="tab-pane fade card" role="tabpanel" aria-labelledby="chat">
+            <h5 class="chat-title card-header">
               <span class="chat-title-group-name"></span>
               <span class="chat-title-users-connected"></span>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-              <div class="message">Hola</div>
-            </div>
-            <form class="form-inline">
+            </h5>
+            <ul id="chat-messages" class="chat-messages list-group list-group-flush list-overflow card-body">
+            </ul>
+            <form class="card-footer form-inline">
               <div class="form-group mx-sm-3 mb-2">
                 <input type="text" class="form-control" id="input-message" placeholder="Write message">
               </div>
@@ -201,7 +200,7 @@
       </a>
     </div>
 
-    <div class="message"></div>
+    <div class="message list-group-item"></div>
 
   </div>
   
