@@ -16,9 +16,9 @@
   text-align: center;
 }
 
-#restaurant-list-group {
+.list-overflow {
   background: rgba(223, 167, 13, 0);
-  max-height: 500px;
+  max-height: 300px;
   overflow:scroll;
   overflow-x: hidden;
 }
