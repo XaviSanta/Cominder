@@ -18,6 +18,7 @@ const WsPort = 9035;
 firebase.initializeApp(firebaseConfig);
 
 var points = db.points;// TODO: Use firebase
+var groups = db.groupsList;// TODO: Use firebase
 var restaurantSales = db.restaurantSales;
 
 app.use(cors());
@@ -31,6 +32,10 @@ app.use(bodyParser.json());
 app.get('/points', (req, res) => {
   res.json(points);
 });
+//    all the groups created
+app.get('/groups', (req, res) => {
+  res.json(groups);
+});
 
 // POST 
 //    new restaurant in map
@@ -38,6 +43,12 @@ app.post('/point', (req, res) => {
   const point = req.body;
   points['features'].push(point);
   res.json(points);
+});
+//    new group
+app.post('/group', (req, res) => {
+  const group = req.body;
+  groups.push(group);
+  res.json(groups);
 });
 
 app.listen(AppPort, () => console.log(`Hello world app listening on port ${AppPort}!`));
