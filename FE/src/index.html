@@ -28,7 +28,7 @@
       <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
       <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
         <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurants</button>
-        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="updateGroupsList()">Groups</a>
+        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="getGroups()">Groups</a>
         <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
         <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
         <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
@@ -50,7 +50,6 @@
   <!-- LANDING ---------------------------------------------------------- -->
   
   <div class="landing">
-    
   </div>
 
   <!-- SIGN UP ---------------------------------------------------------- -->
@@ -142,16 +141,23 @@
         <div class="tab-content" id="nav-tabContent">
           <div id="list-restaurants" class="tab-pane fade" role="tabpanel" aria-labelledby="list-restaurants-list">
             Restaurants
-            <ul id="restaurant-list-group" class="list-group"></ul>
+            <ul id="restaurant-list-group" class="list-group list-overflow"></ul>
           </div>
 
           <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
-            Groups
-            <ul id="groups-list-group" class="list-group"></ul>
+            <span id="list-title-group">Groups</span>
+            <ul id="groups-list-group" class="list-group list-overflow"></ul>
           </div>
-
+          
           <div id="list-my-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-my-groups-list">
-            <div class="chat-group-name">Group name</div>
+            Here Add the groups im into
+          </div>
+          
+          <div id="chat-tab" class="tab-pane fade" role="tabpanel" aria-labelledby="chat">
+            <div class="chat-title">
+              <span class="chat-title-group-name"></span>
+              <span class="chat-title-users-connected"></span>
+            </div>
             <div class="chat-messages" id="chat-messages">
               <div class="message">Hola</div>
             </div>
@@ -161,7 +167,6 @@
               </div>
               <button type="submit" class="btn btn-primary mb-2">Send</button>
             </form>
-
           </div>
 
           
@@ -175,8 +180,6 @@
           </div>
 
         </div>
-        <!-- <div class="message-list-container" id="container-messages"></div> -->
-        <div id="chat"></div>
       </div>
     </div>
   </div>
@@ -236,6 +239,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="./js/app.js"></script>
   <script src="./js/login.js"></script>
+  <script src="./js/groups.js"></script>
+  <script src="./js/restaurants.js"></script>
+  <script src="./js/chat.js"></script>
   <script src="./js/ApiServer.js"></script>
   <script src="./js/ClientWebSocket.js"></script>
 </body>

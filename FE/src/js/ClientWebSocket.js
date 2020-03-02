@@ -14,7 +14,7 @@ function connect() {
     switch (obj.type) {
       case 'LoginOK':
         console.log('LoginStatus: Success', obj );
-        getMapPoints();
+        getInitInfo();
         openApp();
         break;
 
