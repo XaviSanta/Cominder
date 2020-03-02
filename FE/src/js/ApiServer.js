@@ -67,6 +67,7 @@ function processRequest() {
         break;
       case 'groups':
         groupsList = res;
+        updateGroupsList();
         break;
       default:
         break;

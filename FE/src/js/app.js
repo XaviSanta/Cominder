@@ -60,7 +60,6 @@ function updateRestaurantList() {
 function openGroupsOfRestaurant(name) {
   $('#list-groups').tab('show');
   updateGroupsList(name);
-  // TODO: Put ' groups in 'restaruant''
 }
 
 function updateGroupsList(nameFilter = null) {
@@ -68,6 +67,10 @@ function updateGroupsList(nameFilter = null) {
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
+
+  // Change name of title
+  var title = (nameFilter === null) ? 'Groups' : `Groups in ${nameFilter}`;
+  $('#list-title-group').text(title);
 
   // Append groups to the container list
   var groups = groupsList;

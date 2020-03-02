@@ -28,7 +28,7 @@
       <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
       <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
         <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurants</button>
-        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="updateGroupsList()">Groups</a>
+        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="getGroups()">Groups</a>
         <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
         <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
         <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
@@ -146,7 +146,7 @@
           </div>
 
           <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
-            Groups
+            <span id="list-title-group">Groups</span>
             <ul id="groups-list-group" class="list-group"></ul>
           </div>
 
