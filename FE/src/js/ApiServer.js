@@ -56,6 +56,7 @@ function processRequest() {
       case 'info':
         geojson = res.points;
         groupsList = res.groups;
+        offers = res.offers;
         refreshMap();
         updateRestaurantList();
         updateOffersCarousel();

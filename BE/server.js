@@ -18,8 +18,8 @@ const WsPort = 9035;
 firebase.initializeApp(firebaseConfig);
 
 var points = db.points;// TODO: Use firebase
-var groups = db.groupsList;// TODO: Use firebase
-var restaurantOffers = db.restaurantOffers;
+var groups = db.groupsList; // TODO: Use firebase
+var offers = db.offersList; // TODO: Use firebase
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 // GET 
 app.get('/info', (req, res) => {
-  res.json({points, groups});
+  res.json({points, groups, offers});
 });
 //    all the restaurants in the map
 app.get('/points', (req, res) => {
@@ -38,6 +38,10 @@ app.get('/points', (req, res) => {
 //    all the groups created
 app.get('/groups', (req, res) => {
   res.json(groups);
+});
+//    all the groups created
+app.get('/offers', (req, res) => {
+  res.json(offers);
 });
 
 // POST 
