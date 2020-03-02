@@ -52,6 +52,7 @@
   <div class="landing">
   </div>
 
+  
   <!-- SIGN UP ---------------------------------------------------------- -->
   <div class="sign-up" style="display: none;">
     <div class="container login-container">
@@ -153,19 +154,18 @@
             Here Add the groups im into
           </div>
           
-          <div id="chat-tab" class="tab-pane fade" role="tabpanel" aria-labelledby="chat">
-            <div class="chat-title">
+          <div id="chat-tab" class="tab-pane fade card" role="tabpanel" aria-labelledby="chat">
+            <h5 class="chat-title card-header">
               <span class="chat-title-group-name"></span>
               <span class="chat-title-users-connected"></span>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-              <div class="message">Hola</div>
-            </div>
-            <form class="form-inline">
-              <div class="form-group mx-sm-3 mb-2">
-                <input type="text" class="form-control" id="input-message" placeholder="Write message">
+            </h5>
+            <ul id="chat-messages" class="chat-messages list-group list-group-flush list-overflow card-body">
+            </ul>
+            <form class="card-footer form-inline">
+              <div class="form-group mx-sm-1 mb-2">
+                <input type="text" class="form-control mr-2" id="input-message" placeholder="Write message">
+                <button type="submit" class="btn btn-primary mb-2">Send</button>
               </div>
-              <button type="submit" class="btn btn-primary mb-2">Send</button>
             </form>
           </div>
 
@@ -183,7 +183,10 @@
       </div>
     </div>
   </div>
-  
+
+  <!-- Offers ---------------------------------------------------------- -->
+  <div class="card-deck offers"></div>
+
   <!-- Templates ---------------------------------------------------------- -->
   <div id="templates" style="display: none">
 
@@ -201,8 +204,18 @@
       </a>
     </div>
 
-    <div class="message"></div>
+    <div class="message list-group-item"></div>
 
+    <div class="card card-offer">
+      <h5 class="card-header"></h5>
+      <div class="card-body">
+        <p class="card-text"></p>
+        <p class="card-text">
+          <small class="text-muted"></small></p>
+      </div>
+      <div class="card-footer">Add something here?</div>
+    </div>
+    
   </div>
   
   <!-- MODAL -->

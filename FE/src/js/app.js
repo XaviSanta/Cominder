@@ -1,5 +1,6 @@
 var geojson = []; // Points in the map
 var groupsList = [];
+var offers = [];
 var popup;
 var map;
 
@@ -16,6 +17,7 @@ function showLanding() {
 }
 
 function openApp() {
+  $('.offers').show();
   $('.main').show();
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();

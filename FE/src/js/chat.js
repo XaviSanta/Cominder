@@ -18,6 +18,7 @@ $('.form-inline').submit(function() {
 });
 
 function sendMessage(msg) {
+  // TODO: Send message through WebSocket
   appendMessage(msg);
 }
 
@@ -28,6 +29,7 @@ function appendMessage(msg) {
   div.textContent = msg;
   container.appendChild(div);
   clearInput();
+  container.scrollTop = container.scrollHeight;
 }
 
 function clearInput() {
