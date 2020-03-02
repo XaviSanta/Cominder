@@ -16,6 +16,7 @@ function showLanding() {
 }
 
 function openApp() {
+  $('.sales').show();
   $('.main').show();
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();
