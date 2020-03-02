@@ -37,7 +37,7 @@
 /* Track */
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.877);
+  background: rgba(157, 168, 231, 0.877);
 }
 
 .card-deck {
@@ -47,7 +47,12 @@
   margin-left: 25%;
 }
 
-.card-sale {
+.card-offer {
   background-color: rgba(255, 255, 255, 0.877);
-  max-height: 200px;
+  max-height: 220px;
+}
+
+.card-offer>.card-body{
+  overflow:scroll;
+  overflow-x: hidden;
 }

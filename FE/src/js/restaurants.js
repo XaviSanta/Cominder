@@ -14,11 +14,15 @@ function updateRestaurantList() {
     li.getElementsByClassName('badge')[0].innerText = numGroups;
     li.getElementsByClassName('name-group-template')[0].innerText = name;
     li.querySelector('a').onclick = function() { 
-      flyTo(r.geometry.coordinates);
-      openGroupsOfRestaurant(name);
+      goAndShowRestaurant(r.geometry.coordinates, name)
     }
     container.appendChild(li); //to the DOM
   });
+}
+
+function goAndShowRestaurant(coordinates, name) {
+  flyTo(coordinates);
+  openGroupsOfRestaurant(name);
 }
 
 function addRestaurantFromMap(lng, lst) {
@@ -39,4 +43,26 @@ function addRestaurantFromMap(lng, lst) {
     }
   }
   postRestaurant(geoPoint); 
+}
+
+function updateOffersCarousel() {
+  var container = document.querySelector('.card-deck.offers');
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+
+  // Append offers to the container
+  offers.forEach(o => {
+    var temp = document.querySelector('#templates .card-offer');
+    var card = temp.cloneNode(true);
+    card.getElementsByClassName('card-header')[0].innerText = `${o.restaurant} ${o.offer}`;
+    card.getElementsByClassName('card-text')[0].innerText = o.description;
+    card.getElementsByClassName('text-muted')[0].innerText = o.extraInfo;
+    card.onclick = function() { 
+      var restaurant = geojson.features.filter(r => r.properties.title === o.restaurant)
+      var coordinates = restaurant[0].geometry.coordinates;
+      goAndShowRestaurant(coordinates, o.restaurant);
+    }
+    container.appendChild(card); //to the DOM
+  });
 }

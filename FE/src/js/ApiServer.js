@@ -58,6 +58,7 @@ function processRequest() {
         groupsList = res.groups;
         refreshMap();
         updateRestaurantList();
+        updateOffersCarousel();
         break;
       case 'points':
       case 'point':

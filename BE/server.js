@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 var points = db.points;// TODO: Use firebase
 var groups = db.groupsList;// TODO: Use firebase
-var restaurantSales = db.restaurantSales;
+var restaurantOffers = db.restaurantOffers;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

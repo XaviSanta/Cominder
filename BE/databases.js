@@ -74,7 +74,7 @@ var points = {
   ]
 }
 
-var restaurantSales = {
+var restaurantOffers = {
   "El Mussol" : [
     {
       "coordinates": [2.1915381401222476, 41.40480971528061],
@@ -144,6 +144,6 @@ var groupsList = [
 
 module.exports = {
   points,
-  restaurantSales,
+  restaurantOffers,
   groupsList
 }
