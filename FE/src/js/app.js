@@ -1,9 +1,3 @@
-var geojson = []; // Points in the map
-var groupsList = [];
-var offers = [];
-var popup;
-var map;
-
 function goHome() {
   connection === null ? showLanding() : openApp(); 
 }
@@ -33,6 +27,7 @@ function openApp() {
 
 function refreshMap() {
   if(map !== undefined) {
-    map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
+    if(map.getSource('restaurants-source') !== undefined)
+      map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
   }
 }
