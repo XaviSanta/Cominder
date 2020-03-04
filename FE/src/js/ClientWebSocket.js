@@ -1,8 +1,7 @@
-var connection = null;
-
 function connect() {
-  connection = new WebSocket('ws://127.0.0.1:9035');
-
+  connection = new WebSocket(SocketURL);
+  // connection = new WebSocket();
+  
   connection.onopen = () => {
     console.log('Connection is open and ready to use');
   };

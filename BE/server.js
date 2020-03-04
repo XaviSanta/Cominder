@@ -1,25 +1,22 @@
 var db = require('./databases');
 const express = require('express')
 const http = require('http');
-const firebase = require("firebase");
-const firebaseConfig = require('./firebaseConfig');
+// const firebase = require("firebase");
+// const firebaseConfig = require('./firebaseConfig');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({
-  server
-});
+const wss = new WebSocket.Server({server});
 
-const AppPort = 9034;
-const WsPort = 9035;
+const Port = 9035;
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
-var points = db.points;// TODO: Use firebase
-var groups = db.groupsList; // TODO: Use firebase
-var offers = db.offersList; // TODO: Use firebase
+var points = db.points;// TODO: Use DB
+var groups = db.groupsList; // TODO: Use DB
+var offers = db.offersList; // TODO: Use DB
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -58,15 +55,12 @@ app.post('/group', (req, res) => {
   res.json(groups);
 });
 
-app.listen(AppPort, () => console.log(`Hello world app listening on port ${AppPort}!`));
-
 // ------------------  WEB SOCKET  -------------------------------
 wss.on('connection', (ws) => {
-  //connection is up, let's add a simple simple event
+  ws.send(JSON.stringify({type: 'LoginOK', data: 'Hi there, I am a WebSocket server'}));
+
   ws.on('message', (message) => {
     if (true) {
-      //send back the message to the other clients
-      console.log(message)
       wss.clients
         .forEach(client => {
           if (client != ws) {
@@ -79,12 +73,10 @@ wss.on('connection', (ws) => {
     }
   });
 
-  //send immediatly a feedback to the incoming connection    
-  ws.send(JSON.stringify({type: 'LoginOK', data: 'Hi there, I am a WebSocket server'}));
-
+  
 });
 
 //start our server
-server.listen(process.env.PORT || WsPort, () => {
+server.listen(process.env.PORT || Port, () => {
   console.log(`Server started on port ${server.address().port} :)`);
 });

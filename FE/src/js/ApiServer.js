@@ -1,25 +1,23 @@
 var xhr;
-const apiPort = 9034;
-const apiURL = 'http://127.0.0.1';
 
 // GETTERS
 function getInitInfo() {
   xhr = new XMLHttpRequest();
-  xhr.open('GET', `${apiURL}:${apiPort}/info`, true);
+  xhr.open('GET', `${PATH}/info`, true);
   xhr.send();
   xhr.onreadystatechange = processRequest;
 }
 
 function getMapPoints() {
   xhr = new XMLHttpRequest();
-  xhr.open('GET', `${apiURL}:${apiPort}/points`, true);
+  xhr.open('GET', `${PATH}/points`, true);
   xhr.send();
   xhr.onreadystatechange = processRequest;
 }
 
 function getGroups() {
   xhr = new XMLHttpRequest();
-  xhr.open('GET', `${apiURL}:${apiPort}/groups`, true);
+  xhr.open('GET', `${PATH}/groups`, true);
   xhr.send();
   xhr.onreadystatechange = processRequest;
 }
@@ -27,7 +25,7 @@ function getGroups() {
 // POSTS
 function postRestaurant(geoPoint) {
   xhr = new XMLHttpRequest();
-  xhr.open('POST', `${apiURL}:${apiPort}/point`, true);
+  xhr.open('POST', `${PATH}/point`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(geoPoint));
   xhr.onreadystatechange = processRequest;
@@ -38,7 +36,7 @@ function postRestaurant(geoPoint) {
 
 function postNewGroup(group) {
   xhr = new XMLHttpRequest();
-  xhr.open('POST', `${apiURL}:${apiPort}/group`, true);
+  xhr.open('POST', `${PATH}/group`, true);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(group));
   xhr.onreadystatechange = processRequest;
