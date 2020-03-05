@@ -55,9 +55,9 @@ function updateOffersCarousel() {
   offers.forEach(o => {
     var temp = document.querySelector('#templates .card-offer');
     var card = temp.cloneNode(true);
-    card.getElementsByClassName('card-header')[0].innerText = `${o.restaurant} ${o.offer}`;
-    card.getElementsByClassName('card-text')[0].innerText = o.description;
-    card.getElementsByClassName('text-muted')[0].innerText = o.extraInfo;
+    card.querySelector('.card-header').innerText = `${o.restaurant} ${o.offer}`;
+    card.querySelector('.card-text').innerText = o.description;
+    card.querySelector('.text-muted').innerText = o.extraInfo;
     card.onclick = function() { 
       var restaurant = geojson.features.filter(r => r.properties.title === o.restaurant)
       var coordinates = restaurant[0].geometry.coordinates;

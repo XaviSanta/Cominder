@@ -1,6 +1,3 @@
-var userType = ''; // Will be type restaurant or client
-var username = 'Username'; // Name
-
 $('.loginForm-r').submit(function() {
   username = $('#rest-username-login').val();
   sendLogin();

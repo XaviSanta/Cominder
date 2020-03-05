@@ -17,6 +17,7 @@ const Port = 9035;
 var points = db.points;// TODO: Use DB
 var groups = db.groupsList; // TODO: Use DB
 var offers = db.offersList; // TODO: Use DB
+var chats = db.chatsList; // TODO: Use DB
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,9 +37,14 @@ app.get('/points', (req, res) => {
 app.get('/groups', (req, res) => {
   res.json(groups);
 });
-//    all the groups created
+//    all the offers created
 app.get('/offers', (req, res) => {
   res.json(offers);
+});
+//    specified chat
+app.get('/chat/:id', (req, res) => {
+  var result = getChat(req.params.id);
+  res.json(result);
 });
 
 // POST 
@@ -80,3 +86,19 @@ wss.on('connection', (ws) => {
 server.listen(process.env.PORT || Port, () => {
   console.log(`Server started on port ${server.address().port} :)`);
 });
+
+
+// SERVICE:
+function getChat(id) {
+  var chat = chats.find(c => c.id == id);
+  if(chat === undefined) {
+    return {
+      errMsg: 'This chat no longer exists',
+      result: null,
+    };
+  }
+  return {
+    errMsg: null,
+    result: chats.find(c => c.id == id),
+  };
+}

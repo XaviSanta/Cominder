@@ -4,10 +4,8 @@ function openGroupsOfRestaurant(name) {
 }
 
 function updateGroupsList(nameFilter = null) {
-  var container = document.getElementById('groups-list-group');
-  while (container.firstChild) {
-    container.removeChild(container.lastChild);
-  }
+  var container = document.querySelector('#groups-list-group');
+  removeChilds(container);
 
   // Change name of title
   var title = (nameFilter === null) ? 'Groups' : `Groups in ${nameFilter}`;
@@ -19,10 +17,11 @@ function updateGroupsList(nameFilter = null) {
   groups.forEach(g => {
     var temp = document.querySelector('#templates .group-li');
     var li = temp.cloneNode(true);
-    li.getElementsByClassName('name-group-template')[0].innerText = g.title;
-    li.getElementsByClassName('badge')[0].innerText = `${g.members}/${g["max-members"]}`;
+    li.querySelector('.name-group-template').innerText = g.title;
+    li.querySelector('.badge').innerText = `${g.members}/${g["max-members"]}`;
     li.querySelector('a').onclick = function() { 
-      openChat(g);
+      // Get the chat info from Server: (name, users, messages)
+      getChat(g.id);
     }
     container.appendChild(li); //to the DOMs
   });

@@ -31,3 +31,9 @@ function refreshMap() {
       map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
   }
 }
+
+function removeChilds(container) {
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+}

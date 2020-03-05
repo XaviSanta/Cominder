@@ -10,15 +10,9 @@
   width: 100%;
 }
 
-.message {
-  border-color:grey; 
-  background:rgba(0, 0, 0, 0.493);
-}
-
 .tab-pane {
   color: aliceblue;
   background-color: rgba(6, 42, 141, 0.63);
-  text-align: center;
 }
 
 .list-overflow {
@@ -40,6 +34,7 @@
   background: rgba(157, 168, 231, 0.877);
 }
 
+/*  CARD OFFER STYLE */
 .card-deck {
   position: fixed;
   bottom: 20px;
@@ -55,4 +50,11 @@
 .card-offer>.card-body{
   overflow:scroll;
   overflow-x: hidden;
+}
+/* ------------------------------ */
+
+/* CHAT */
+.message {
+  border-color:grey; 
+  background:rgba(0, 0, 0, 0.493);
 }
