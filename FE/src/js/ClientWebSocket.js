@@ -1,6 +1,5 @@
 function connect() {
   connection = new WebSocket(SocketURL);
-  // connection = new WebSocket();
   
   connection.onopen = () => {
     console.log('Connection is open and ready to use');

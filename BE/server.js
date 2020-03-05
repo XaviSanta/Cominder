@@ -56,9 +56,9 @@ app.post('/point', (req, res) => {
 });
 //    new group
 app.post('/group', (req, res) => {
-  const group = req.body;
-  groups.push(group);
-  res.json(groups);
+  var group = req.body;
+  var result = createGroup(group)
+  res.json(result);
 });
 
 // ------------------  WEB SOCKET  -------------------------------
@@ -89,6 +89,32 @@ server.listen(process.env.PORT || Port, () => {
 
 
 // SERVICE:
+function createGroup(group) {
+  group.id = groups[groups.length-1].id + 1; // Generate id for the group
+  groups.push(group);
+  addChat(group);
+  return {
+    result: groups,
+    id: group.id
+  };
+}
+
+function addChat(group) {
+  chats.push({
+    id: group.id,
+    title: group.title,
+    userLimit: group['max-members'],
+    usersJoined: 1,
+    messages: [
+      {
+        type: 'Notification',
+        author: '',
+        content: 'Group created'
+      },
+    ]
+  });
+}
+
 function getChat(id) {
   var chat = chats.find(c => c.id == id);
   if(chat === undefined) {
