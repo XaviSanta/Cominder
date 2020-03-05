@@ -25,13 +25,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#" onclick="goHome()">ComoFuera</a>
+      <a class="navbar-brand" href="#" onclick="goHome()">
+        ComoFuera</a>
       <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
-        <a id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">Restaurants</button>
-        <a id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups" onclick="getGroups()">Groups</a>
-        <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
-        <a id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map" onclick="updateMap()">Map</a>
-        <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+        <a onclick="getMapPoints()" id="list-restaurants-list" class="btn"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">
+          Restaurants</a>
+        <a onclick="getGroups()" id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">
+          Groups</a>
+        <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">
+          MyChats</a>
+        <a onclick="getMapPoints()" id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map">
+          Map</a>
+        <a id="list-settings-list" class="btn" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">
+          Settings</a>
       </div>
 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>

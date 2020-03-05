@@ -13,7 +13,6 @@ function connect() {
     switch (obj.type) {
       case 'LoginOK':
         console.log('LoginStatus: Success', obj );
-        getInitInfo();
         openApp();
         break;
 

@@ -11,6 +11,8 @@ function showLanding() {
 }
 
 function openApp() {
+  getInitInfo();
+  
   $('.offers').show();
   $('.main').show();
   $('#sign-in-btn').hide();
