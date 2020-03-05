@@ -58,3 +58,9 @@
   border-color:grey; 
   background:rgba(0, 0, 0, 0.493);
 }
+
+.chat-title-users-connected {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+}
