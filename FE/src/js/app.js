@@ -11,6 +11,8 @@ function showLanding() {
 }
 
 function openApp() {
+  getInitInfo();
+  
   $('.offers').show();
   $('.main').show();
   $('#sign-in-btn').hide();
@@ -29,5 +31,11 @@ function refreshMap() {
   if(map !== undefined) {
     if(map.getSource('restaurants-source') !== undefined)
       map.getSource('restaurants-source').setData(geojson); // Refresh map with new coordinate
+  }
+}
+
+function removeChilds(container) {
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
   }
 }

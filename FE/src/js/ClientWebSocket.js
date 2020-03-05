@@ -1,6 +1,5 @@
 function connect() {
   connection = new WebSocket(SocketURL);
-  // connection = new WebSocket();
   
   connection.onopen = () => {
     console.log('Connection is open and ready to use');
@@ -13,7 +12,6 @@ function connect() {
     switch (obj.type) {
       case 'LoginOK':
         console.log('LoginStatus: Success', obj );
-        getInitInfo();
         openApp();
         break;
 
