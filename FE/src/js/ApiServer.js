@@ -23,6 +23,7 @@ function getGroups() {
 }
 
 function getChat(id) {
+  chatId = id;
   xhr = new XMLHttpRequest();
   xhr.open('GET', `${PATH}/chat/${id}`, true);
   xhr.send();

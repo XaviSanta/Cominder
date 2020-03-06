@@ -71,6 +71,14 @@ function addChat(group) {
   });
 }
 
+function addMessageToChat(msg) {
+  chats.find(c => c.id === msg.chatId)
+    .messages.push({
+      author: msg.author,
+      content: msg.content,
+    });
+
+}
 // ------------------------------------------
 module.exports = {
   getInfo,
@@ -81,5 +89,5 @@ module.exports = {
 
   addPoint,
   addGroup,
-
+  addMessageToChat,
 }

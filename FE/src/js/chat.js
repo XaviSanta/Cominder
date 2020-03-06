@@ -27,7 +27,12 @@ $('.form-inline').submit(function() {
 });
 
 function sendMessage(msg) {
-  // TODO: Send message through WebSocket
+  connection.send(JSON.stringify({
+    type: 'chat-message',
+    author: username,
+    content: msg,
+    chatId: chatId,
+  }));
   appendMessage({author:username, content:msg});
 }
 

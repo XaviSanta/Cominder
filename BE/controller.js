@@ -14,9 +14,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// ------------------ END POINTS -------------------------------
-
-// GET 
+// ------------------ GETTERS -------------------------------
+//    all info
 app.get('/info', (req, res) => {
   const result = service.getInfo();
   res.json(result);
@@ -42,7 +41,7 @@ app.get('/chat/:id', (req, res) => {
   res.json(result);
 });
 
-// POST 
+// ------------------ POSTS -------------------------------
 //    new restaurant in map
 app.post('/point', (req, res) => {
   const result = service.addPoint(req.body);
@@ -57,22 +56,38 @@ app.post('/group', (req, res) => {
 // ------------------  WEB SOCKET  -------------------------------
 wss.on('connection', (ws) => {
   ws.send(JSON.stringify({type: 'LoginOK', data: 'Hi there, I am a WebSocket server'}));
+  console.log('aadf');
+  var username = false;
 
   ws.on('message', (message) => {
-    if (true) {
-      wss.clients
-        .forEach(client => {
+    const msg = JSON.parse(message);
+    switch (msg.type) {
+      case 'login':
+        username = msg.data.username;
+        console.log('New WebSocket User: ' + ws.origin);
+        break;
+
+      case 'chat-message':
+        console.log('new message');
+        service.addMessageToChat(msg);
+        wss.clients.forEach(client => {
+          // TODO: If the client is in the chat group:
           if (client != ws) {
-            client.send(JSON.stringify({type: 'message', data: message}));
+            client.send(JSON.stringify({
+              type: 'chat-message', 
+              content: msg.content,
+              author: msg.author,
+              chatId: msg.chatId,
+            }));
           }
         });
-
-    } else {
-      ws.send(`Hello, you sent -> ${message}`);
+        break;
     }
   });
 
-  
+  ws.on('close', (connection) => {
+    console.log('User is gone');
+  });
 });
 
 //start our server

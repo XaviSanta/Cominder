@@ -2,6 +2,7 @@ var geojson = []; // Points in the map
 var groupsList = [];
 var offers = [];
 
+var chatId;
 var popup;
 var map;
 var userType = ''; // Will be type restaurant or client
