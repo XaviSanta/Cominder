@@ -11,8 +11,6 @@ function connect() {
 
   connection.onmessage = (msg) => {
     var obj = JSON.parse(msg.data);
-    console.log('hola', msg.data)
-    
     switch (obj.type) {
       case 'LoginOK':
         console.log('LoginStatus: Success', obj );
@@ -25,7 +23,6 @@ function connect() {
         break;
 
       case 'chat-message':
-        console.log('received message', obj);
         if (obj.chatId === chatId) {
           appendMessage({author:obj.author, content:obj.content});
         }

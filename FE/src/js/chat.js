@@ -26,6 +26,10 @@ $('.form-inline').submit(function() {
   return false;
 });
 
+function closeChat() {
+  
+}
+
 function sendMessage(msg) {
   connection.send(JSON.stringify({
     type: 'chat-message',

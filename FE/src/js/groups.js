@@ -1,4 +1,8 @@
 function openGroupsOfRestaurant(name) {
+  // Hide the list of restaurants when opening the groups
+  $('.tab-pane.fade.active.show').removeClass('active');
+  $('.tab-pane.fade.active.show').removeClass('show');
+  
   $('#list-groups').tab('show');
   updateGroupsList(groupsList, name);
 }
