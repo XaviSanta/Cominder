@@ -80,6 +80,10 @@ var groupsList = [
     "title": "Student group",
     "members": 2,
     "max-members": 4,
+    "users": [
+      "xavi",
+      "ann",
+    ]
   },
   {
     "id": 2,
@@ -87,48 +91,75 @@ var groupsList = [
     "title": "English group",
     "members": 1,
     "max-members": 4,
+    "users": [
+      "Imane",
+    ]
   },
   {
     "id": 3,
     "restaurant": "El Mussol",
-    "title": "Date",
+    "title": "Date3",
     "members": 1,
     "max-members": 2,
+    "users": [
+      "Xavi",
+      "Imane",
+    ]
   },
   {
     "id": 4,
     "restaurant": "Tagliatella",
     "title": "Date",
-    "members": 1,
-    "max-members": 2,
+    "members": 2,
+    "max-members": 3,
+    "users": [
+      "Xavi",
+      "Imane",
+    ]
   },
   {
     "id": 5,
     "restaurant": "Tagliatella",
     "title": "Over 25",
-    "members": 3,
+    "members": 2,
     "max-members": 4,
+    "users": [
+      "Xavi",
+      "Imane",
+    ]
   },
   {
     "id": 6,
     "restaurant": "Upf",
     "title": "tuppers",
-    "members": 3,
+    "members": 2,
     "max-members": 6,
+    "users": [
+      "Xavi",
+      "Imane",
+    ]
   },
   {
     "id": 7,
     "restaurant": "McDonalds",
     "title": "russians",
-    "members": 1,
+    "members": 2,
     "max-members": 3,
+    "users": [
+      "Xaviaasdfasfd",
+      "Imane",
+    ]
   },
   {
     "id": 8,
     "restaurant": "TaElWei",
     "title": "Coronavirus",
-    "members": 1,
+    "members": 2,
     "max-members": 3,
+    "users": [
+      "Xavi",
+      "Imane",
+    ]
   },
 ];
 

@@ -1,9 +1,13 @@
 function openGroupsOfRestaurant(name) {
+  // Hide the list of restaurants when opening the groups
+  $('.tab-pane.fade.active.show').removeClass('active');
+  $('.tab-pane.fade.active.show').removeClass('show');
+  
   $('#list-groups').tab('show');
-  updateGroupsList(name);
+  updateGroupsList(groupsList, name);
 }
 
-function updateGroupsList(nameFilter = null) {
+function updateGroupsList(groups, nameFilter = null) {
   var container = document.querySelector('#groups-list-group');
   removeChilds(container);
 
@@ -12,8 +16,8 @@ function updateGroupsList(nameFilter = null) {
   $('#list-title-group').text(title);
 
   // Append groups to the container list
-  var groups = groupsList;
   if(nameFilter !== null) groups = groups.filter(g => g.restaurant === nameFilter);
+
   groups.forEach(g => {
     var temp = document.querySelector('#templates .group-li');
     var li = temp.cloneNode(true);
@@ -33,10 +37,11 @@ function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
     "title": groupName,
     "members" : 1,
     "max-members" : maxMembers,
+    "users": [username],
   };
 
   groupsList.push(group);
-  updateGroupsList(restaurantName);
+  updateGroupsList(groupsList, restaurantName);
   postNewGroup(group);
   $('#createGroupModal').modal('hide');
 }

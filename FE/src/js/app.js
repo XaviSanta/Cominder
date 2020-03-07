@@ -11,6 +11,7 @@ function showLanding() {
 }
 
 function openApp() {
+  $(window).scrollTop(0);
   getInitInfo();
   
   $('.offers').show();
@@ -39,3 +40,7 @@ function removeChilds(container) {
     container.removeChild(container.lastChild);
   }
 }
+
+$('.nav-item').on('click', function(){
+  $('.navbar-collapse').collapse('hide');
+});

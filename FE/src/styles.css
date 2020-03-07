@@ -15,6 +15,25 @@
   background-color: rgba(6, 42, 141, 0.63);
 }
 
+
+.nav-item.nav-link {
+  text-emphasis: initial;
+  color: black;
+  border: 2px solid;
+  border-color: rgba(0, 0, 0, 0);
+  margin-right: 10px;
+}
+
+.nav-item.nav-link:hover {
+  border: 2px solid;
+  border-radius: 20px;
+}
+
+.nav-item.nav-link.active {
+  border-radius: 10px;
+  background-color: rgb(127, 172, 255);
+}
+
 .list-overflow {
   background: rgba(223, 167, 13, 0);
   max-height: 300px;
@@ -63,4 +82,37 @@
   position: absolute;
   right: 0;
   margin-right: 15px;
+}
+
+#chat-messages {
+  padding: 0;
+}
+#button-send-message {
+  background-color: aliceblue;
+}
+#button-send-message:hover {
+  color: aliceblue;
+  background-color: rgba(33, 31, 66, 0.877);
+}
+
+
+/* MOBILE */
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media screen and (max-width: 575px), (orientation: portrait) {
+  .card-deck {
+    height: 20%;;
+  }
+  .tab-pane {
+    position: absolute;
+    width: 85vw;
+    z-index: 2;
+    margin: 4vw;
+  }
+
+  
+
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
 }
