@@ -25,7 +25,14 @@ function getGroups() {
 function getChat(id) {
   chatId = id;
   xhr = new XMLHttpRequest();
-  xhr.open('GET', `${PATH}/chat/${id}`, true);
+  xhr.open('GET', `${PATH}/chat/${id}/${username}`, true);
+  xhr.send();
+  xhr.onreadystatechange = processRequest;
+}
+
+function getMyChats() {
+  xhr = new XMLHttpRequest();
+  xhr.open('GET', `${PATH}/my-groups/${username}`, true);
   xhr.send();
   xhr.onreadystatechange = processRequest;
 }
@@ -56,8 +63,7 @@ function postNewGroup(group) {
 // HANDLE RESPONSE
 function processRequest() {
   if (xhr.readyState == 4 && xhr.status == 200) {
-    var endpoint = xhr.responseURL.slice(PATH.length + 1);
-    endpoint = endpoint.lastIndexOf('/') === -1 ? endpoint : endpoint.slice(0, endpoint.lastIndexOf('/'));
+    var endpoint = getEndpoint(xhr);
     var res = JSON.parse(xhr.responseText);
     switch (endpoint) {
       case 'info':
@@ -76,11 +82,14 @@ function processRequest() {
         break;
       case 'groups':
         groupsList = res;
-        updateGroupsList();
+        updateGroupsList(groupsList);
         break;
       case 'group':
         groupsList = res.result;
-        updateGroupsList(res.result.find(g => g.id === res.id).restaurant); // Get name of the restaurant to filter on the list
+        updateGroupsList(groupsList, res.result.find(g => g.id === res.id).restaurant); // Get name of the restaurant to filter on the list
+        break;
+      case 'my-groups':
+        updateGroupsList(res);
         break;
       case 'chat':
         if(res.errMsg === null){
@@ -96,4 +105,11 @@ function processRequest() {
         break;
     }
   }
+}
+
+function getEndpoint(xhr) {
+  var ep = xhr.responseURL.slice(PATH.length + 1);
+  return ep.indexOf('/') === -1 ? 
+    ep :
+    ep.slice(0, ep.indexOf('/'))
 }

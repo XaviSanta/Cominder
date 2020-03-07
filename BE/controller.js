@@ -36,8 +36,13 @@ app.get('/offers', (req, res) => {
   res.json(result);
 });
 //    specified chat
-app.get('/chat/:id', (req, res) => {
-  const result = service.getChat(req.params.id);
+app.get('/chat/:id/:username', (req, res) => {
+  const result = service.getChat(req.params.id, req.params.username);
+  res.json(result);
+});
+//    my groups
+app.get('/my-groups/:username', (req, res) => {
+  const result = service.getGroupsByUsername(req.params.username);
   res.json(result);
 });
 
@@ -56,19 +61,17 @@ app.post('/group', (req, res) => {
 // ------------------  WEB SOCKET  -------------------------------
 wss.on('connection', (ws) => {
   ws.send(JSON.stringify({type: 'LoginOK', data: 'Hi there, I am a WebSocket server'}));
-  console.log('aadf');
-  var username = false;
+  var username = undefined;
 
   ws.on('message', (message) => {
     const msg = JSON.parse(message);
     switch (msg.type) {
       case 'login':
         username = msg.data.username;
-        console.log('New WebSocket User: ' + ws.origin);
+        console.log('New WebSocket User: ' + username);
         break;
 
       case 'chat-message':
-        console.log('new message');
         service.addMessageToChat(msg);
         wss.clients.forEach(client => {
           // TODO: If the client is in the chat group:

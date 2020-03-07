@@ -25,13 +25,34 @@ function getOffers() {
   return offers;
 }
 
-function getChat(id) {
+function getChat(id, username) {
+  if (username === undefined) {
+    return {
+      errMsg: 'Username not valid',
+      result: null,
+    };
+  }
+
   var chat = chats.find(c => c.id == id);
+  var group = groups.find(c => c.id == id);
   if(chat === undefined) {
     return {
       errMsg: 'This chat no longer exists',
       result: null,
     };
+  }
+
+  if(!group.users.includes(username)) {
+    if(group.members < group['max-members']) {
+      group.members++;
+      group.users.push(username)
+    } else {
+      return {
+        errMsg: 'The chat is full',
+        result: null,
+      };
+    }
+      
   }
   return {
     errMsg: null,
@@ -54,6 +75,9 @@ function addGroup(group) {
   };
 }
 
+function getGroupsByUsername(username) {
+  return groups.filter(g => g.users.includes(username) === true);
+}
 // ------------------------------------------
 function addChat(group) {
   chats.push({
@@ -86,6 +110,7 @@ module.exports = {
   getGroups,
   getOffers,
   getChat,
+  getGroupsByUsername,
 
   addPoint,
   addGroup,

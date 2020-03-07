@@ -32,7 +32,7 @@
           Restaurants</a>
         <a onclick="getGroups()" id="list-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">
           Groups</a>
-        <a id="list-messages-list" class="btn" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">
+        <a onclick="getMyChats()" id="list-my-groups-list" class="btn" data-toggle="list" href="#list-groups" role="tab" aria-controls="my-groups">
           MyChats</a>
         <a onclick="getMapPoints()" id="list-map" class="btn" data-toggle="list" href="#map-option" role="tab" aria-controls="map">
           Map</a>
@@ -154,10 +154,6 @@
           <div id="list-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-groups-list">
             <span id="list-title-group">Groups</span>
             <ul id="groups-list-group" class="list-group list-overflow"></ul>
-          </div>
-          
-          <div id="list-my-groups" class="tab-pane fade" role="tabpanel" aria-labelledby="list-my-groups-list">
-            Here Add the groups im into
           </div>
           
           <div id="chat-tab" class="tab-pane fade card" role="tabpanel" aria-labelledby="chat">
