@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!-- map -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
@@ -55,7 +56,6 @@
   </nav>
 
   <!-- LANDING ---------------------------------------------------------- -->
-  
   <div class="landing">
   </div>
 
@@ -64,7 +64,7 @@
   <div class="sign-up" style="display: none;">
     <div class="container login-container">
       <div class="row">
-        <div class="col-md-6 login-form-1">
+        <div class="col-md-6 login-form-1" style="display: none;">
           <h3>Register for Restaurant</h3>
           <form class="registerForm-r">
             <div class="form-group">
@@ -82,7 +82,7 @@
           </form>
         </div>
         <div class="col-md-6 login-form-2">
-          <h3>Register for Person</h3>
+          <h3>Register</h3>
           <form class="registerForm-p">
             <div class="form-group">
               <input id="person-username-register" type="text" class="form-control" placeholder="Your Username *" value="" />
@@ -103,7 +103,7 @@
   <div class="sign-in" style="display: none;">
     <div class="container login-container">
       <div class="row">
-        <div class="col-md-6 login-form-1">
+        <div class="col-md-6 login-form-1" style='display: none;'>
           <h3>Login for Restaurant</h3>
           <form class="loginForm-r">
             <div class="form-group">
@@ -121,7 +121,7 @@
           </form>
         </div>
         <div class="col-md-6 login-form-2">
-          <h3>Login for Person</h3>
+          <h3>Login</h3>
           <form class="loginForm-p">
             <div class="form-group">
               <input id="person-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
@@ -175,8 +175,7 @@
 
           
           <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
-            <input type="text"> Search place?<br>
-            <button>Add group destination?</button>
+
           </div>
 
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
