@@ -51,15 +51,15 @@ function sendLogin() {
 function openRegistration() {
   $('.sign-up').show();
 
-  $('.main').hide();
-  $('.sign-in').hide();
-  $('.landing').hide();
+  $('.main').hide(800);
+  $('.sign-in').hide(800);
+  $('.landing').hide(800);
 }
 
 function openLogin() {
   $('.sign-in').show();
 
-  $('.main').hide();
-  $('.sign-up').hide();
-  $('.landing').hide();
+  $('.main').hide(800);
+  $('.sign-up').hide(800);
+  $('.landing').hide(800);
 }

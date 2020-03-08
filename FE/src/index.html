@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/04932c58f4.js" crossorigin="anonymous"></script>
-
+  <link
+  rel="stylesheet"
+  href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+  type="text/css"
+  />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -36,7 +40,7 @@
           Groups</a>
         <a onclick="getMyChats()" id="list-my-groups-list" class="nav-item nav-link" data-toggle="list" href="#list-groups" role="tab" aria-controls="my-groups">
           MyChats</a>
-        <a onclick="getMapPoints()" id="list-map" class="nav-item nav-link" data-toggle="list" href="#map-option" role="tab" aria-controls="map">
+        <a onclick="getMapPoints()" id="list-map" class="nav-item nav-link active" data-toggle="list" href="#map-option" role="tab" aria-controls="map">
           Map</a>
         <a id="list-settings-list" class="nav-item nav-link" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">
           Settings</a>
@@ -188,7 +192,8 @@
   </div>
 
   <!-- Offers ---------------------------------------------------------- -->
-  <footer class="page-footer fixed-bottom font-small blue">
+  <footer class="fixed-bottom offers-container" style="display: none;">
+    <button class="btn" onclick="offersShow()"> X </button>
     <div class="scrolling-wrapper offers"></div>
   </footer>
 

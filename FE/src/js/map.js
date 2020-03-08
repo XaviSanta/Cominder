@@ -22,8 +22,8 @@ map.on('load', function(e) {
     'type': 'symbol',
     'source': 'restaurants-source',
     'layout': {
-      'icon-image': 'dinner',
-      'icon-size': 0.08,
+      'icon-image': 'pin',
+      'icon-size': 1,
       'icon-allow-overlap': true,
       'icon-ignore-placement': true,
       'text-field': ['get', 'title'],
@@ -83,7 +83,14 @@ map.addControl(
 map.addControl(new mapboxgl.NavigationControl());
 
 // Search input
-map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken,mapboxgl: mapboxgl}));
+map.addControl(new MapboxGeocoder(
+  {
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    marker: {
+      color: 'orange'
+    },
+  }));
 
 function flyTo(coordinates) {
   map.flyTo({
@@ -101,8 +108,8 @@ function updateMap() {
 }
 
 $('#list-map').on('shown.bs.tab', function (e) {
-  $('.mapboxgl-ctrl-geocoder').show();
+  $('.mapboxgl-ctrl-geocoder').show(800);
 });
 $('#list-map').on('hide.bs.tab', function (e) {
-  $('.mapboxgl-ctrl-geocoder').hide();
+  $('.mapboxgl-ctrl-geocoder').hide(800);
 });
