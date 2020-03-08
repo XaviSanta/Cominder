@@ -105,30 +105,7 @@
   left: 15px;
   width: 80vw;
 }
-/*
-.mapboxgl-ctrl-geocoder li {
-  color: rgb(34, 33, 33);
-  list-style: none;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-.mapboxgl-ctrl-geocoder li:hover{
-  background-color: rgba(90, 84, 194, 0.877);
-  color: white;
-}
-.mapboxgl-ctrl-geocoder input {
-  border: 0;
-  padding-left: 10px;
-}
-.mapboxgl-ctrl-geocoder--suggestion-title {
-  font-weight: bold;
-}
-.mapboxgl-ctrl-geocoder--suggestion-address {
-  font-style: italic;
-}
-.mapboxgl-ctrl-geocoder--icon-loading {
-  display: none;
-} */
+
 /* -------------------------------------------- */
 
 

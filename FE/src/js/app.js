@@ -13,19 +13,20 @@ function showLanding() {
 function openApp() {
   $(window).scrollTop(0);
   getInitInfo();
+  $('.navbar-collapse').collapse('hide');
   
-  $('.offers-container').show(800);
-  $('.main').show(800);
-  $('#sign-in-btn').hide(800);
-  $('#sign-up-btn').hide(800);
+  $('.offers-container').show();
+  $('.main').show();
+  $('#sign-in-btn').hide();
+  $('#sign-up-btn').hide();
   $('#username-btn').html(username);
-  $('.btns-after-login').show(800);
+  $('.btns-after-login').show();
 
   $('.map').load('./map.html');
 
-  $('.sign-in').hide(800);
-  $('.sign-up').hide(800);
-  $('.landing').hide(800);
+  $('.sign-in').hide();
+  $('.sign-up').hide();
+  $('.landing').hide();
 }
 
 function refreshMap() {

@@ -43,6 +43,7 @@ function sendMessage(msg) {
     chatId: chatId,
   }));
   appendMessage({author:username, content:msg});
+  clearInput();
 }
 
 function appendMessage(msg) {
@@ -53,7 +54,6 @@ function appendMessage(msg) {
   div.querySelector('.author-message').innerText = msg.author;
   div.querySelector('.content-message').innerText = msg.content;
   container.appendChild(div);
-  clearInput();
   container.scrollTop = container.scrollHeight;
 }
 
