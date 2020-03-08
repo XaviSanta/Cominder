@@ -15,7 +15,6 @@
   background-color: rgba(6, 42, 141, 0.63);
 }
 
-
 .nav-item.nav-link {
   text-emphasis: initial;
   color: black;
@@ -73,7 +72,6 @@
   flex-wrap: nowrap;
   overflow-x: auto;
 }
-
 /* ------------------------------ */
 
 /* CHAT */
@@ -98,6 +96,38 @@
   color: aliceblue;
   background-color: rgba(33, 31, 66, 0.877);
 }
+/* ------------------------------ */
+
+/* SEARCH MAP */
+.mapboxgl-ctrl-geocoder {
+  display: none;
+  background-color: rgba(255, 255, 255, 0.788);
+  border-radius: 10px;
+  position: fixed;
+  left: 20px;
+  font-size: 14px;
+}
+.mapboxgl-ctrl-geocoder li {
+  color: rgb(34, 33, 33);
+  list-style: none;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.mapboxgl-ctrl-geocoder li:hover{
+  background-color: rgba(90, 84, 194, 0.877);
+  color: white;
+}
+.mapboxgl-ctrl-geocoder input {
+  border: 0;
+  padding-left: 10px;
+}
+.mapboxgl-ctrl-geocoder--suggestion-title {
+  font-weight: bold;
+}
+.mapboxgl-ctrl-geocoder--suggestion-address {
+  font-style: italic;
+}
+/* -------------------------------------------- */
 
 
 /* MOBILE */
@@ -110,7 +140,6 @@
     z-index: 2;
     margin: 4vw;
   }
-
 
   .scrolling-wrapper::-webkit-scrollbar {
     display: none;

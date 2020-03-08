@@ -82,6 +82,9 @@ map.addControl(
 // Add navigation controls
 map.addControl(new mapboxgl.NavigationControl());
 
+// Search input
+map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken,mapboxgl: mapboxgl}));
+
 function flyTo(coordinates) {
   map.flyTo({
     center: [coordinates[0], coordinates[1]],
@@ -96,3 +99,10 @@ function flyTo(coordinates) {
 function updateMap() {
   getMapPoints();
 }
+
+$('#list-map').on('shown.bs.tab', function (e) {
+  $('.mapboxgl-ctrl-geocoder').show();
+});
+$('#list-map').on('hide.bs.tab', function (e) {
+  $('.mapboxgl-ctrl-geocoder').hide();
+});
