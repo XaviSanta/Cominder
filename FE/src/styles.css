@@ -127,6 +127,9 @@
 .mapboxgl-ctrl-geocoder--suggestion-address {
   font-style: italic;
 }
+.mapboxgl-ctrl-geocoder--icon-loading {
+  display: none;
+}
 /* -------------------------------------------- */
 
 

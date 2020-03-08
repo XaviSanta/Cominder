@@ -22,8 +22,8 @@ map.on('load', function(e) {
     'type': 'symbol',
     'source': 'restaurants-source',
     'layout': {
-      'icon-image': 'dinner',
-      'icon-size': 0.08,
+      'icon-image': 'pin',
+      'icon-size': 1,
       'icon-allow-overlap': true,
       'icon-ignore-placement': true,
       'text-field': ['get', 'title'],
