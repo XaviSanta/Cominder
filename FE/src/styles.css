@@ -54,22 +54,26 @@
 }
 
 /*  CARD OFFER STYLE */
-.card-deck {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  margin-left: 25%;
-}
-
 .card-offer {
   background-color: rgba(255, 255, 255, 0.877);
   max-height: 220px;
+  max-width: 250px;
+  flex: 0 0 auto;
+  border-radius: 20px;
+  margin: 10px;
 }
 
 .card-offer>.card-body{
   overflow:scroll;
   overflow-x: hidden;
+} 
+
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
+
 /* ------------------------------ */
 
 /* CHAT */
@@ -100,9 +104,6 @@
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media screen and (max-width: 575px), (orientation: portrait) {
-  .card-deck {
-    height: 20%;;
-  }
   .tab-pane {
     position: absolute;
     width: 85vw;
@@ -110,9 +111,17 @@
     margin: 4vw;
   }
 
-  
+
+  .scrolling-wrapper::-webkit-scrollbar {
+    display: none;
+  }
 
   ::-webkit-scrollbar {
-    width: 1px;
+    width: 2px;
+  }
+  
+  .scrolling-wrapper {
+    margin-top: 0;
+    margin-left: 0;
   }
 }

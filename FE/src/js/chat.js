@@ -59,3 +59,10 @@ function appendMessage(msg) {
 function clearInput() {
   document.getElementById('input-message').value = '';
 }
+
+$('#input-message').focus(function() {
+  $('.offers').hide();
+});
+$('#input-message').blur(function() {
+  $('.offers').show();
+});

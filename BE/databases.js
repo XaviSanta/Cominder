@@ -186,7 +186,31 @@ var offersList = [{
     offer: '30%',
     description: '30% for big groups (+4 people).',
     extraInfo: 'Oferta válida hasta 20/03/2020'
-  }
+  },
+  {
+    restaurant: 'El Mussol',
+    offer: '30%',
+    description: '30% for big groups (+4 people).',
+    extraInfo: 'Oferta válida hasta 20/03/2020'
+  },
+  {
+    restaurant: 'El Mussol',
+    offer: '30%',
+    description: '30% for big groups (+4 people).',
+    extraInfo: 'Oferta válida hasta 20/03/2020'
+  },
+  {
+    restaurant: 'El Mussol',
+    offer: '30%',
+    description: '30% for big groups (+4 people).',
+    extraInfo: 'Oferta válida hasta 20/03/2020'
+  },
+  {
+    restaurant: 'El Mussol',
+    offer: '30%',
+    description: '30% for big groups (+4 people).',
+    extraInfo: 'Oferta válida hasta 20/03/2020'
+  },
 ];
 
 var chatsList = [
