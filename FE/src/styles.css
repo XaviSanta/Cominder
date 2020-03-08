@@ -99,14 +99,13 @@
 /* ------------------------------ */
 
 /* SEARCH MAP */
-.mapboxgl-ctrl-geocoder {
-  display: none;
-  background-color: rgba(255, 255, 255, 0.788);
-  border-radius: 10px;
+ .mapboxgl-ctrl-geocoder {
+  border-radius: 15px;
   position: fixed;
-  left: 20px;
-  font-size: 14px;
+  left: 15px;
+  width: 80vw;
 }
+/*
 .mapboxgl-ctrl-geocoder li {
   color: rgb(34, 33, 33);
   list-style: none;
@@ -129,7 +128,7 @@
 }
 .mapboxgl-ctrl-geocoder--icon-loading {
   display: none;
-}
+} */
 /* -------------------------------------------- */
 
 

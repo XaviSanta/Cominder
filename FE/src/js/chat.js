@@ -2,7 +2,8 @@ function openChat(infoChat) { // TODO : CHANGE pass id
   // Hide the list of groups and restaurants when opening the chat
   $('.tab-pane.fade.active.show').removeClass('active');
   $('.tab-pane.fade.active.show').removeClass('show');
-  
+  $('.nav-item.nav-link').removeClass('active');
+  $('.nav-item.nav-link').removeClass('show');
   // Put the messages in the UI chat
   updateChat(infoChat);
 
@@ -31,7 +32,7 @@ $('.form-inline').submit(function() {
 });
 
 function closeChat() {
-
+  $('#list-map').trigger('click');
 }
 
 function sendMessage(msg) {
@@ -61,8 +62,10 @@ function clearInput() {
 }
 
 $('#input-message').focus(function() {
-  $('.offers').hide();
+  $('.offers').hide(800);
 });
 $('#input-message').blur(function() {
-  $('.offers').show();
+  if($('.offers').css('display') != 'none') {
+    $('.offers').show(800);
+  }
 });

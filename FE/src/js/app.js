@@ -3,29 +3,29 @@ function goHome() {
 }
 
 function showLanding() {
-  $('.landing').show();
+  $('.landing').show(800);
 
-  $('.sign-up').hide();
-  $('.main').hide();
-  $('.sign-in').hide();
+  $('.sign-up').hide(800);
+  $('.main').hide(800);
+  $('.sign-in').hide(800);
 }
 
 function openApp() {
   $(window).scrollTop(0);
   getInitInfo();
   
-  $('.offers').show();
-  $('.main').show();
-  $('#sign-in-btn').hide();
-  $('#sign-up-btn').hide();
+  $('.offers-container').show(800);
+  $('.main').show(800);
+  $('#sign-in-btn').hide(800);
+  $('#sign-up-btn').hide(800);
   $('#username-btn').html(username);
-  $('.btns-after-login').show();
+  $('.btns-after-login').show(800);
 
   $('.map').load('./map.html');
 
-  $('.sign-in').hide();
-  $('.sign-up').hide();
-  $('.landing').hide();
+  $('.sign-in').hide(800);
+  $('.sign-up').hide(800);
+  $('.landing').hide(800);
 }
 
 function refreshMap() {

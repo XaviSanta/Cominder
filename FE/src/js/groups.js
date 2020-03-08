@@ -4,6 +4,10 @@ function openGroupsOfRestaurant(name) {
   $('.tab-pane.fade.active.show').removeClass('show');
   
   $('#list-groups').tab('show');
+  $('.mapboxgl-ctrl-geocoder').hide(800);
+  $('#list-map').removeClass('active');
+  $('#list-map').removeClass('show');
+  
   updateGroupsList(groupsList, name);
 }
 

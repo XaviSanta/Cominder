@@ -67,3 +67,11 @@ function updateOffersCarousel() {
     container.appendChild(card); //to the DOM
   });
 }
+
+function offersShow() {
+  if($('.offers').css('display') == 'none') {
+    $('.offers').show(800);
+  } else {
+    $('.offers').hide(800);
+  }
+}
