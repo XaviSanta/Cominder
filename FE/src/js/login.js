@@ -40,6 +40,29 @@ $('.registerForm-p').submit(function() {
   return false;
 });
 
+$('.sign-up-btn').click(function() {
+  openRegistration();
+
+});
+
+$('.sign-in-btn').click(function() {
+ openLogin();
+});
+
+$('#home-logo').click(function() {
+  goHome();
+});
+
+$('.loginForm').submit(function(e) {
+  sendLogin();
+  return false;
+});
+
+$('.registerForm').submit(function(e) {
+  sendRegistration();
+  return false;
+});
+
 function sendRegistration() {
   connect();
 }
@@ -51,15 +74,19 @@ function sendLogin() {
 function openRegistration() {
   $('.sign-up').show();
 
-  $('.main').hide(800);
-  $('.sign-in').hide(800);
-  $('.landing').hide(800);
+  $('.main').hide();
+  $('.sign-in').hide();
+  $('.landing').hide();
+  $('.back-ground').show();
+  $('.login-page').show();
 }
 
 function openLogin() {
   $('.sign-in').show();
 
-  $('.main').hide(800);
-  $('.sign-up').hide(800);
-  $('.landing').hide(800);
+  $('.main').hide();
+  $('.sign-up').hide();
+  $('.landing').hide();
+  $('.back-ground').show();
+  $('.login-page').show();
 }

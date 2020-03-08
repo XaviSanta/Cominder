@@ -4,10 +4,10 @@ function goHome() {
 
 function showLanding() {
   $('.landing').show(800);
-
-  $('.sign-up').hide(800);
-  $('.main').hide(800);
-  $('.sign-in').hide(800);
+  
+  $('.sign-up').hide();
+  $('.main').hide();
+  $('.sign-in').hide();
 }
 
 function openApp() {
@@ -27,6 +27,9 @@ function openApp() {
   $('.sign-in').hide();
   $('.sign-up').hide();
   $('.landing').hide();
+
+  $('.login-page').hide();
+  $('.back-ground').hide();
 }
 
 function refreshMap() {
