@@ -13,6 +13,7 @@ function showLanding() {
 function openApp() {
   $(window).scrollTop(0);
   getInitInfo();
+  $('.navbar-collapse').collapse('hide');
   
   $('.offers-container').show();
   $('.main').show();
