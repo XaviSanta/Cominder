@@ -8,6 +8,10 @@ function openChat(infoChat) { // TODO : CHANGE pass id
 
   // Show the chat
   $('#chat-tab').tab('show');
+
+  // Scroll bottom
+  let container = document.querySelector('#chat-messages');
+  container.scrollTop = container.scrollHeight;
 }
 
 function updateChat(infoChat) {
@@ -27,7 +31,7 @@ $('.form-inline').submit(function() {
 });
 
 function closeChat() {
-  
+
 }
 
 function sendMessage(msg) {
@@ -55,3 +59,10 @@ function appendMessage(msg) {
 function clearInput() {
   document.getElementById('input-message').value = '';
 }
+
+$('#input-message').focus(function() {
+  $('.offers').hide();
+});
+$('#input-message').blur(function() {
+  $('.offers').show();
+});
