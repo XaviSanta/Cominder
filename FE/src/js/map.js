@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53O
 // Create MAP
 var map = new mapboxgl.Map({
   container: 'map',
-  // style: 'mapbox://styles/mapbox/dark-v10', // replace this with your style URL
-  style: 'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu',
+  style: 'mapbox://styles/xavisanta/ck7i792ip5snm1jsh5q9mtf37', // replace this with your style URL
+  // style: 'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu',
   center: [2.191607919009357, 41.40499328136784],
   zoom: 13.7
 });
@@ -33,7 +33,7 @@ map.on('load', function(e) {
       'text-allow-overlap': true,
     },
     paint: {
-      "text-color": "#ffffff"
+      "text-color": "#000"
     }
   });
 });
@@ -83,14 +83,15 @@ map.addControl(
 map.addControl(new mapboxgl.NavigationControl());
 
 // Search input
-map.addControl(new MapboxGeocoder(
+var search = new MapboxGeocoder(
   {
     accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl,
     marker: {
       color: 'orange'
     },
-  }));
+  });
+map.addControl(search, 'top-left');
 
 function flyTo(coordinates) {
   map.flyTo({
