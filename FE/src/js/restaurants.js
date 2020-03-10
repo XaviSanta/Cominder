@@ -47,7 +47,6 @@ function addRestaurantFromMap(lng, lst) {
 
 function updateOffersCarousel() {
   var container = document.querySelector('.offers');
-  console.log(container)
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
