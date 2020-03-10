@@ -128,3 +128,36 @@
     margin-left: 0;
   }
 }
+
+.section{
+
+	background-color: white;
+	color: black;
+	padding: 10px;
+}
+
+.circle-sec{
+	background-color: rgb(255, 146, 1);
+	color: white;
+	width: 120px;
+	height: 120px;
+	padding-top: 20px;
+}
+.back-ground {
+	padding-top: 50px;
+	text-align: center;
+	color: white;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	position: absolute;
+	background-image: url('imgs/annie-spratt-XiWtCLWK5K8-unsplash.png');
+}
+
+.nav-links{
+	color: black;
+}
+
+.nav-links:hover{
+	text-decoration: none;
+}
