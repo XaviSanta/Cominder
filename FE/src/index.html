@@ -44,6 +44,9 @@
           Map</a>
         <a id="list-settings-list" class="nav-item nav-link" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">
           Settings</a>
+        <button class="night-mode-style-map" onclick="setDarkStyle()" value="light" ç>
+          <i id="nightModeIcon" class="far fa-moon"></i>
+        </button>
       </div>
 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
@@ -52,8 +55,8 @@
           <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
         </div>
         
-        <button onclick="openRegistration()" id="sign-up-btn"  class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
-        <button onclick="openLogin()" id="sign-in-btn" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
+        <button onclick="openRegistration()" id="sign-up-btn"  class="nav-item btn btn-outline-success my-2 my-sm-0">Sign Up</button>
+        <button onclick="openLogin()" id="sign-in-btn" class="nav-item btn btn-outline-success my-2 my-sm-0">Sign In</button>
 
       </div>
     </div>
@@ -145,9 +148,10 @@
     </div>
   </div>
 
-<!-- APP---------------------------------------------------------- -->
+<!--M-APP---------------------------------------------------------- -->
   <div class="main" id="main" style="display: none;">
     <div id="map" class="map"></div>
+
     <div class="row">
       <div class="col-3">
         <div class="tab-content" id="nav-tabContent">
@@ -183,7 +187,7 @@
           </div>
 
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-            Here add Settings
+            
           </div>
 
         </div>

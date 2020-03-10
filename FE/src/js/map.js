@@ -4,19 +4,20 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53O
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/xavisanta/ck7i792ip5snm1jsh5q9mtf37', // replace this with your style URL
-  // style: 'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu',
   center: [2.191607919009357, 41.40499328136784],
   zoom: 13.7
 });
 
 map.on('load', function(e) {
   numFeatures = geojson.features.length;
+  
+});
 
+function loadMyLayers() {
   map.addSource('restaurants-source', {
     'type': 'geojson',
     'data': geojson
   });
-
   map.addLayer({
     'id': 'restaurants-layer',
     'type': 'symbol',
@@ -36,8 +37,7 @@ map.on('load', function(e) {
       "text-color": "#000"
     }
   });
-});
-
+}
 map.on('click', function(e) {
   const lng = e.lngLat.lng;
   const lat = e.lngLat.lat;
@@ -112,5 +112,29 @@ $('#list-map').on('shown.bs.tab', function (e) {
   $('.mapboxgl-ctrl-geocoder').show(800);
 });
 $('#list-map').on('hide.bs.tab', function (e) {
-  $('.mapboxgl-ctrl-geocoder').hide(800);
+  $('.mapboxgl-ctrl-geocoder').hide();
+});
+
+var isDarkModeON = false;
+
+function setDarkStyle() {
+  var style = isDarkModeON ?
+    'mapbox://styles/xavisanta/ck7i792ip5snm1jsh5q9mtf37' :
+    'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu';
+
+  map.setStyle(style);
+
+  $('#nightModeIcon').toggleClass('far fas');
+  isDarkModeON = !isDarkModeON;
+}
+
+map.on('style.load', () => {
+  const waiting = () => {
+    if (!map.isStyleLoaded()) {
+      setTimeout(waiting, 200);
+    } else {
+      loadMyLayers();
+    }
+  };
+  waiting();
 });
