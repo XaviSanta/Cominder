@@ -27,6 +27,7 @@
 .nav-item.nav-link:hover {
   border: 2px solid;
   border-radius: 20px;
+  border-color: rgb(127, 172, 255);
 }
 
 .nav-item.nav-link.active {
