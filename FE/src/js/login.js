@@ -1,3 +1,14 @@
+// listen for auth status changes
+auth.onAuthStateChanged(user => {
+  console.log(user)
+  if(user) {
+    openApp();
+  } else {
+    $('.logged-in').hide();
+    $('.logged-out').show();
+  }
+});
+
 $('.loginForm-r').submit(function() {
   username = $('#rest-username-login').val();
   if(!isValidString(username)) {
@@ -10,12 +21,17 @@ $('.loginForm-r').submit(function() {
 });
 $('.loginForm-p').submit(function() {
   username = $('#person-username-login').val();
+  var email = $('#person-email-login').val();
+  var password = $('#person-pass-login').val();
   if(!isValidString(username)) {
     alert('Username invalid')
     return;
   }
   
-  sendLogin();
+  auth.signInWithEmailAndPassword(email, password).then(cred => {
+    // sendLogin();
+  });
+  
   return false;
 });
 
@@ -31,12 +47,17 @@ $('.registerForm-r').submit(function() {
 });
 $('.registerForm-p').submit(function() {
   username = $('#person-username-register').val();
+  var email = $('#person-email-register').val();
+  var password = $('#person-pass-register').val();
   if(!isValidString(username)) {
     alert('Username invalid')
     return;
   }
   
-  sendRegistration();
+  auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    // sendRegistration();
+  });
+  
   return false;
 });
 
@@ -62,4 +83,11 @@ function openLogin() {
   $('.main').hide(800);
   $('.sign-up').hide(800);
   $('.landing').hide(800);
+}
+
+// Log out
+function logOut() {
+  auth.signOut().then(() => {
+    console.log('user signed out')
+  });
 }

@@ -3,11 +3,8 @@ function goHome() {
 }
 
 function showLanding() {
-  $('.landing').show(800);
-
-  $('.sign-up').hide(800);
-  $('.main').hide(800);
-  $('.sign-in').hide(800);
+  $('.logged-in').show();
+  $('.logged-out').hide();
 }
 
 function openApp() {
@@ -21,6 +18,7 @@ function openApp() {
   $('#sign-up-btn').hide();
   $('#username-btn').html(username);
   $('.logged-in').show();
+  $('.logged-out').hide();
 
   $('.map').load('./map.html');
 
