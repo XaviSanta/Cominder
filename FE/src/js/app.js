@@ -57,3 +57,14 @@ function isValidString(str, invalidCharacters = ['<', '>', '+', ',', '.', "'", '
   }
   return str !== '';
 }
+
+function showUserInfo() {
+  const html = `
+    <div>Logged in as <span style:>${username}</span></div>
+  `;
+  $('.account-details .modal-body').html(html);
+}
+
+$('.account-details').on('show.bs.modal', function (event) {
+  showUserInfo();
+});

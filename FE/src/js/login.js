@@ -1,7 +1,8 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
-  console.log(user)
   if(user) {
+    username = user.email;
+    connect(); 
     openApp();
   } else {
     $('.logged-in').hide();
@@ -30,7 +31,10 @@ $('.loginForm-p').submit(function() {
   
   auth.signInWithEmailAndPassword(email, password).then(cred => {
     // sendLogin();
-  });
+  })
+  .catch(err => {
+    alert(err);
+  });;
   
   return false;
 });
@@ -54,9 +58,13 @@ $('.registerForm-p').submit(function() {
     return;
   }
   
-  auth.createUserWithEmailAndPassword(email, password).then(cred => {
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(cred => {
     // sendRegistration();
-  });
+    })
+    .catch(err => {
+      alert(err);
+    });
   
   return false;
 });
