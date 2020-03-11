@@ -3,11 +3,8 @@ function goHome() {
 }
 
 function showLanding() {
-  $('.landing').show(800);
-
-  $('.sign-up').hide(800);
-  $('.main').hide(800);
-  $('.sign-in').hide(800);
+  $('.logged-in').show();
+  $('.logged-out').hide();
 }
 
 function openApp() {
@@ -20,7 +17,8 @@ function openApp() {
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();
   $('#username-btn').html(username);
-  $('.btns-after-login').show();
+  $('.logged-in').show();
+  $('.logged-out').hide();
 
   $('.map').load('./map.html');
 
@@ -59,3 +57,14 @@ function isValidString(str, invalidCharacters = ['<', '>', '+', ',', '.', "'", '
   }
   return str !== '';
 }
+
+function showUserInfo() {
+  const html = `
+    <div>Logged in as <span style:>${username}</span></div>
+  `;
+  $('.account-details .modal-body').html(html);
+}
+
+$('.account-details').on('show.bs.modal', function (event) {
+  showUserInfo();
+});
