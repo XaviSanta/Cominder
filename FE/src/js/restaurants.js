@@ -74,3 +74,7 @@ function offersShow() {
     $('.offers').hide(800);
   }
 }
+
+function createOffer() {
+  alert(userType)
+}
