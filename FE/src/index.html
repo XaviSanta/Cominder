@@ -12,7 +12,7 @@
   />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+  
   <!-- map -->
   <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
@@ -166,6 +166,8 @@
         </div>
         <div class="col-md-6 login-form-2">
           <h3>Login</h3>
+          <button onclick="loginWgoogle()" class="firebaseui-idp-text firebaseui-idp-text-long">
+            <i class="fab fa-google"></i> Sign in with Google</button>
           <form class="loginForm-p">
             <div class="form-group">
               <input required id="person-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
@@ -238,7 +240,7 @@
   </div>
 
   <!-- Offers ---------------------------------------------------------- -->
-  <footer class="fixed-bottom offers-container" style="display: none;">
+  <footer class="fixed-bottom offers-container logged-in" style="display: none;">
     <button class="btn" onclick="offersShow()"> X </button>
     <div class="scrolling-wrapper offers"></div>
   </footer>
@@ -354,6 +356,7 @@
 
     // Make auth and firestore references
     const auth = firebase.auth();
+    var provider = new firebase.auth.GoogleAuthProvider();
     const db = firebase.firestore();
   </script>
 
