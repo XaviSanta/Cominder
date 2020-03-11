@@ -74,3 +74,4 @@ function showUserInfo() {
 $('.account-details').on('show.bs.modal', function (event) {
   showUserInfo();
 });
+

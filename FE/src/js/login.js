@@ -4,6 +4,7 @@ auth.onAuthStateChanged(user => {
     db.collection('users').doc(user.uid).get().then(doc => {
       username = doc.data().username;
       userType = doc.data().type;
+      restName = doc.data().restaurant;
       const html = `
         <div>Username: <span>${username}</span></div>
         <div>Emal: <span>${user.email}</span></div>
@@ -73,6 +74,7 @@ $('.registerForm-p').submit(function() {
       return db.collection('users').doc(cred.user.uid).set({
         username: username,
         type: 'person',
+        restaurant: null,
       });
     })
     .catch(err => {

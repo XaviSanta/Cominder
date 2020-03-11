@@ -44,37 +44,3 @@ function addRestaurantFromMap(lng, lst) {
   }
   postRestaurant(geoPoint); 
 }
-
-function updateOffersCarousel() {
-  var container = document.querySelector('.offers');
-  while (container.firstChild) {
-    container.removeChild(container.lastChild);
-  }
-
-  // Append offers to the container
-  offers.forEach(o => {
-    var temp = document.querySelector('#templates .card-offer');
-    var card = temp.cloneNode(true);
-    card.querySelector('.card-header').innerText = `${o.restaurant} ${o.offer}`;
-    card.querySelector('.card-text').innerText = o.description;
-    card.querySelector('.text-muted').innerText = o.extraInfo;
-    card.onclick = function() { 
-      var restaurant = geojson.features.filter(r => r.properties.title === o.restaurant)
-      var coordinates = restaurant[0].geometry.coordinates;
-      goAndShowRestaurant(coordinates, o.restaurant);
-    }
-    container.appendChild(card); //to the DOM
-  });
-}
-
-function offersShow() {
-  if($('.offers').css('display') == 'none') {
-    $('.offers').show(800);
-  } else {
-    $('.offers').hide(800);
-  }
-}
-
-function createOffer() {
-  alert(userType)
-}
