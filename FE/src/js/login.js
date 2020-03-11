@@ -1,33 +1,29 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
-    username = user.email;
-    connect(); 
-    openApp();
+    db.collection('users').doc(user.uid).get().then(doc => {
+      username = doc.data().username;
+      userType = doc.data().type;
+      restName = doc.data().restaurant;
+      const html = `
+        <div>Username: <span>${username}</span></div>
+        <div>Emal: <span>${user.email}</span></div>
+        <div>Type: <span>${userType}</span></div>
+        `;
+      $('.account-details .modal-body').html(html);
+      
+      connect(); // TODO: connect on groups not on global
+      openApp();
+    });
   } else {
     $('.logged-in').hide();
     $('.logged-out').show();
   }
 });
 
-$('.loginForm-r').submit(function() {
-  username = $('#rest-username-login').val();
-  if(!isValidString(username)) {
-    alert('Username invalid')
-    return;
-  }
-  
-  sendLogin();
-  return false;
-});
-$('.loginForm-p').submit(function() {
-  username = $('#person-username-login').val();
-  var email = $('#person-email-login').val();
-  var password = $('#person-pass-login').val();
-  if(!isValidString(username)) {
-    alert('Username invalid')
-    return;
-  }
+$('.loginForm').submit(function() {
+  var email = $('#email-login').val();
+  var password = $('#pass-login').val();
   
   auth.signInWithEmailAndPassword(email, password).then(cred => {
     // sendLogin();
@@ -40,15 +36,30 @@ $('.loginForm-p').submit(function() {
 });
 
 $('.registerForm-r').submit(function() {
-  username = $('#rest-username-register').val();
+  username =     $('#rest-username-register').val();
+  var restName = $('#rest-name-register').val();
+  var email =    $('#rest-email-register').val();
+  var password = $('#rest-pass-register').val();
   if(!isValidString(username)) {
     alert('Username invalid')
     return;
   }
   
-  sendRegistration();
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(cred => {
+      return db.collection('users').doc(cred.user.uid).set({
+        username: username,
+        type: 'restaurant',
+        restaurant: restName,
+      });
+    })
+    .catch(err => {
+      alert(err);
+    });
+  
   return false;
 });
+
 $('.registerForm-p').submit(function() {
   username = $('#person-username-register').val();
   var email = $('#person-email-register').val();
@@ -60,7 +71,11 @@ $('.registerForm-p').submit(function() {
   
   auth.createUserWithEmailAndPassword(email, password)
     .then(cred => {
-    // sendRegistration();
+      return db.collection('users').doc(cred.user.uid).set({
+        username: username,
+        type: 'person',
+        restaurant: null,
+      });
     })
     .catch(err => {
       alert(err);
@@ -102,12 +117,15 @@ function logOut() {
 
 function loginWgoogle() {
   firebase.auth().signInWithPopup(provider).then(function(result) {
+    console.log(result)
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
     // ...
   }).catch(function(error) {
+    console.log(error.message)
+
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;

@@ -1,5 +1,4 @@
 function goHome() {
-  connection === null ? showLanding() : openApp(); 
 }
 
 function showLanding() {
@@ -25,6 +24,15 @@ function openApp() {
   $('.sign-in').hide();
   $('.sign-up').hide();
   $('.landing').hide();
+
+  // Hide or show the things that differ from restaurants and clients
+  if(userType === 'restaurant') {
+    $('.rest-type').show();
+    $('.client-type').hide();
+  } else {
+    $('.rest-type').hide();
+    $('.client-type').show();
+  }
 }
 
 function refreshMap() {
@@ -59,12 +67,11 @@ function isValidString(str, invalidCharacters = ['<', '>', '+', ',', '.', "'", '
 }
 
 function showUserInfo() {
-  const html = `
-    <div>Logged in as <span style:>${username}</span></div>
-  `;
-  $('.account-details .modal-body').html(html);
+  
+  
 }
 
 $('.account-details').on('show.bs.modal', function (event) {
   showUserInfo();
 });
+

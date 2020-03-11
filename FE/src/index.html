@@ -36,9 +36,9 @@
       <div class="center-block logged-in list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
         <a onclick="getMapPoints()" id="list-restaurants-list" class="nav-item nav-link"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">
           Restaurants</a>
-        <a onclick="getGroups()" id="list-groups-list" class="nav-item nav-link" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">
+        <a onclick="getGroups()" id="list-groups-list" class="nav-item nav-link client-type" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">
           Groups</a>
-        <a onclick="getMyChats()" id="list-my-groups-list" class="nav-item nav-link" data-toggle="list" href="#list-groups" role="tab" aria-controls="my-groups">
+        <a onclick="getMyChats()" id="list-my-groups-list" class="nav-item nav-link client-type" data-toggle="list" href="#list-groups" role="tab" aria-controls="my-groups">
           MyChats</a>
         <a onclick="getMapPoints()" id="list-map" class="nav-item nav-link active" data-toggle="list" href="#map-option" role="tab" aria-controls="map">
           Map</a>
@@ -105,17 +105,20 @@
   <div class="sign-up" style="display: none;">
     <div class="container login-container">
       <div class="row">
-        <div class="col-md-6 login-form-1" style="display: none;">
+        <div class="col-md-6 login-form-1">
           <h3>Register for Restaurant</h3>
           <form class="registerForm-r">
             <div class="form-group">
-              <input id="rest-username-register" type="text" class="form-control" placeholder="Your Username *" value="" />
+              <input required id="rest-username-register" type="text" class="form-control" placeholder="Your Username *" value="" />
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Your Restaurant Name *" value="" />
+              <input required id="rest-name-register" type="text" class="form-control" placeholder="Your Restaurant Name *" value="" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <input required id="rest-email-register" type="email" class="form-control" placeholder="example@gmail.com *" value="" />
+            </div>
+            <div class="form-group">
+              <input required id="rest-pass-register" type="password" class="form-control" placeholder="Your Password *" value="" />
             </div>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Register"/>
@@ -147,36 +150,16 @@
   <div class="sign-in" style="display: none;">
     <div class="container login-container">
       <div class="row">
-        <div class="col-md-6 login-form-1" style='display: none;'>
-          <h3>Login for Restaurant</h3>
-          <form class="loginForm-r">
-            <div class="form-group">
-              <input required id="rest-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
-            </div>
-            <div class="form-group">
-              <input required type="password" class="form-control" placeholder="Your Password *" value="" />
-            </div>
-            <div class="form-group">
-              <input type="submit" class="btnSubmit" value="Login"/>
-            </div>
-            <div class="form-group">
-              <a href="#" class="ForgetPwd">Forget Password?</a>
-            </div>
-          </form>
-        </div>
         <div class="col-md-6 login-form-2">
           <h3>Login</h3>
           <button onclick="loginWgoogle()" class="firebaseui-idp-text firebaseui-idp-text-long">
             <i class="fab fa-google"></i> Sign in with Google</button>
-          <form class="loginForm-p">
+          <form class="loginForm">
             <div class="form-group">
-              <input required id="person-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
+              <input required id="email-login" type="email" class="form-control" placeholder="example@gmail.com *" value="" />
             </div>
             <div class="form-group">
-              <input required id="person-email-login" type="email" class="form-control" placeholder="example@gmail.com *" value="" />
-            </div>
-            <div class="form-group">
-              <input required id="person-pass-login" type="password" class="form-control" placeholder="Your Password *" value="" />
+              <input required id="pass-login" type="password" class="form-control" placeholder="Your Password *" value="" />
             </div>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Login"/>
@@ -242,6 +225,7 @@
   <!-- Offers ---------------------------------------------------------- -->
   <footer class="fixed-bottom offers-container logged-in" style="display: none;">
     <button class="btn" onclick="offersShow()"> X </button>
+    <button class="btn rest-type" data-toggle="modal" data-target=".create-offer" style="display: none"> + </button>
     <div class="scrolling-wrapper offers"></div>
   </footer>
 
@@ -296,8 +280,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <form>
+        <form>
+          <div class="modal-body">
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">Group Name:</label>
               <input type="text" class="form-control" id="recipient-name">
@@ -306,18 +290,52 @@
               <label for=max-num-members" class="col-form-label">Max Num members:</label>
               <input type="number" class="form-control" id="max-num-members"></input>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="btn-create-group">Create Group</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btn-create-group">Create Group</button>
+          </div>
+        </form>
       </div>
     </div>
   </div> 
 
+  <!-- MODAL CREATE OFFER -->
+  <div class="modal fade create-offer" id="createOfferModal" tabindex="-1" role="dialog" aria-labelledby="createOfferLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createOfferLabel">New offer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="title" class="col-form-label">Title</label>
+              <input type="text" class="form-control" id="offer-title-form">
+            </div>
+            <div class="form-group">
+              <label for="description" class="col-form-label">Description</label>
+              <input type="text" class="form-control" id="offer-description-form" placeholder="30% for big groups (+4 people).">
+            </div>
+            <div class="form-group">
+              <label for="extraInfo" class="col-form-label">Extra info</label>
+              <input type="text" class="form-control" id="offer-extraInfo-form" placeholder="Only in March">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btn-create-offer">Create Offer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
    <!-- MODAL ACCOUNT DETAILS -->
-   <div class="modal fade account-details" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalLabel" aria-hidden="true">
+  <div class="modal fade account-details" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -366,6 +384,7 @@
   <script src="./js/login.js"></script>
   <script src="./js/groups.js"></script>
   <script src="./js/restaurants.js"></script>
+  <script src="./js/offers.js"></script>
   <script src="./js/chat.js"></script>
   <script src="./js/ApiServer.js"></script>
   <script src="./js/ClientWebSocket.js"></script>

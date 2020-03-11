@@ -165,49 +165,25 @@ var groupsList = [
 
 var offersList = [{
     restaurant: 'El Mussol',
-    offer: '30%',
+    title: 'El Mussol 30%',
     description: '30% for big groups (+4 people).',
     extraInfo: 'Oferta válida hasta 20/03/2020'
   },
   {
     restaurant: 'Tagliatella',
-    offer: '50%',
+    title: 'Tagliatella 50%',
     description: "Use the code 'COMINDER2' and come with another person for a 50% discount.",
     extraInfo: 'Only in March'
   },
   {
     restaurant: 'TaElWei',
-    offer: '80%',
+    title: 'TaElWei 80%',
     description: 'Come with an asian friend and get a 80% discount in the next meal!!',
     extraInfo: 'A-pass only valid until coronavirus ends.'
   },
   {
     restaurant: 'McDonalds',
-    offer: '30%',
-    description: '30% for big groups (+4 people).',
-    extraInfo: 'Oferta válida hasta 20/03/2020'
-  },
-  {
-    restaurant: 'El Mussol',
-    offer: '30%',
-    description: '30% for big groups (+4 people).',
-    extraInfo: 'Oferta válida hasta 20/03/2020'
-  },
-  {
-    restaurant: 'El Mussol',
-    offer: '30%',
-    description: '30% for big groups (+4 people).',
-    extraInfo: 'Oferta válida hasta 20/03/2020'
-  },
-  {
-    restaurant: 'El Mussol',
-    offer: '30%',
-    description: '30% for big groups (+4 people).',
-    extraInfo: 'Oferta válida hasta 20/03/2020'
-  },
-  {
-    restaurant: 'El Mussol',
-    offer: '30%',
+    title: 'McDonalds 30%',
     description: '30% for big groups (+4 people).',
     extraInfo: 'Oferta válida hasta 20/03/2020'
   },
