@@ -20,7 +20,7 @@ function openApp() {
   $('#sign-in-btn').hide();
   $('#sign-up-btn').hide();
   $('#username-btn').html(username);
-  $('.btns-after-login').show();
+  $('.logged-in').show();
 
   $('.map').load('./map.html');
 

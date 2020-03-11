@@ -33,7 +33,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <div class="center-block btns-after-login list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
+      <div class="center-block logged-in list-group list-group-horizontal-md" id="list-tab" role="tablist" style="display: none">
         <a onclick="getMapPoints()" id="list-restaurants-list" class="nav-item nav-link"  data-toggle="list" href="#list-restaurants" role="tab" aria-controls="restaurants">
           Restaurants</a>
         <a onclick="getGroups()" id="list-groups-list" class="nav-item nav-link" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">
@@ -51,12 +51,12 @@
 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
       <div class="form-inline my-2 my-lg-0">
-        <div class="btns-after-login" style="display: none">
+        <div class="logged-in" style="display: none">
           <button id="username-btn" class="btn btn-outline-success my-2 my-sm-0" ></button>
         </div>
         
-        <button onclick="openRegistration()" id="sign-up-btn"  class="nav-item btn btn-outline-success my-2 my-sm-0">Sign Up</button>
-        <button onclick="openLogin()" id="sign-in-btn" class="nav-item btn btn-outline-success my-2 my-sm-0">Sign In</button>
+        <button onclick="openRegistration()" id="sign-up-btn" class="logged-out nav-item btn btn-outline-success my-2 my-sm-0">Sign Up</button>
+        <button onclick="openLogin()" id="sign-in-btn" class="logged-out nav-item btn btn-outline-success my-2 my-sm-0">Sign In</button>
 
       </div>
     </div>
@@ -125,10 +125,10 @@
           <h3>Register</h3>
           <form class="registerForm-p">
             <div class="form-group">
-              <input id="person-username-register" type="text" class="form-control" placeholder="Your Username *" value="" />
+              <input required id="person-username-register" type="text" class="form-control" placeholder="Your Username *" value="" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <input required type="password" class="form-control" placeholder="Your Password *" value="" />
             </div>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Register"/>
@@ -147,10 +147,10 @@
           <h3>Login for Restaurant</h3>
           <form class="loginForm-r">
             <div class="form-group">
-              <input id="rest-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
+              <input required id="rest-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <input required type="password" class="form-control" placeholder="Your Password *" value="" />
             </div>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Login"/>
@@ -164,10 +164,10 @@
           <h3>Login</h3>
           <form class="loginForm-p">
             <div class="form-group">
-              <input id="person-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
+              <input required id="person-username-login" type="text" class="form-control" placeholder="Your Username *" value="" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+              <input required type="password" class="form-control" placeholder="Your Password *" value="" />
             </div>
             <div class="form-group">
               <input type="submit" class="btnSubmit" value="Login"/>
@@ -207,7 +207,7 @@
             </ul>
             <form class="card-footer form-group form-inline">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" id="input-message" placeholder="Write message">
+                <input required type="text" class="form-control" id="input-message" placeholder="Write message">
                 <button class="input-group-append btn fas fa-paper-plane" type="submit" id="button-send-message"></button>
               </div>
             </form>
