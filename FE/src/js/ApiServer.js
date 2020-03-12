@@ -67,7 +67,11 @@ function processRequest() {
     var res = JSON.parse(xhr.responseText);
     switch (endpoint) {
       case 'info':
-        geojson = res.points;
+        points = res.points;
+        geojson = {
+          "type": "FeatureCollection",
+          "features": points,
+        };
         groupsList = res.groups;
         offers = res.offers;
         refreshMap();
@@ -76,7 +80,11 @@ function processRequest() {
         break;
       case 'points':
       case 'point':
-        geojson = res;
+        points = res;
+        geojson = {
+          "type": "FeatureCollection",
+          "features": points,
+        };
         refreshMap();
         updateRestaurantList();
         break;

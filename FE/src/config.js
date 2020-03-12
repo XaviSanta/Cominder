@@ -1,4 +1,5 @@
-var geojson = []; // Points in the map
+var geojson = []; 
+var points = []; // Points in the map
 var groupsList = [];
 var offers = [];
 
