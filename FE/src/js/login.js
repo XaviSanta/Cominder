@@ -26,6 +26,7 @@ $('.loginForm').submit(function() {
   var email = $('#email-login').val();
   var password = $('#pass-login').val();
   
+  // Sign in
   auth.signInWithEmailAndPassword(email, password).then(cred => {
     // sendLogin();
   })
@@ -38,26 +39,14 @@ $('.loginForm').submit(function() {
 
 $('.registerForm-r').submit(function() {
   username =     $('#rest-username-register').val();
-  var restName = $('#rest-name-register').val();
+  var restaurant = $('#rest-name-register').val();
   var email =    $('#rest-email-register').val();
   var password = $('#rest-pass-register').val();
   if(!isValidString(username)) {
     alert('Username invalid')
     return;
   }
-  
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(cred => {
-      return db.collection('users').doc(cred.user.uid).set({
-        username: username,
-        type: 'restaurant',
-        restaurant: restName,
-      });
-    })
-    .catch(err => {
-      alert(err);
-    });
-  
+  createUserDB(email, password, username, 'restaurant', restaurant);
   return false;
 });
 
@@ -69,21 +58,23 @@ $('.registerForm-p').submit(function() {
     alert('Username invalid')
     return;
   }
-  
+  createUserDB(email, password, username, 'person');
+  return false;
+});
+
+function createUserDB(email, password, username, type, restaurant = null) {
   auth.createUserWithEmailAndPassword(email, password)
     .then(cred => {
       return db.collection('users').doc(cred.user.uid).set({
-        username: username,
-        type: 'person',
-        restaurant: null,
+        username,
+        type,
+        restaurant,
       });
     })
     .catch(err => {
       alert(err);
     });
-  
-  return false;
-});
+}
 
 function sendRegistration() {
   connect();
