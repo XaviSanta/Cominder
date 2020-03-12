@@ -6,21 +6,25 @@ function updateOffersCarousel() {
 
   // Append offers to the container
   offers.forEach(o => {
-    appendOffer(container, o);
+    appendOfferAsync(container, o);
   });
 }
 
-function appendOffer(container, o) {
+async function appendOfferAsync(container, o) {
   var temp = document.querySelector('#templates .card-offer');
   var card = temp.cloneNode(true);
   card.querySelector('.card-header').innerText = `${o.title}`;
   card.querySelector('.card-text').innerText = o.description;
   card.querySelector('.text-muted').innerText = o.extraInfo;
-  card.onclick = function() { 
-    var restaurant = geojson.features.filter(r => r.properties.title === o.restaurant)
-    var coordinates = restaurant[0].geometry.coordinates;
-    goAndShowRestaurant(coordinates, o.restaurant);
+  var restDoc = await db.collection('points').doc(o.restaurantID).get();
+  var coordinates = restDoc.data().geometry.coordinates;
+  var name = restDoc.data().properties.title;
+  if(restDoc.exists) {
+    card.onclick = function() { 
+      goAndShowRestaurant(coordinates, name);
+    }
   }
+
   container.appendChild(card); //to the DOM
 }
 
