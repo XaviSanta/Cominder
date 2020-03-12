@@ -1,3 +1,5 @@
+mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53OG1jM3o5MXoifQ._rJdKgn_Nx_wsi7blKBlCQ'; // replace this with your access token
+
 var points = []; // Points in the map
 var geojson = {
   "type": "FeatureCollection",
@@ -6,14 +8,13 @@ var geojson = {
 
 var groupsList = [];
 var offers = [];
-
 var chatId;
 var popup;
 var map;
 var userType = ''; // Will be type restaurant or client
 var username = 'Username'; // Name
 var restName = null; // Restaurant name
-
+var coordinatesMyRestaurant = [];
 const Port = 9035;
 var connection = null;
 

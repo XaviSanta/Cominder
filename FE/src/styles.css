@@ -10,6 +10,13 @@
   width: 100%;
 }
 
+#mapLogin {
+  position: absolute;
+  left: 340px;
+  height: 200px;
+  width: 200px;
+}
+
 .tab-pane {
   color: aliceblue;
   background-color: rgba(6, 42, 141, 0.63);

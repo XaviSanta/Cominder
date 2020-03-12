@@ -81,11 +81,17 @@ $('.registerForm-p').submit(function() {
 });
 
 async function createUserDBAsync(email, password, username, type, restaurant = null) {
+  var rest = null;
+  if(restaurant !== null) {
+    rest = await addRestaurantFromLogin(restaurant);
+  }
+
   let cred = await auth.createUserWithEmailAndPassword(email, password);
   return db.collection('users').doc(cred.user.uid).set({
     username,
     type,
     restaurant,
+    restaurantID: rest.id || null,
   });
 }
 
@@ -100,9 +106,9 @@ function sendLogin() {
 function openRegistration() {
   $('.sign-up').show();
 
-  $('.main').hide(800);
-  $('.sign-in').hide(800);
-  $('.landing').hide(800);
+  $('.main').hide(0);
+  $('.sign-in').hide(0);
+  $('.landing').hide(0);
 }
 
 function openLogin() {
@@ -140,4 +146,21 @@ function loginWgoogle() {
     var credential = error.credential;
     // ...
   });
+}
+
+
+function addRestaurantFromLogin(restaurantName) {
+  var geoPoint = {
+    type: "Feature",
+    properties: {
+      title: restaurantName,
+      description: 'todo'
+    },
+    geometry: {
+      coordinates: coordinatesMyRestaurant,
+      type: "Point"
+    }
+  }
+  // postRestaurant(geoPoint); 
+  return db.collection('points').add(geoPoint);
 }

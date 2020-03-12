@@ -50,7 +50,8 @@ $('#btn-create-offer').on('click', function () {
     description,
     extraInfo,
   }
-  addOffer(offer);
+  // addOffer(offer);
+  // db.collection('offers').doc().set(offer);
 });
 
 function addOffer(offer) {
