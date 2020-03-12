@@ -15,6 +15,7 @@ var userType = ''; // Will be type restaurant or client
 var username = 'Username'; // Name
 var restName = null; // Restaurant name
 var coordinatesMyRestaurant = [];
+var myRestID = null;
 const Port = 9035;
 var connection = null;
 

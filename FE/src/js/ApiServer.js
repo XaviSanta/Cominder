@@ -73,10 +73,10 @@ function processRequest() {
         //   "features": points,
         // };
         groupsList = res.groups;
-        offers = res.offers;
+        // offers = res.offers;
         // refreshMap();
         // updateRestaurantList();
-        updateOffersCarousel();
+        // updateOffersCarousel();
         break;
       case 'points':
       case 'point':

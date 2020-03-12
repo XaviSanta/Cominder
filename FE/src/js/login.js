@@ -19,6 +19,7 @@ async function setUserAsync(user) {
   username = doc.data().username;
   userType = doc.data().type;
   restName = doc.data().restaurant;
+  myRestID = doc.data().restaurantID;
   const html = `
     <div>Username: <span>${username}</span></div>
     <div>Emal: <span>${user.email}</span></div>

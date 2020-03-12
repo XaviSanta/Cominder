@@ -45,19 +45,29 @@ $('#btn-create-offer').on('click', function () {
   var restaurant = restName;
 
   var offer = {
+    restaurantID: myRestID,
     restaurant,
     title,
     description,
     extraInfo,
   }
-  // addOffer(offer);
-  // db.collection('offers').doc().set(offer);
+
+  addOffer(offer);
+  $('.create-offer').modal('hide');
 });
 
 function addOffer(offer) {
-  // TODO: Post offer
   var container = document.querySelector('.offers');
+  db.collection('offers').add(offer);
   appendOffer(container, offer);
-  $('.create-offer').modal('hide');
   // TODO: Reset modal
 }
+
+// Listener of database changes
+db.collection('offers').onSnapshot(function (snapShot) {
+  offers = [];
+  snapShot.forEach(doc =>  {
+    offers.push(doc.data());
+  });
+  updateOffersCarousel();
+});

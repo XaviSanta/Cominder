@@ -23,7 +23,7 @@ function updateRestaurantList() {
 
 function goAndShowRestaurant(coordinates, name) {
   flyTo(coordinates);
-  openGroupsOfRestaurant(name);
+  // openGroupsOfRestaurant(name);
 }
 
 function addRestaurantFromMap(lng, lst) {
