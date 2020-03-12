@@ -1,26 +1,34 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
-    // GET DATABASE USER
-    db.collection('users').doc(user.uid).get().then(doc => {
-      username = doc.data().username;
-      userType = doc.data().type;
-      restName = doc.data().restaurant;
-      const html = `
-        <div>Username: <span>${username}</span></div>
-        <div>Emal: <span>${user.email}</span></div>
-        <div>Type: <span>${userType}</span></div>
-        `;
-      $('.account-details .modal-body').html(html);
-      
-      connect(); // TODO: connect on groups not on global
-      openApp();
-    });
+    try {
+      setUserAsync(user);
+    } catch (err) {
+      alert(err)
+    }
   } else {
     $('.logged-in').hide();
     $('.logged-out').show();
   }
 });
+
+async function setUserAsync(user) {
+  let usersRef = db.collection('users');
+  let doc = await usersRef.doc(user.uid).get();
+
+  username = doc.data().username;
+  userType = doc.data().type;
+  restName = doc.data().restaurant;
+  const html = `
+    <div>Username: <span>${username}</span></div>
+    <div>Emal: <span>${user.email}</span></div>
+    <div>Type: <span>${userType}</span></div>
+    `;
+  $('.account-details .modal-body').html(html);
+
+  connect(); // TODO: connect on groups not on global
+  openApp();
+}
 
 $('.loginForm').submit(function() {
   var email = $('#email-login').val();
@@ -46,7 +54,12 @@ $('.registerForm-r').submit(function() {
     alert('Username invalid')
     return;
   }
-  createUserDB(email, password, username, 'restaurant', restaurant);
+
+  try {
+    createUserDBAsync(email, password, username, 'restaurant', restaurant);
+  } catch (error) {
+    alert(error)
+  }
   return false;
 });
 
@@ -58,22 +71,22 @@ $('.registerForm-p').submit(function() {
     alert('Username invalid')
     return;
   }
-  createUserDB(email, password, username, 'person');
+  
+  try {
+    createUserDBAsync(email, password, username, 'person');
+  } catch (error) {
+    alert(error)
+  }
   return false;
 });
 
-function createUserDB(email, password, username, type, restaurant = null) {
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(cred => {
-      return db.collection('users').doc(cred.user.uid).set({
-        username,
-        type,
-        restaurant,
-      });
-    })
-    .catch(err => {
-      alert(err);
-    });
+async function createUserDBAsync(email, password, username, type, restaurant = null) {
+  let cred = await auth.createUserWithEmailAndPassword(email, password);
+  return db.collection('users').doc(cred.user.uid).set({
+    username,
+    type,
+    restaurant,
+  });
 }
 
 function sendRegistration() {
