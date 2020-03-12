@@ -11,10 +11,6 @@ function openApp() {
   getInitInfo();
   $('.navbar-collapse').collapse('hide');
   
-  $('.offers-container').show();
-  $('.main').show();
-  $('#sign-in-btn').hide();
-  $('#sign-up-btn').hide();
   $('#username-btn').html(username);
   $('.logged-in').show();
   $('.logged-out').hide();

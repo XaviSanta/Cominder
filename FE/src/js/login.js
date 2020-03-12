@@ -1,6 +1,7 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user => {
   if(user) {
+    // GET DATABASE USER
     db.collection('users').doc(user.uid).get().then(doc => {
       username = doc.data().username;
       userType = doc.data().type;

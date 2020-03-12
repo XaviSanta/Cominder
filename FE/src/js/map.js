@@ -10,7 +10,6 @@ var map = new mapboxgl.Map({
 
 map.on('load', function(e) {
   numFeatures = geojson.features.length;
-  
 });
 
 function loadMyLayers() {
@@ -52,7 +51,7 @@ map.on('click', function(e) {
         '<h3>' + "Add Restaurant:" + '</h3>' + 
         '<input id="addGroupInput" placeholder="name">'+ 
         '<input id="descriptionGroup" placeholder="description">'+ 
-        `<button onClick="addRestaurantFromMap(${lng},${lat})">Add</button>`)
+        `<button class="btn btn-primary" onClick="addRestaurantFromMap(${lng},${lat})">Add</button>`)
       .addTo(map);
     return;
   }
@@ -131,9 +130,13 @@ function setDarkStyle() {
 map.on('style.load', () => {
   const waiting = () => {
     if (!map.isStyleLoaded()) {
-      setTimeout(waiting, 200);
+      setTimeout(waiting, 100);
     } else {
-      loadMyLayers();
+      try {
+        loadMyLayers();
+      } catch (e) {
+        console.log("error: ", e.message);
+      }
     }
   };
   waiting();

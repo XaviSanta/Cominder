@@ -58,4 +58,5 @@ function addOffer(offer) {
   var container = document.querySelector('.offers');
   appendOffer(container, offer);
   $('.create-offer').modal('hide');
+  // TODO: Reset modal
 }
