@@ -5,7 +5,8 @@ function updateRestaurantList() {
   }
 
   // Append restaurants to the container list
-  var restaurants = geojson.features;
+  var restaurants = points;
+  console.log(restaurants)
   restaurants.forEach(r => {
     var name = r.properties.title;
     var temp = document.querySelector('#templates .restaurant-li');
@@ -42,5 +43,21 @@ function addRestaurantFromMap(lng, lst) {
       type: "Point"
     }
   }
-  postRestaurant(geoPoint); 
+  // postRestaurant(geoPoint); 
+  db.collection('points').doc().set(geoPoint);
+  if (popup !== undefined) {
+    popup.remove();
+  }
 }
+
+// Listener of database changes
+db.collection('points')
+  .onSnapshot(function (snapShot) {
+    points = [];
+    snapShot.forEach(doc =>  {
+      points.push(doc.data());
+    });
+    geojson.features = points;
+    refreshMap();
+    updateRestaurantList();
+});

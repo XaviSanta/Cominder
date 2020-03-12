@@ -39,14 +39,14 @@ function getMyChats() {
 
 // POSTS
 function postRestaurant(geoPoint) {
-  xhr = new XMLHttpRequest();
-  xhr.open('POST', `${PATH}/point`, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(geoPoint));
-  xhr.onreadystatechange = processRequest;
-  if(popup !== undefined) {
-    popup.remove()
-  }
+  // xhr = new XMLHttpRequest();
+  // xhr.open('POST', `${PATH}/point`, true);
+  // xhr.setRequestHeader('Content-Type', 'application/json');
+  // xhr.send(JSON.stringify(geoPoint));
+  // xhr.onreadystatechange = processRequest;
+  // if(popup !== undefined) {
+  //   popup.remove()
+  // }
 }
 
 function postNewGroup(group) {
@@ -67,26 +67,26 @@ function processRequest() {
     var res = JSON.parse(xhr.responseText);
     switch (endpoint) {
       case 'info':
-        points = res.points;
-        geojson = {
-          "type": "FeatureCollection",
-          "features": points,
-        };
+        // points = res.points;
+        // geojson = {
+        //   "type": "FeatureCollection",
+        //   "features": points,
+        // };
         groupsList = res.groups;
         offers = res.offers;
-        refreshMap();
-        updateRestaurantList();
+        // refreshMap();
+        // updateRestaurantList();
         updateOffersCarousel();
         break;
       case 'points':
       case 'point':
-        points = res;
-        geojson = {
-          "type": "FeatureCollection",
-          "features": points,
-        };
-        refreshMap();
-        updateRestaurantList();
+        // points = res;
+        // geojson = {
+        //   "type": "FeatureCollection",
+        //   "features": points,
+        // };
+        // refreshMap();
+        // updateRestaurantList();
         break;
       case 'groups':
         groupsList = res;

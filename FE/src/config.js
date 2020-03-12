@@ -1,5 +1,9 @@
-var geojson = []; 
 var points = []; // Points in the map
+var geojson = {
+  "type": "FeatureCollection",
+  "features": points,
+};
+
 var groupsList = [];
 var offers = [];
 
