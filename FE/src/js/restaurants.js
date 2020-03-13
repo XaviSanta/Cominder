@@ -6,7 +6,6 @@ function updateRestaurantList() {
 
   // Append restaurants to the container list
   var restaurants = points;
-  console.log(restaurants)
   restaurants.forEach(r => {
     var name = r.properties.title;
     var temp = document.querySelector('#templates .restaurant-li');
@@ -23,7 +22,7 @@ function updateRestaurantList() {
 
 function goAndShowRestaurant(coordinates, name) {
   flyTo(coordinates);
-  // openGroupsOfRestaurant(name);
+  // openGroupsOfRestaurant(name); // TODO: DB
 }
 
 function addRestaurantFromMap(lng, lst) {

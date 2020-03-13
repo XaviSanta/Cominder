@@ -56,16 +56,9 @@ $('#btn-create-offer').on('click', function () {
     extraInfo,
   }
 
-  addOffer(offer);
+  db.collection('offers').add(offer);
   $('.create-offer').modal('hide');
 });
-
-function addOffer(offer) {
-  var container = document.querySelector('.offers');
-  db.collection('offers').add(offer);
-  appendOffer(container, offer);
-  // TODO: Reset modal
-}
 
 // Listener of database changes
 db.collection('offers').onSnapshot(function (snapShot) {
