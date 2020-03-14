@@ -42,7 +42,8 @@ function addRestaurantFromMap(lng, lst) {
         lst
       ],
       type: "Point"
-    }
+    },
+    groups: [],
   }
 
   newPointRef.set(geoPoint);

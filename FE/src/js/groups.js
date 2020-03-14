@@ -57,10 +57,10 @@ $('#btn-create-group').on('click', function () {
   var restaurantID = $('#createGroupModal').find('.modal-title').attr('RestaurantID');
   var groupName = $('#recipient-name').val();
   var maxMembers = $('#max-num-members').val();
-  addGroupToRestaurant(restaurantID, groupName, maxMembers);
+  addGroupToRestaurantAsync(restaurantID, groupName, maxMembers);
 })
 
-function addGroupToRestaurant(restaurantID, groupName, maxMembers) {
+async function addGroupToRestaurantAsync(restaurantID, groupName, maxMembers) {
   var group = {
     restaurantID,
     "title": groupName,
@@ -69,8 +69,14 @@ function addGroupToRestaurant(restaurantID, groupName, maxMembers) {
     "users": [username],
   };
 
+  var newGroupRef = db.collection('groups').doc();
+  var restaurantRef = await db.collection('points').doc(restaurantID);
+  // Add new groupID to the list
+  restaurantRef.update({
+    groups: firebase.firestore.FieldValue.arrayUnion(newGroupRef.id +'')
+  });
   updateGroupsList(groupsList, restaurantID);
-  db.collection('groups').add(group);
+  newGroupRef.set(group);
   $('#createGroupModal').modal('hide');
 }
 
