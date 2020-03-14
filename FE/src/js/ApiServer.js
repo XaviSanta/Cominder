@@ -16,10 +16,11 @@ function getMapPoints() {
 }
 
 function getGroups() {
-  xhr = new XMLHttpRequest();
-  xhr.open('GET', `${PATH}/groups`, true);
-  xhr.send();
-  xhr.onreadystatechange = processRequest;
+  updateGroupsList(groupsList);
+  // xhr = new XMLHttpRequest();
+  // xhr.open('GET', `${PATH}/groups`, true);
+  // xhr.send();
+  // xhr.onreadystatechange = processRequest;
 }
 
 function getChat(id) {
@@ -50,14 +51,14 @@ function postRestaurant(geoPoint) {
 }
 
 function postNewGroup(group) {
-  xhr = new XMLHttpRequest();
-  xhr.open('POST', `${PATH}/group`, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify(group));
-  xhr.onreadystatechange = processRequest;
-  if(popup !== undefined) {
-    popup.remove()
-  }
+  // xhr = new XMLHttpRequest();
+  // xhr.open('POST', `${PATH}/group`, true);
+  // xhr.setRequestHeader('Content-Type', 'application/json');
+  // xhr.send(JSON.stringify(group));
+  // xhr.onreadystatechange = processRequest;
+  // if(popup !== undefined) {
+  //   popup.remove()
+  // }
 }
 
 // HANDLE RESPONSE
