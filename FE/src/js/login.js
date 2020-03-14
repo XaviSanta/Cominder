@@ -82,9 +82,10 @@ $('.registerForm-p').submit(function() {
 });
 
 async function createUserDBAsync(email, password, username, type, restaurant = null) {
-  var rest = null;
+  var restaurantID = null;
   if(restaurant !== null) {
-    rest = await addRestaurantFromLogin(restaurant);
+    const rest = await addRestaurantFromLogin(restaurant);
+    restaurantID = rest.id;
   }
 
   let cred = await auth.createUserWithEmailAndPassword(email, password);
@@ -92,7 +93,7 @@ async function createUserDBAsync(email, password, username, type, restaurant = n
     username,
     type,
     restaurant,
-    restaurantID: rest.id || null,
+    restaurantID,
   });
 }
 
@@ -151,10 +152,12 @@ function loginWgoogle() {
 
 
 function addRestaurantFromLogin(restaurantName) {
+  const newPointRef = db.collection('points').doc();
   var geoPoint = {
     type: "Feature",
     properties: {
       title: restaurantName,
+      RID: newPointRef.id,
       description: 'todo'
     },
     geometry: {
@@ -162,6 +165,6 @@ function addRestaurantFromLogin(restaurantName) {
       type: "Point"
     }
   }
-  // postRestaurant(geoPoint); 
-  return db.collection('points').add(geoPoint);
+  newPointRef.set(geoPoint);
+  return newPointRef;
 }

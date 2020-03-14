@@ -72,7 +72,7 @@ function processRequest() {
         //   "type": "FeatureCollection",
         //   "features": points,
         // };
-        groupsList = res.groups;
+        // groupsList = res.groups;
         // offers = res.offers;
         // refreshMap();
         // updateRestaurantList();
@@ -89,15 +89,15 @@ function processRequest() {
         // updateRestaurantList();
         break;
       case 'groups':
-        groupsList = res;
-        updateGroupsList(groupsList);
+        // groupsList = res;
+        // updateGroupsList(groupsList);
         break;
       case 'group':
-        groupsList = res.result;
-        updateGroupsList(groupsList, res.result.find(g => g.id === res.id).restaurant); // Get name of the restaurant to filter on the list
+        // groupsList = res.result;
+        // updateGroupsList(groupsList, res.result.find(g => g.id === res.id).restaurant); // Get name of the restaurant to filter on the list
         break;
       case 'my-groups':
-        updateGroupsList(res);
+        // updateGroupsList(res);
         break;
       case 'chat':
         if(res.errMsg === null){

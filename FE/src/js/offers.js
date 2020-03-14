@@ -18,10 +18,10 @@ async function appendOfferAsync(container, o) {
   card.querySelector('.text-muted').innerText = o.extraInfo;
   var restDoc = await db.collection('points').doc(o.restaurantID).get();
   var coordinates = restDoc.data().geometry.coordinates;
-  var name = restDoc.data().properties.title;
   if(restDoc.exists) {
     card.onclick = function() { 
-      goAndShowRestaurant(coordinates, name);
+      console.log(name)
+      goAndShowRestaurant(coordinates, o.restaurantID);
     }
   }
 

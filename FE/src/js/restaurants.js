@@ -13,26 +13,28 @@ function updateRestaurantList() {
     var numGroups = groupsList.filter(g => g.restaurant === name).length;
     li.getElementsByClassName('badge')[0].innerText = numGroups;
     li.getElementsByClassName('name-group-template')[0].innerText = name;
-    li.querySelector('a').onclick = function() { 
-      goAndShowRestaurant(r.geometry.coordinates, name)
+    li.querySelector('a').onclick = function() {
+      goAndShowRestaurant(r.geometry.coordinates, r.properties.RID)
     }
     container.appendChild(li); //to the DOM
   });
 }
 
-function goAndShowRestaurant(coordinates, name) {
+function goAndShowRestaurant(coordinates, RID) {
   flyTo(coordinates);
-  // openGroupsOfRestaurant(name); // TODO: DB
+  openGroupsOfRestaurant(RID);
 }
 
 function addRestaurantFromMap(lng, lst) {
   var restaurantName = $('#addGroupInput').val();
   var descriptionGroup = $('#descriptionGroup').val();
+  var newPointRef = db.collection('points').doc();
   var geoPoint = {
     type: "Feature",
     properties: {
       title: restaurantName,
-      description: descriptionGroup
+      RID: newPointRef.id,
+      description: descriptionGroup,
     },
     geometry: {
       coordinates: [
@@ -42,8 +44,8 @@ function addRestaurantFromMap(lng, lst) {
       type: "Point"
     }
   }
-  // postRestaurant(geoPoint); 
-  db.collection('points').doc().set(geoPoint);
+
+  newPointRef.set(geoPoint);
   if (popup !== undefined) {
     popup.remove();
   }

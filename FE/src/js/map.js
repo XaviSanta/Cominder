@@ -31,7 +31,7 @@ function loadMyLayers() {
       'text-allow-overlap': true,
     },
     paint: {
-      "text-color": "#000"
+      "text-color": textColor
     }
   });
 }
@@ -55,14 +55,14 @@ map.on('click', function(e) {
   }
 
   var feature = features[0];
-
-  popup = new mapboxgl.Popup({ offset: [0, -15] })
+  console.log(features)
+  popup = new mapboxgl.Popup({ offset: [0, 0] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML(
       '<h3>' + feature.properties.title + '</h3> '+
       '<p>' + feature.properties.description + '</p>' +
       `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createGroupModal" `+
-      `data-whatever="${feature.properties.title}">Add Group</button>`)
+      `data-rest-name="${feature.properties.title}" data-rest-id="${feature.properties.RID}">Add Group</button>`)
     .addTo(map);
 });
 
@@ -106,18 +106,23 @@ function updateMap() {
 }
 
 $('#list-map').on('shown.bs.tab', function (e) {
-  $('.mapboxgl-ctrl-geocoder').show(800);
+  $('.mapboxgl-ctrl-geocoder').show();
 });
 $('#list-map').on('hide.bs.tab', function (e) {
   $('.mapboxgl-ctrl-geocoder').hide();
 });
 
 var isDarkModeON = false;
-
+var textColor = '#000';
 function setDarkStyle() {
-  var style = isDarkModeON ?
-    'mapbox://styles/xavisanta/ck7i792ip5snm1jsh5q9mtf37' :
-    'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu';
+  var style;
+  if (isDarkModeON) {
+    textColor = '#000';
+    style = 'mapbox://styles/xavisanta/ck7i792ip5snm1jsh5q9mtf37';
+  } else {
+    textColor = '#fff';
+    style = 'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu';
+  }
 
   map.setStyle(style);
 

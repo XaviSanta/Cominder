@@ -1,69 +1,85 @@
-function openGroupsOfRestaurant(name) {
+function openGroupsOfRestaurant(RID) {
   // Hide the list of restaurants when opening the groups
   $('.tab-pane.fade.active.show').removeClass('active');
   $('.tab-pane.fade.active.show').removeClass('show');
   
   $('#list-groups').tab('show');
-  $('.mapboxgl-ctrl-geocoder').hide(800);
+  $('.mapboxgl-ctrl-geocoder').hide();
   $('#list-map').removeClass('active');
   $('#list-map').removeClass('show');
   
-  updateGroupsList(groupsList, name);
+  updateGroupsList(groupsList, RID);
 }
 
-function updateGroupsList(groups, nameFilter = null) {
-  var container = document.querySelector('#groups-list-group');
-  removeChilds(container);
+function updateGroupsList(groups, RID = null) {
+    var container = document.querySelector('#groups-list-group');
+    removeChilds(container);
+    
+    // Change name of title
+    var title = (RID === null) ? 
+      'Groups' : 
+      `Groups in ${points.find(p => p.properties.RID == RID).properties.title}`;
 
-  // Change name of title
-  var title = (nameFilter === null) ? 'Groups' : `Groups in ${nameFilter}`;
-  $('#list-title-group').text(title);
+    $('#list-title-group').text(title);
 
-  // Append groups to the container list
-  if(nameFilter !== null) groups = groups.filter(g => g.restaurant === nameFilter);
-
-  groups.forEach(g => {
-    var temp = document.querySelector('#templates .group-li');
-    var li = temp.cloneNode(true);
-    li.querySelector('.name-group-template').innerText = g.title;
-    li.querySelector('.badge').innerText = `${g.members}/${g["max-members"]}`;
-    li.querySelector('a').onclick = function() { 
-      // Get the chat info from Server: (name, users, messages)
-      getChat(g.id);
+    if(RID !== null) {
+      groups = groups.filter(g => g.restaurantID == RID);
     }
-    container.appendChild(li); //to the DOMs
-  });
+
+    groups.forEach(g => {
+      var temp = document.querySelector('#templates .group-li');
+      var li = temp.cloneNode(true);
+      li.querySelector('.name-group-template').innerText = g.title;
+      li.querySelector('.badge').innerText = `${g.members}/${g["max-members"]}`;
+      li.querySelector('a').onclick = function() { 
+        // Get the chat info from Server: (name, users, messages)
+        // getChat(g.id);
+        console.log('Group clicked:', g)
+      }
+      container.appendChild(li); //to the DOMs
+    });
+  
 }
 
-function addGroupToRestaurant(restaurantName, groupName, maxMembers) {
+
+$('#createGroupModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget); // Button that triggered the modal
+  var recipient = button.data('rest-name'); // Extract info from data-* attributes
+  var restId = button.data('rest-id'); 
+  var modal = $(this);
+  modal.find('.modal-title').text('New group to ' + recipient);
+  // modal.find('.modal-title').attr('RestaurantAttr', recipient);
+  modal.find('.modal-title').attr('RestaurantID', restId);
+  modal.find('#recipient-name').attr('placeholder', 'Type your group name here');
+});
+
+$('#btn-create-group').on('click', function () {
+  var restaurantID = $('#createGroupModal').find('.modal-title').attr('RestaurantID');
+  var groupName = $('#recipient-name').val();
+  var maxMembers = $('#max-num-members').val();
+  addGroupToRestaurant(restaurantID, groupName, maxMembers);
+})
+
+function addGroupToRestaurant(restaurantID, groupName, maxMembers) {
   var group = {
-    "restaurant": restaurantName,
+    restaurantID,
     "title": groupName,
     "members" : 1,
     "max-members" : maxMembers,
     "users": [username],
   };
 
-  groupsList.push(group);
-  updateGroupsList(groupsList, restaurantName);
-  postNewGroup(group);
+  updateGroupsList(groupsList, restaurantID);
+  db.collection('groups').add(group);
   $('#createGroupModal').modal('hide');
 }
 
-$('#createGroupModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var recipient = button.data('whatever'); // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this);
-  modal.find('.modal-title').text('New group to ' + recipient);
-  modal.find('.modal-title').attr('RestaurantAttr', recipient);
-  modal.find('#recipient-name').attr('placeholder', 'Type your group name here');
+// Listener of database changes
+db.collection('groups').onSnapshot(snapShot => {
+  groupsList = [];
+  snapShot.forEach(doc =>  {
+    groupsList.push(doc.data());
+  });
+  console.log('asdfasdf')
+  updateGroupsList(groupsList);
 });
-
-$('#btn-create-group').on('click', function () {
-  var restaurantName = $('#createGroupModal').find('.modal-title').attr('RestaurantAttr');
-  var groupName = $('#recipient-name').val();
-  var maxMembers = $('#max-num-members').val();
-  addGroupToRestaurant(restaurantName, groupName, maxMembers);
-})
