@@ -3,6 +3,7 @@ function connect() {
   
   connection.onopen = () => {
     console.log('Connection is open and ready to use');
+    connected = true;
     connection.send(JSON.stringify({
       type: 'login', 
       data: {username, password:'123'}
@@ -35,6 +36,6 @@ function connect() {
 
   connection.onerror = (err) => {
     console.log('An error ocurred', err);
-    alert('An error ocurred, refresh the page');
+    connected = false;
   }; 
 }

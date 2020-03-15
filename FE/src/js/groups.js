@@ -83,6 +83,20 @@ async function addGroupToRestaurantAsync(restaurantID, groupName, maxMembers) {
   if (popup !== undefined) {
     popup.remove();
   }
+
+  // Add new Chat into the db
+  db.collection('chats').doc(newGroupRef.id).set({
+    id: newGroupRef.id + '',
+    title: groupName, // TODO: Remove this as we already have the ID
+    userLimit: maxMembers,
+    usersJoined: 1,
+    messages: [
+      {
+        author: '',
+        content: `${username} created the group`
+      },
+    ],
+  });
 }
 
 // Listener of database changes

@@ -45,15 +45,19 @@ async function getChat(id, username) {
     };
   }
 
-  var chat = chats.find(c => c.id == id);
-  var groupRef = fs.collection('groups').doc(id);
-  var groupDoc = await groupRef.get();
+  var chatRef = fs.collection('chats').doc(id);
+  var chatDoc = await chatRef.get();
+  var chat = chatDoc.data();
+  console.log('chat', chat)
   if(chat === undefined) {
     return {
       errMsg: 'This chat no longer exists',
       result: null,
     };
   }
+  
+  var groupRef = fs.collection('groups').doc(id);
+  var groupDoc = await groupRef.get();
   var group = groupDoc.data();
   if(!group.users.includes(username)) {
     if(group.members < group['max-members']) {
@@ -110,12 +114,14 @@ function addChat(group) {
 }
 
 function addMessageToChat(msg) {
-  chats.find(c => c.id === msg.chatId)
-    .messages.push({
+  let chatRef = fs.collection('chats').doc(msg.chatId);
+  console.log(msg)
+  chatRef.update({
+    messages: firebase.firestore.FieldValue.arrayUnion({
       author: msg.author,
       content: msg.content,
-    });
-
+    }),
+  })
 }
 // ------------------------------------------
 module.exports = {
