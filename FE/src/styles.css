@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#btnSubmitRegisterRest:disabled {
+  cursor: not-allowed;
+}
+
 #map {
   position: absolute;
   height: 100%;
