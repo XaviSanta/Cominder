@@ -93,8 +93,15 @@ function addGroup(group) {
   };
 }
 
-function getGroupsByUsername(username) {
-  return groups.filter(g => g.users.includes(username) === true);
+async function getGroupsByUsername(username) {
+  let groupsRef = fs.collection('groups');
+  let groupsDoc = await groupsRef.where("users", "array-contains", username).get();
+  let groups = [];
+  groupsDoc.forEach(doc => {
+    groups.push(doc.data());
+  });
+
+  return groups;
 }
 // ------------------------------------------
 function addChat(group) {

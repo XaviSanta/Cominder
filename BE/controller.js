@@ -41,8 +41,8 @@ app.get('/chat/:id/:username', async (req, res) => {
   res.json(result);
 });
 //    my groups
-app.get('/my-groups/:username', (req, res) => {
-  const result = service.getGroupsByUsername(req.params.username);
+app.get('/my-groups/:username', async (req, res) => {
+  const result = await service.getGroupsByUsername(req.params.username);
   res.json(result);
 });
 

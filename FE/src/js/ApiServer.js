@@ -98,7 +98,7 @@ function processRequest() {
         // updateGroupsList(groupsList, res.result.find(g => g.id === res.id).restaurant); // Get name of the restaurant to filter on the list
         break;
       case 'my-groups':
-        // updateGroupsList(res);
+        updateGroupsList(res);
         break;
       case 'chat':
         if(res.errMsg === null){
