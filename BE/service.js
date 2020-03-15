@@ -1,4 +1,15 @@
 var db = require('./databases');
+var firebase = require('firebase');
+var firebaseConfig = {
+  apiKey: "AIzaSyDMBw3oxC1gDl-tI2NhpAtb-Ziyx8MJOTI",
+  authDomain: "cominder-24c77.firebaseapp.com",
+  databaseURL: "https://cominder-24c77.firebaseio.com",
+  projectId: "cominder-24c77",
+};
+firebase.initializeApp(firebaseConfig);
+
+// Make auth and firestore references
+const fs = firebase.firestore();
 
 var points = db.points;// TODO: Use DB
 var groups = db.groupsList; // TODO: Use DB
@@ -25,7 +36,7 @@ function getOffers() {
   return offers;
 }
 
-function getChat(id, username) {
+async function getChat(id, username) {
   if (username === undefined) {
     return {
       errMsg: 'Username not valid',
@@ -33,30 +44,35 @@ function getChat(id, username) {
     };
   }
 
-  var chat = chats.find(c => c.id == id);
-  var group = groups.find(c => c.id == id);
+  var chatRef = fs.collection('chats').doc(id);
+  var chatDoc = await chatRef.get();
+  var chat = chatDoc.data();
   if(chat === undefined) {
     return {
       errMsg: 'This chat no longer exists',
       result: null,
     };
   }
-
+  
+  var groupRef = fs.collection('groups').doc(id);
+  var groupDoc = await groupRef.get();
+  var group = groupDoc.data();
   if(!group.users.includes(username)) {
     if(group.members < group['max-members']) {
-      group.members++;
-      group.users.push(username)
+      groupRef.update({
+        members: group.members+1,
+        users: firebase.firestore.FieldValue.arrayUnion(username),
+      })
     } else {
       return {
         errMsg: 'The chat is full',
         result: null,
       };
     }
-      
   }
   return {
     errMsg: null,
-    result: chats.find(c => c.id == id),
+    result: chat,
   };
 }
 
@@ -75,8 +91,15 @@ function addGroup(group) {
   };
 }
 
-function getGroupsByUsername(username) {
-  return groups.filter(g => g.users.includes(username) === true);
+async function getGroupsByUsername(username) {
+  let groupsRef = fs.collection('groups');
+  let groupsDoc = await groupsRef.where("users", "array-contains", username).get();
+  let groups = [];
+  groupsDoc.forEach(doc => {
+    groups.push(doc.data());
+  });
+
+  return groups;
 }
 // ------------------------------------------
 function addChat(group) {
@@ -96,12 +119,13 @@ function addChat(group) {
 }
 
 function addMessageToChat(msg) {
-  chats.find(c => c.id === msg.chatId)
-    .messages.push({
+  let chatRef = fs.collection('chats').doc(msg.chatId);
+  chatRef.update({
+    messages: firebase.firestore.FieldValue.arrayUnion({
       author: msg.author,
       content: msg.content,
-    });
-
+    }),
+  })
 }
 // ------------------------------------------
 module.exports = {

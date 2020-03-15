@@ -36,13 +36,13 @@ app.get('/offers', (req, res) => {
   res.json(result);
 });
 //    specified chat
-app.get('/chat/:id/:username', (req, res) => {
-  const result = service.getChat(req.params.id, req.params.username);
+app.get('/chat/:id/:username', async (req, res) => {
+  const result = await service.getChat(req.params.id, req.params.username);
   res.json(result);
 });
 //    my groups
-app.get('/my-groups/:username', (req, res) => {
-  const result = service.getGroupsByUsername(req.params.username);
+app.get('/my-groups/:username', async (req, res) => {
+  const result = await service.getGroupsByUsername(req.params.username);
   res.json(result);
 });
 
@@ -59,14 +59,17 @@ app.post('/group', (req, res) => {
 });
 
 // ------------------  WEB SOCKET  -------------------------------
+var connections = []; // List of connections users connected to the webSocket
 wss.on('connection', (ws) => {
   ws.send(JSON.stringify({type: 'LoginOK', data: 'Hi there, I am a WebSocket server'}));
   var username = undefined;
+  var index;
 
   ws.on('message', (message) => {
     const msg = JSON.parse(message);
     switch (msg.type) {
       case 'login':
+        index = connections.push(ws) - 1; 
         username = msg.data.username;
         console.log('New WebSocket User: ' + username);
         break;
@@ -90,6 +93,9 @@ wss.on('connection', (ws) => {
 
   ws.on('close', (connection) => {
     console.log('User is gone');
+
+    // Remove user from the list
+    connections.splice(index, 1);
   });
 });
 

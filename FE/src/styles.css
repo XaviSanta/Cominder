@@ -4,10 +4,19 @@
   box-sizing: border-box;
 }
 
+#btnSubmitRegisterRest:disabled {
+  cursor: not-allowed;
+}
+
 #map {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+#mapLogin {
+  width: 100%;
+  height: 300px;
 }
 
 .tab-pane {

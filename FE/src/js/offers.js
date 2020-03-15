@@ -6,21 +6,24 @@ function updateOffersCarousel() {
 
   // Append offers to the container
   offers.forEach(o => {
-    appendOffer(container, o);
+    appendOfferAsync(container, o);
   });
 }
 
-function appendOffer(container, o) {
+async function appendOfferAsync(container, o) {
   var temp = document.querySelector('#templates .card-offer');
   var card = temp.cloneNode(true);
   card.querySelector('.card-header').innerText = `${o.title}`;
   card.querySelector('.card-text').innerText = o.description;
   card.querySelector('.text-muted').innerText = o.extraInfo;
-  card.onclick = function() { 
-    var restaurant = geojson.features.filter(r => r.properties.title === o.restaurant)
-    var coordinates = restaurant[0].geometry.coordinates;
-    goAndShowRestaurant(coordinates, o.restaurant);
+  var restDoc = await db.collection('points').doc(o.restaurantID).get();
+  var coordinates = restDoc.data().geometry.coordinates;
+  if(restDoc.exists) {
+    card.onclick = function() { 
+      goAndShowRestaurant(coordinates, o.restaurantID);
+    }
   }
+
   container.appendChild(card); //to the DOM
 }
 
@@ -45,17 +48,22 @@ $('#btn-create-offer').on('click', function () {
   var restaurant = restName;
 
   var offer = {
+    restaurantID: myRestID,
     restaurant,
     title,
     description,
     extraInfo,
   }
-  addOffer(offer);
+
+  db.collection('offers').add(offer);
+  $('.create-offer').modal('hide');
 });
 
-function addOffer(offer) {
-  // TODO: Post offer
-  var container = document.querySelector('.offers');
-  appendOffer(container, offer);
-  $('.create-offer').modal('hide');
-}
+// Listener of database changes
+db.collection('offers').onSnapshot(function (snapShot) {
+  offers = [];
+  snapShot.forEach(doc =>  {
+    offers.push(doc.data());
+  });
+  updateOffersCarousel();
+});
