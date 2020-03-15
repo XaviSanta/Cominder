@@ -20,7 +20,6 @@ async function appendOfferAsync(container, o) {
   var coordinates = restDoc.data().geometry.coordinates;
   if(restDoc.exists) {
     card.onclick = function() { 
-      console.log(name)
       goAndShowRestaurant(coordinates, o.restaurantID);
     }
   }

@@ -96,7 +96,6 @@ wss.on('connection', (ws) => {
 
     // Remove user from the list
     connections.splice(index, 1);
-    console.log('connetion', connections.length)
   });
 });
 

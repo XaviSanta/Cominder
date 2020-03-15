@@ -105,6 +105,5 @@ db.collection('groups').onSnapshot(snapShot => {
   snapShot.forEach(doc =>  {
     groupsList.push(doc.data());
   });
-  console.log('asdfasdf')
   updateGroupsList(groupsList);
 });

@@ -37,7 +37,6 @@ function getOffers() {
 }
 
 async function getChat(id, username) {
-  console.log(id, username)
   if (username === undefined) {
     return {
       errMsg: 'Username not valid',
@@ -48,7 +47,6 @@ async function getChat(id, username) {
   var chatRef = fs.collection('chats').doc(id);
   var chatDoc = await chatRef.get();
   var chat = chatDoc.data();
-  console.log('chat', chat)
   if(chat === undefined) {
     return {
       errMsg: 'This chat no longer exists',
@@ -122,7 +120,6 @@ function addChat(group) {
 
 function addMessageToChat(msg) {
   let chatRef = fs.collection('chats').doc(msg.chatId);
-  console.log(msg)
   chatRef.update({
     messages: firebase.firestore.FieldValue.arrayUnion({
       author: msg.author,
