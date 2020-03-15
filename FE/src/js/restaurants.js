@@ -10,7 +10,8 @@ function updateRestaurantList() {
     var name = r.properties.title;
     var temp = document.querySelector('#templates .restaurant-li');
     var li = temp.cloneNode(true);
-    var numGroups = groupsList.filter(g => g.restaurant === name).length;
+    var numGroups = 0;
+    if(r.groups) numGroups = r.groups.length;
     li.getElementsByClassName('badge')[0].innerText = numGroups;
     li.getElementsByClassName('name-group-template')[0].innerText = name;
     li.querySelector('a').onclick = function() {

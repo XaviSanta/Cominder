@@ -33,7 +33,8 @@ function updateGroupsList(groups, RID = null) {
       li.querySelector('.badge').innerText = `${g.members}/${g["max-members"]}`;
       li.querySelector('a').onclick = function() { 
         // Get the chat info from Server: (name, users, messages)
-        // getChat(g.id);
+        console.log(g.id)
+        getChat(g.id);
         console.log('Group clicked:', g)
       }
       container.appendChild(li); //to the DOMs
@@ -61,15 +62,16 @@ $('#btn-create-group').on('click', function () {
 })
 
 async function addGroupToRestaurantAsync(restaurantID, groupName, maxMembers) {
+  var newGroupRef = db.collection('groups').doc();
   var group = {
+    id: newGroupRef.id +'',
     restaurantID,
-    "title": groupName,
-    "members" : 1,
-    "max-members" : maxMembers,
-    "users": [username],
+    'title': groupName,
+    'members' : 1,
+    'max-members' : maxMembers,
+    'users': [username],
   };
 
-  var newGroupRef = db.collection('groups').doc();
   var restaurantRef = await db.collection('points').doc(restaurantID);
   // Add new groupID to the list
   restaurantRef.update({
@@ -78,6 +80,9 @@ async function addGroupToRestaurantAsync(restaurantID, groupName, maxMembers) {
   updateGroupsList(groupsList, restaurantID);
   newGroupRef.set(group);
   $('#createGroupModal').modal('hide');
+  if (popup !== undefined) {
+    popup.remove();
+  }
 }
 
 // Listener of database changes

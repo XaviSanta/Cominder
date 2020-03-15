@@ -188,7 +188,7 @@ var offersList = [{
 
 var chatsList = [
   {
-    id: 1,
+    id: 'ZesHuP6BX1J0kOGgAaAX',
     title: 'Student group',
     userLimit: 4,
     usersJoined: 2,
