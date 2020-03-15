@@ -16,10 +16,11 @@ async function setUserAsync(user) {
   let usersRef = db.collection('users');
   let doc = await usersRef.doc(user.uid).get();
 
-  username = doc.data().username;
   userType = doc.data().type;
   restName = doc.data().restaurant;
   myRestID = doc.data().restaurantID;
+  username = doc.data().username;
+  
   const html = `
     <div>Username: <span>${username}</span></div>
     <div>Emal: <span>${user.email}</span></div>
@@ -53,7 +54,11 @@ $('.registerForm-r').submit(function() {
   var password = $('#rest-pass-register').val();
   if(!isValidString(username)) {
     alert('Username invalid')
-    return;
+    return false;
+  }
+  if(password.length < 6) {
+    alert('Password should be at least 6 characters');
+    return false;
   }
 
   try {
@@ -70,8 +75,13 @@ $('.registerForm-p').submit(function() {
   var password = $('#person-pass-register').val();
   if(!isValidString(username)) {
     alert('Username invalid')
-    return;
+    return false;
   }
+  if(password.length < 6) {
+    alert('Password should be at least 6 characters');
+    return false;
+  }
+
   
   try {
     createUserDBAsync(email, password, username, 'person');
