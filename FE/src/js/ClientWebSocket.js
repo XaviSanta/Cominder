@@ -4,6 +4,8 @@ function connect() {
   connection.onopen = () => {
     console.log('Connection is open and ready to use');
     $('#connectedDot').css('color', 'chartreuse');
+    $('#reconnect').html('Reconnect');
+
     connection.send(JSON.stringify({
       type: 'login', 
       data: {username}
@@ -37,16 +39,20 @@ function connect() {
   connection.onerror = (err) => {
     console.log('An error ocurred', err);
     $('#connectedDot').css('color', 'red');
+    $('#reconnect').html('Reconnect');
   }; 
 
   connection.onclose = (e) => {
     $('#connectedDot').css('color', 'red');
     $('#reconnect').prop('disabled', false);
+    $('#reconnect').html('Reconnect');
   }; 
 }
 
 function reconnect() {
+  $('#reconnect').html('Reconnecting...');
   connect();
   $('#reconnect').prop('disabled', true);
   // TODO: Hide search element from behind
+
 }
