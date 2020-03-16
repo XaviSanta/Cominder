@@ -3,11 +3,10 @@ function connect() {
   
   connection.onopen = () => {
     console.log('Connection is open and ready to use');
-    connected = true;
     $('#connectedDot').css('color', 'chartreuse');
     connection.send(JSON.stringify({
       type: 'login', 
-      data: {username, password:'123'}
+      data: {username}
     }));
   };
 
@@ -37,7 +36,17 @@ function connect() {
 
   connection.onerror = (err) => {
     console.log('An error ocurred', err);
-    connected = false;
     $('#connectedDot').css('color', 'red');
   }; 
+
+  connection.onclose = (e) => {
+    $('#connectedDot').css('color', 'red');
+    $('#reconnect').prop('disabled', false);
+  }; 
+}
+
+function reconnect() {
+  connect();
+  $('#reconnect').prop('disabled', true);
+  // TODO: Hide search element from behind
 }

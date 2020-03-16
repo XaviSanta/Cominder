@@ -14,6 +14,12 @@ function openChat(infoChat) { // TODO : CHANGE pass id
   let container = document.querySelector('#chat-messages');
   container.scrollTop = container.scrollHeight;
   
+  // Set connected dot color 
+  if(connection.readyState === 1) {
+    $('#connectedDot').css('color', 'chartreuse');
+  } else {
+    $('#connectedDot').css('color', 'red');
+  }
 }
 
 function updateChat(infoChat) {
