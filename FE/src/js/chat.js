@@ -13,6 +13,7 @@ function openChat(infoChat) { // TODO : CHANGE pass id
   // Scroll bottom
   let container = document.querySelector('#chat-messages');
   container.scrollTop = container.scrollHeight;
+  
 }
 
 function updateChat(infoChat) {
