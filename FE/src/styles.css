@@ -23,6 +23,7 @@
   color: aliceblue;
   background-color: rgba(6, 42, 141, 0.63);
   padding: 10px;
+  border-radius: 5px;
 }
 
 .nav-item.nav-link {
@@ -89,6 +90,13 @@
 /* ------------------------------ */
 
 /* CHAT */
+#connectedDot {
+  color: red;
+}
+
+.chat-title {
+  padding-left: 8px;
+}
 .message {
   border-color:grey; 
   background:rgba(0, 0, 0, 0.493);

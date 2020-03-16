@@ -19,7 +19,7 @@ var myRestID = null;
 const Port = 9035;
 var connection = null;
 
-// SERVER ECV:
+// // SERVER ECV:
 // const apiURL = 'https://ecv-etic.upf.edu/node/';
 // const PATH = `${apiURL}${Port}`;
 // var SocketURL = 'wss://ecv-etic.upf.edu/node/9035/ws/';
