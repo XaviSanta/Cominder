@@ -1,4 +1,5 @@
 function goHome() {
+  window.open("./landing/index.html","_self");
 }
 
 function showLanding() {
