@@ -14,7 +14,7 @@
         <g id="03-App">
             <g id="Hero" transform="translate(-1293.000000, -616.000000)">
                 <g id="BG">
-                    <use fill="#00a2ff" xlink:href="#path-1"></use>
+                    <use fill="#FFC72C" xlink:href="#path-1"></use>
                     <use fill-opacity="0.02" fill="url(#pattern-2)" xlink:href="#path-1"></use>
                 </g>
             </g>

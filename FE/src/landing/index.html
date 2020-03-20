@@ -33,7 +33,7 @@
 
           <div class="col-sm-7 col-lg-2 col-xl-2 order-lg-3 d-none d-sm-block">
             <div class="header-btns">
-              <div class="btn-2">
+              <div class="btn-2" style="background-color: #DA291C;">
                 <a href="../index.html">Register For Free</a>
               </div>
             </div>
@@ -397,8 +397,20 @@
       </div>
     </section>
   </div>
+  <!-- Vendor JS-->
+  <script src="./plugins/jquery/jquery.min.js"></script>
+  <script src="./plugins/jquery/jquery-migrate.min.js"></script>
+  <script src="./plugins/bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
+  <!-- Plugins JS -->
+  <script src="./plugins/meanmenu/jquery.meanmenu.js"></script>
   <script>
-
+    $('.main-navigation').meanmenu({
+      meanScreenWidth: "992",
+      meanMenuContainer: '.mobile-menu',
+      meanMenuClose: "<i class='icon icon-simple-remove'></i>",
+      meanMenuOpen: "<i class='icon icon-menu-34'></i>",
+      meanExpand: "",
+    });
   </script>
 </body>
 
