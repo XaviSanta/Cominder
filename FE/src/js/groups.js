@@ -30,12 +30,10 @@ function updateGroupsList(groups, RID = null) {
       var temp = document.querySelector('#templates .group-li');
       var li = temp.cloneNode(true);
       li.querySelector('.name-group-template').innerText = g.title;
-      li.querySelector('.badge').innerText = `${g.members}/${g["max-members"]}`;
+      li.querySelector('.badge').innerText = `${g.users.length}/${g["max-members"]}`;
       li.querySelector('a').onclick = function() { 
         // Get the chat info from Server: (name, users, messages)
-        console.log(g.id)
         getChat(g.id);
-        console.log('Group clicked:', g)
       }
       container.appendChild(li); //to the DOMs
     });
@@ -67,7 +65,6 @@ async function addGroupToRestaurantAsync(restaurantID, groupName, maxMembers) {
     id: newGroupRef.id +'',
     restaurantID,
     'title': groupName,
-    'members' : 1,
     'max-members' : maxMembers,
     'users': [username],
   };
@@ -104,6 +101,9 @@ db.collection('groups').onSnapshot(snapShot => {
   groupsList = [];
   snapShot.forEach(doc =>  {
     groupsList.push(doc.data());
+    if(!!chatId && doc.id == chatId) {
+      updateChatUsersConnected(doc.data());
+    }
   });
   updateGroupsList(groupsList);
 });
