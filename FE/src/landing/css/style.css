@@ -2,16 +2,10 @@
 /* /////////////////////////// 
     Header Area
 //////////////////////////// */
-body{
-overflow-x: :hidden;
-}
 .site-header {
  background: rgba(0,0,0,.6);
  color: white;
 }
-
-
-
 
 @media (min-width: 768px) {
   .site-header {
@@ -1235,7 +1229,7 @@ article .txt-sets {
 }
 .overlay {
   z-index: 0;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(104, 48, 48, 0.3);
   content: "";
   
   width: 100%;
