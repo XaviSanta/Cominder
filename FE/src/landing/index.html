@@ -6,14 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cominder</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
   <!-- Plugins CSS -->
-  <link rel="stylesheet" href="./plugins/bootstrap-4.3.1/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="./plugins/meanmenu/meanmenu.css">
   <!-- fonts -->
   <link rel="stylesheet" href="./fonts/ep-icon-fonts/css/ep-font.css">
   <link rel="stylesheet" href="./fonts/fontawesome-5/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="./css/settings.css">
   <link rel="stylesheet" href="./css/style.css">
@@ -23,65 +25,46 @@
   <div class="site-wrapper back-ground">
     <!-- Site Header -->
     <header class="site-header">
-      <div class="">
-        <div class="row justify-content-center align-items-center  position-relative">
-          
-         
-          <div class="col-sm-4 col-lg-2 col-xl-2 order-lg-3 d-none d-sm-block">
-            <div class="header-btns">
+     <nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#000; ">
+	  
+	  <!-- Collapse button -->
+	  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+	    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <!-- Collapsible content -->
+	  <div class="collapse navbar-collapse" id="basicExampleNav">
+		    <!-- Links -->
+		    <ul class="navbar-nav mr-auto ml-auto">
+		      <!-- Dropdown -->
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+		          aria-haspopup="true" aria-expanded="false">Features</a>
+		        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+		          <a class="dropdown-item" href="#">Discover new places to eat</a>
+		          <a class="dropdown-item" href="#">Make new friends</a>
+		          <a class="dropdown-item" href="#">Make new Groups and chat with people</a>
+  				  <a class="dropdown-item" href="#">Discover Offers of nearby restaurants</a>
+		        </div>
+		      </li>
+		      <li class="nav-item ">
+		        <a class="nav-link" href="#">Pricing</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Contact</a>
+		      </li>
+		      
+		    </ul>
+		    <div class="header-btns">
               <div class="btn-2" style="background-color: #DA291C;">
                 <a href="../index.html">Start Now!</a>
               </div>
             </div>
-          </div>
-         
-
-          <div class="col-sm-1 col-6 col-lg-7 offset-lg-1 col-xl-6 offset-xl-2 order-lg-2 position-static">
-            <div class="main-navigation">
-              <ul class="main-menu">
-                <li class="menu-item has-dropdown">
-                  <a href="#features">Features</a>
-                  <ul class="menu-dropdown">
-                    <li class="single-item">
-                      <a href="#GCD">
-                        <h3>Discover new places to eat</h3>
-                        <p></p>
-                      </a>
-                    </li>
-                    <li class="single-item">
-                      <a href="#Inverse">
-                        <h3>Make new friends</h3>
-                        <p></p>
-                      </a>
-                    </li>
-                    <li class="single-item">
-                      <a href="#Power">
-                        <h3>Make new Groups and chat with people</h3>
-                        <p></p>
-                      </a>
-                    </li>
-                    <li class="single-item">
-                      <a href="#Factorize">
-                        <h3>Discover Offers of nearby restaurants</h3>
-                        <p></p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                
-
-               
-
-                <li class="menu-item"><a href="#pricing">Pricing</a></li>
-
-                <li class="menu-item"><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-            <div class="mobile-menu"></div>
-          </div>
-        </div>
-      </div>
-    </header>
+	   </div>
+	</nav>
+	
+	</header>
     <!--  -->
     
     
@@ -344,20 +327,11 @@
     </section>
   </div>
   <!-- Vendor JS-->
-  <script src="./plugins/jquery/jquery.min.js"></script>
-  <script src="./plugins/jquery/jquery-migrate.min.js"></script>
-  <script src="./plugins/bootstrap-4.3.1/js/bootstrap.bundle.js"></script>
-  <!-- Plugins JS -->
-  <script src="./plugins/meanmenu/jquery.meanmenu.js"></script>
-  <script>
-    $('.main-navigation').meanmenu({
-      meanScreenWidth: "992",
-      meanMenuContainer: '.mobile-menu',
-      meanMenuClose: "<i class='icon icon-simple-remove'></i>",
-      meanMenuOpen: "<i class='icon icon-menu-34'></i>",
-      meanExpand: "",
-    });
-  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
