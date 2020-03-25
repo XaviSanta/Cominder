@@ -47,8 +47,8 @@ map.on('click', function(e) {
       .setLngLat(e.lngLat)
       .setHTML(
         '<h3>' + "Add Restaurant:" + '</h3>' + 
-        '<input id="addGroupInput" placeholder="name">'+ 
-        '<input id="descriptionGroup" placeholder="description">'+ 
+        '<input class="form-control" id="addGroupInput" placeholder="name">'+ 
+        '<input class="form-control" id="descriptionGroup" placeholder="description">'+ 
         `<button class="btn btn-primary" onClick="addRestaurantFromMap(${lng},${lat})">Add</button>`)
       .addTo(map);
     return;

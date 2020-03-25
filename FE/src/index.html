@@ -202,8 +202,18 @@
 
   <!-- Offers ---------------------------------------------------------- -->
   <footer class="fixed-bottom offers-container logged-in" style="display: none;">
-    <button class="btn" onclick="offersShow()"> X </button>
-    <button class="btn rest-type" data-toggle="modal" data-target=".create-offer" style="display: none"> + </button>
+    <div class="title">
+      <button class="btn expand-contract" onclick="offersShow()">
+        <i class="fas fa-angle-double-down"></i>
+      </button>
+      <button class="btn rest-type" data-toggle="modal" data-target=".create-offer" style="display: none;">
+        <i class="fas fa-plus"></i>
+      </button>
+      <span>
+        Offers
+      </span>
+    </div>
+    
     <div class="scrolling-wrapper offers"></div>
   </footer>
 
@@ -243,7 +253,14 @@
         <p class="card-text">
           <small class="text-muted">exampleexample</small></p>
       </div>
-      <div class="card-footer">⭐⭐⭐⭐</div>
+      <div class="card-footer">⭐⭐⭐⭐
+        <button class="btn">
+          <i class="far fa-thumbs-up"></i>
+        </button>
+        <button class="btn">
+          <i class="far fa-thumbs-down"></i>
+        </button>
+      </div>
     </div>
     
   </div>

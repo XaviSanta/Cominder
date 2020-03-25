@@ -73,9 +73,11 @@ function clearInput() {
 
 $('#input-message').focus(function() {
   $('.offers').hide(800);
+  $('.offers-container .expand-contract i').attr('class', 'fas fa-angle-double-up');
 });
 $('#input-message').blur(function() {
   if($('.offers').css('display') != 'none') {
     $('.offers').show(800);
+    $('.offers-container .expand-contract i').attr('class', 'fas fa-angle-double-down');
   }
 });
