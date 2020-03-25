@@ -15,7 +15,7 @@ async function appendOfferAsync(container, o) {
   var card = temp.cloneNode(true);
   card.querySelector('.card-header').innerText = `${o.title}`;
   card.querySelector('.card-text').innerText = o.description;
-  card.querySelector('.text-muted').innerText = o.extraInfo;
+  
   var restDoc = await db.collection('points').doc(o.restaurantID).get();
   var coordinates = restDoc.data().geometry.coordinates;
   if(restDoc.exists) {
