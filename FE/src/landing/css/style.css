@@ -2,7 +2,6 @@
 /* /////////////////////////// 
     Header Area
 //////////////////////////// */
-
 .site-header {
  background: rgba(0,0,0,.6);
  color: white;
@@ -16,7 +15,7 @@
 
 @media (min-width: 992px) {
   .site-header {
-    padding-top: 15px;
+    padding-top: 20px;
   }
 }
 
@@ -135,17 +134,14 @@
     margin-right: 40px;
   }
 }
-
+.site-header{
+  position: absolute;
+  height: 78px;
+  width: 100%;
+  z-index: 5;
+}
 .header-btns {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  margin-right: 50px;
 }
 
 @media (min-width: 992px) {
@@ -161,23 +157,11 @@
   height: 40px;
   border-radius: 3px;
   background-color: #013c66;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 0 20px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+
 }
 
-@media (min-width: 1200px) {
-  .header-btns .btn-2 {
-    margin: 0 17px;
-  }
-}
+
 
 .header-btns .btn-2 a {
   color: #ffffff;
@@ -1026,27 +1010,24 @@ img {
 .bg1 {
     background: #9eb300;
 }
-.trgl1:before {
-    position: absolute;
-    content: '';
-    width: 0;
-    height: 0;
-    right: 50%;
-    top: -1px;
-    border-top: 230px solid #fff;
-    border-left: 639px solid transparent;
-    z-index: 2;
-}
+
+
+
 .trgl1:after {
+    content: "";
     position: absolute;
-    content: '';
-    width: 0;
-    height: 0;
-    left: 50%;
-    top: -1px;
-    border-top: 230px solid #fff;
-    border-right: 639px solid transparent;
-    z-index: 2;
+    top: 0px;
+    left: 0;
+    background-color:  rgba(255,255,255,0.8);
+    padding-bottom: 50%;
+    width: 57.7%;
+    z-index: 1;
+   -webkit-transform-origin: 0 0; 
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: rotate(-30deg) skewX(30deg);
+    -ms-transform: rotate(-30deg) skewX(30deg);
+    transform: rotate(-30deg) skewX(30feg);
 }
 .container:before, .container-fluid:before, .row:before, .container:after, .container-fluid:after, .row:after {
     display: table;
@@ -1126,6 +1107,19 @@ article .txt-sets {
 }
 .trgl1 {
     position: relative;
+    height: 80px;
+    background: rgba(0,0,0,.48);
+
+    display: inline-block;
+    height: auto; width:100%;
+    text-align: center;
+    color: white;
+
+    line-height: 50px;
+    text-decoration: none;
+    padding-bottom:15%;
+    background-clip:content-box;
+    overflow:hidden;
 }
 .bg3,
 .overlay2 {
@@ -1171,33 +1165,38 @@ article .txt-sets {
      background: #ff4200; 
 }
 .brand {
-    position: relative;
+    position: absolute;
     height: 80px;
-    background: rgba(0,0,0,.48);
-    text-align: center;
-}
-.brand:before {
-  position: absolute;
-  content: '';
-  width: 0;
-  height: 0;
-  right: 50%;
-  top: 80px;
-  border-top: 229px solid rgba(0,0,0,.48);
-  border-left: 639px solid transparent;
-  z-index: 1;
+    top: 11%;
+    left: 0;
 
+    display: inline-block;
+    height: 80%; width:100%;
+    text-align: center;
+    color: white;
+
+    line-height: 50px;
+    text-decoration: none;
+    padding-bottom:15%;
+    background-clip:content-box;
+    overflow:hidden;
 }
+
 .brand:after {
-  position: absolute;
-  content: '';
-  width: 0;
-  height: 0;
-  left: 50%;
-  top: 80px;
-  border-top: 229px solid rgba(0,0,0,.48);
-  border-right: 639px solid transparent;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    background-color:  rgba(0,0,0,.48);
+    padding-bottom: 50%;
+    width: 57.7%;
+    z-index: 1;
+   -webkit-transform-origin: 0 0; 
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: rotate(-30deg) skewX(30deg);
+    -ms-transform: rotate(-30deg) skewX(30deg);
+    transform: rotate(-30deg) skewX(30feg);
 }
 .brand .logo {
   position: absolute;
@@ -1230,7 +1229,7 @@ article .txt-sets {
 }
 .overlay {
   z-index: 0;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(104, 48, 48, 0.3);
   content: "";
   
   width: 100%;
@@ -1246,4 +1245,8 @@ article .txt-sets {
 }
 .parag{
   font-size: 20px;
+}
+.nav-link{
+  color:#fff!important;
+  text-align: left!important;
 }
