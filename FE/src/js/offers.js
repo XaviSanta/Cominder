@@ -30,8 +30,10 @@ async function appendOfferAsync(container, o) {
 function offersShow() {
   if($('.offers').css('display') == 'none') {
     $('.offers').show(800);
+    $('.offers-container .expand-contract i').attr('class', 'fas fa-angle-double-down');
   } else {
     $('.offers').hide(800);
+    $('.offers-container .expand-contract i').attr('class', 'fas fa-angle-double-up');
   }
 }
 

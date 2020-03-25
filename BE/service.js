@@ -58,9 +58,8 @@ async function getChat(id, username) {
   var groupDoc = await groupRef.get();
   var group = groupDoc.data();
   if(!group.users.includes(username)) {
-    if(group.members < group['max-members']) {
+    if(group.users.length < group['max-members']) {
       groupRef.update({
-        members: group.members+1,
         users: firebase.firestore.FieldValue.arrayUnion(username),
       })
     } else {
@@ -106,8 +105,8 @@ function addChat(group) {
   chats.push({
     id: group.id,
     title: group.title,
-    userLimit: group['max-members'],
-    usersJoined: 1,
+    // userLimit: group['max-members'],
+    // usersJoined: 1,
     messages: [
       {
         type: 'Notification',
