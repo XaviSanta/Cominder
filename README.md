@@ -15,4 +15,8 @@ Features for restaurants:
   - Publish offers
 
 It include a night mode.
+
 The registration has fields that have to be filled following a specific format, if the format is not respected an error message is displayed.
+
+
+Link of the video: https://drive.google.com/file/d/1IK6reL-sMGmkNP1DcAe6oSvOHzxtZSRQ/view?usp=sharing
