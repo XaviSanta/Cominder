@@ -15,26 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // ------------------ GETTERS -------------------------------
-//    all info
-app.get('/info', (req, res) => {
-  const result = service.getInfo();
-  res.json(result);
-});
-//    all the restaurants in the map
-app.get('/points', (req, res) => {
-  const result = service.getPoints();
-  res.json(result);
-});
-//    all the groups created
-app.get('/groups', (req, res) => {
-  const result = service.getGroups();
-  res.json(result);
-});
-//    all the offers created
-app.get('/offers', (req, res) => {
-  const result = service.getOffers();
-  res.json(result);
-});
 //    specified chat
 app.get('/chat/:id/:username', async (req, res) => {
   const result = await service.getChat(req.params.id, req.params.username);
@@ -43,18 +23,6 @@ app.get('/chat/:id/:username', async (req, res) => {
 //    my groups
 app.get('/my-groups/:username', async (req, res) => {
   const result = await service.getGroupsByUsername(req.params.username);
-  res.json(result);
-});
-
-// ------------------ POSTS -------------------------------
-//    new restaurant in map
-app.post('/point', (req, res) => {
-  const result = service.addPoint(req.body);
-  res.json(result);
-});
-//    new group
-app.post('/group', (req, res) => {
-  var result = service.addGroup(req.body)
   res.json(result);
 });
 
@@ -77,7 +45,6 @@ wss.on('connection', (ws) => {
       case 'chat-message':
         service.addMessageToChat(msg);
         wss.clients.forEach(client => {
-          // TODO: If the client is in the chat group:
           if (client != ws) {
             client.send(JSON.stringify({
               type: 'chat-message', 

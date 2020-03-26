@@ -1,4 +1,3 @@
-var db = require('./databases');
 var firebase = require('firebase');
 var firebaseConfig = {
   apiKey: "AIzaSyDMBw3oxC1gDl-tI2NhpAtb-Ziyx8MJOTI",
@@ -10,31 +9,6 @@ firebase.initializeApp(firebaseConfig);
 
 // Make auth and firestore references
 const fs = firebase.firestore();
-
-var points = db.points;// TODO: Use DB
-var groups = db.groupsList; // TODO: Use DB
-var offers = db.offersList; // TODO: Use DB
-var chats = db.chatsList; // TODO: Use DB
-
-function getInfo() {
-  return {
-    points, 
-    groups, 
-    offers
-  };
-}
-
-function getPoints() {
-  return points;
-}
-
-function getGroups() {
-  return groups;
-}
-
-function getOffers() {
-  return offers;
-}
 
 async function getChat(id, username) {
   if (username === undefined) {
@@ -75,21 +49,6 @@ async function getChat(id, username) {
   };
 }
 
-function addPoint(point) {
-  points['features'].push(point);
-  return points;
-}
-
-function addGroup(group) {
-  group.id = groups[groups.length-1].id + 1; // Generate id for the group
-  groups.push(group);
-  addChat(group);
-  return {
-    result: groups,
-    id: group.id
-  };
-}
-
 async function getGroupsByUsername(username) {
   let groupsRef = fs.collection('groups');
   let groupsDoc = await groupsRef.where("users", "array-contains", username).get();
@@ -101,21 +60,6 @@ async function getGroupsByUsername(username) {
   return groups;
 }
 // ------------------------------------------
-function addChat(group) {
-  chats.push({
-    id: group.id,
-    title: group.title,
-    // userLimit: group['max-members'],
-    // usersJoined: 1,
-    messages: [
-      {
-        type: 'Notification',
-        author: '',
-        content: 'Group created'
-      },
-    ]
-  });
-}
 
 function addMessageToChat(msg) {
   let chatRef = fs.collection('chats').doc(msg.chatId);
@@ -128,14 +72,7 @@ function addMessageToChat(msg) {
 }
 // ------------------------------------------
 module.exports = {
-  getInfo,
-  getPoints,
-  getGroups,
-  getOffers,
   getChat,
   getGroupsByUsername,
-
-  addPoint,
-  addGroup,
   addMessageToChat,
 }

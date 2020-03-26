@@ -29,6 +29,10 @@ function goAndShowRestaurant(coordinates, RID) {
 function addRestaurantFromMap(lng, lst) {
   var restaurantName = $('#addGroupInput').val();
   var descriptionGroup = $('#descriptionGroup').val();
+  if(!isValidString(restaurantName, ['<','>', '/'])
+  || !isValidString(descriptionGroup, ['<','>', '/'])) {
+    return false;
+  }
   var newPointRef = db.collection('points').doc();
   var geoPoint = {
     type: "Feature",
