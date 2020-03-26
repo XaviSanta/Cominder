@@ -28,7 +28,7 @@ async function setUserAsync(user) {
     `;
   $('.account-details .modal-body').html(html);
 
-  connect(); // TODO: connect on groups not on global
+  connect();
   openApp();
 }
 
@@ -168,7 +168,7 @@ function addRestaurantFromLogin(restaurantName) {
     properties: {
       title: restaurantName,
       RID: newPointRef.id,
-      description: 'todo'
+      description: ''
     },
     geometry: {
       coordinates: coordinatesMyRestaurant,

@@ -37,9 +37,7 @@ function updateGroupsList(groups, RID = null) {
       }
       container.appendChild(li); //to the DOMs
     });
-  
 }
-
 
 $('#createGroupModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
@@ -105,5 +103,4 @@ db.collection('groups').onSnapshot(snapShot => {
       updateChatUsersConnected(doc.data());
     }
   });
-  updateGroupsList(groupsList);
 });

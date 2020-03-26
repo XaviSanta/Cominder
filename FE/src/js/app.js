@@ -9,7 +9,6 @@ function showLanding() {
 
 function openApp() {
   $(window).scrollTop(0);
-  getInitInfo();
   $('.navbar-collapse').collapse('hide');
   
   $('#username-btn').html(username);
@@ -62,12 +61,3 @@ function isValidString(str, invalidCharacters = ['<', '>', '+', ',', '.', "'", '
   }
   return str !== '';
 }
-
-function showUserInfo() {
-  
-  
-}
-
-$('.account-details').on('show.bs.modal', function (event) {
-  showUserInfo();
-});

@@ -43,7 +43,7 @@ map.on('click', function(e) {
   });
 
   if (!features.length) {
-    popup = new mapboxgl.Popup({ offset: [0, -15] }) // TODO: Close it when submit button
+    popup = new mapboxgl.Popup({ offset: [0, -15] })
       .setLngLat(e.lngLat)
       .setHTML(
         '<h3>' + "Add Restaurant:" + '</h3>' + 
@@ -100,10 +100,6 @@ function flyTo(coordinates) {
     essential: true 
   }); 
 };
-
-function updateMap() {
-  getMapPoints();
-}
 
 $('#list-map').on('shown.bs.tab', function (e) {
   $('.mapboxgl-ctrl-geocoder').show();
