@@ -3,7 +3,9 @@ Virtual Communication Environment
 # Cominder
 
 Link of the video: https://drive.google.com/file/d/1ank6htTcYQ8CDAePQWkmLso7DaypQou3/view?usp=sharing
+
 Landing page: https://ecv-etic.upf.edu/students/2020/santamaria/cominder/landing/
+
 App page: https://ecv-etic.upf.edu/students/2020/santamaria/cominder/
 
 
