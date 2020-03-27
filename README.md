@@ -14,13 +14,13 @@ xavier.santamaria01@estudiant.upf.edu
 The app of Cominder includes: 
 Two types of registration: one for people and one for restaurants. 
 
-Features for persons: 
-  - Create groups 
-  - Chat with other people
-  - Locate restaurants in the map
-  - Search for restaurants inside the map 
-  - Have access different restaurant offers.
-  - Choose offers
+Features for persons:
+  - Create Points of interest / Restaurants in the map 
+  - Create groups in the points of interest that are in the map
+  - Chat with other people inside those groups.
+  - Locate restaurants in the map.
+  - Search input to locate restaurants. 
+  - See offers that restaurants are adding.
 
 Features for restaurants:
   - Publish offers
